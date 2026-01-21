@@ -1,0 +1,69 @@
+
+.popUpContainer{
+
+    background-image: linear-gradient(0deg, #0b1d2b, #300a13);
+    display: flex;
+    flex-grow: 1;
+    height: 100%;
+    width: 100%;
+
+    flex-direction: column;
+    align-items: end;
+    overflow: hidden;
+
+    border: 2px solid var(--default-border-color);
+
+}
+
+.popUpRndContainer{
+
+    display: flex;
+}
+
+.popUpTopBar{
+    width: 100%;
+    height: 30px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    border-bottom: 2px solid var(--default-border-color);
+}
+
+.popUpTitle{
+    color: var(--text-color);
+    font-family: var(--default-title-font-family);
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-left: 12px;
+}
+
+.popUpCloseButtonContainer{
+    height: 100%;
+    width: 40px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    cursor: pointer;
+    border-left: 2px solid var(--default-border-color);
+    color: var(--default-border-color);
+    font-weight: 600;
+
+
+
+}
+
+.popUpCloseButtonContainer:hover{
+    filter:  saturate(0.7) brightness(1.3);
+}
+
+.popUpContent{
+    padding: 16px;
+    color: var(--text-color);
+    font-size: 1rem;
+    overflow-y: auto;
+    flex-grow: 1;
+}
