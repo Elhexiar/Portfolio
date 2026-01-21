@@ -1,5 +1,3 @@
-import React from "react";
-
 import styles from "./modules/Keyword.module.css";
 
 interface KeywordProps {

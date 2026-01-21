@@ -20,7 +20,7 @@ function CardPopUp({ onClose, content, title }: CardPopUpProps) {
           height: window.innerHeight / 2,
         }}
         bounds="window"
-        onClick={(e) => e.stopPropagation()}
+        onClick={(e: React.MouseEvent) => e.stopPropagation()}
         className={styles.popUpRndContainer}
       >
         <div className={styles.popUpContainer}>
@@ -28,7 +28,7 @@ function CardPopUp({ onClose, content, title }: CardPopUpProps) {
             <div className={styles.popUpTitle}>{title}</div>
             <div
               className={styles.popUpCloseButtonContainer}
-              onClick={(e) => {
+              onClick={(e: React.MouseEvent) => {
                 e.stopPropagation();
                 if (onClose) {
                   onClose();

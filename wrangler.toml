@@ -1,8 +1,6 @@
 name = "portfolio"
+pages_build_output_dir = "react-portfolio/dist"
 
 [build]
 command = "npm run build"
 cwd = "./"
-
-[build.upload]
-dir = "react-portfolio/dist"
