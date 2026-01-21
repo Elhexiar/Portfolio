@@ -1,0 +1,8 @@
+name = "portfolio"
+
+[build]
+command = "npm run build"
+cwd = "./"
+
+[build.upload]
+dir = "react-portfolio/dist"
