@@ -1,5 +1,5 @@
 import { Tooltip } from "bootstrap";
-import React, { useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 
 /*
 Skill Tree List:
@@ -667,7 +667,17 @@ function TechnicalSkillTree() {
               pointerEvents="none"
             />
           </g>
-          <g id="SkillSlot000">
+          <g
+            id="SkillSlot000"
+            data-bs-toggle="tooltip"
+            data-bs-title="<div>
+            <h5>Software Architecture</h5>
+            <p>On my different projects I was always asigned the task of designing and implementing the overall structure of the software, ensuring scalability, maintainability, and performance.</p>
+            <p>Even during my internship at ENKI DIGITAL I was tasked with designing the architecture of new features from scratch.</p>
+            </div>"
+            data-bs-trigger="hover"
+            data-bs-html="true"
+          >
             <rect
               id="Rectangle 2_13"
               x="621"
