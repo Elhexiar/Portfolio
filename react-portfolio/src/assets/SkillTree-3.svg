@@ -1,0 +1,205 @@
+<svg width="1993" height="1624" viewBox="0 0 1993 1624" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="SkillTree">
+<path id="ArrowPath1" d="M174.797 773.872L266.893 582.482C270.058 575.904 276.713 571.721 284.014 571.721L441.572 571.721" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath0" d="M174.797 773.872L266.193 960.721C269.382 967.239 276.005 971.372 283.261 971.372L522.404 971.372" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath00" d="M521.45 971.969L613.475 1187.34C616.464 1194.33 623.339 1198.87 630.947 1198.87L765.403 1198.87" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath01" d="M572.403 932.372L772.473 932.372C776.335 932.372 780.105 933.549 783.281 935.746L838.403 973.872" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath02" d="M532.904 951.372L597.903 828.372L734.117 828.372C740.258 828.372 746.02 825.404 749.586 820.404L789.904 763.872" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath11" d="M447.904 529.872L675.248 529.872C681.867 529.872 688.009 526.428 691.46 520.78L795.904 349.872" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath114" d="M788.903 295.371L788.903 144.444C788.903 137.87 792.302 131.763 797.889 128.298L898.903 65.6439" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath110" d="M797.903 392.954L865.088 449.869C868.52 452.777 872.872 454.372 877.37 454.372L1116.82 454.372C1121.08 454.372 1125.23 452.938 1128.58 450.3L1201.4 392.954" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath113" d="M840.903 332.372L897.276 246.449C900.788 241.096 906.76 237.872 913.162 237.872L1069.62 237.872C1076.31 237.872 1082.5 234.358 1085.93 228.619L1120.4 170.943" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath112" d="M856.904 333.872L931.902 279.225C935.153 276.857 939.07 275.581 943.091 275.581L1344.16 275.581C1350.55 275.581 1356.52 272.365 1360.03 267.022L1413.4 185.872" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath111" d="M844.903 385.872L937.928 322.465C941.082 320.314 944.811 319.164 948.629 319.164L1512.81 319.164C1518.27 319.164 1523.47 316.812 1527.08 312.709L1574.4 258.872" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath10" d="M464.904 585.645L959.777 585.645C963.76 585.645 967.643 586.897 970.876 589.224L1098.9 681.372" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath102" d="M1089.4 632.872L1313.8 632.872C1318.08 632.872 1322.23 631.429 1325.58 628.776L1384.9 581.872" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath101" d="M1075.9 717.03L1623.77 717.03C1628.67 717.03 1633.38 715.137 1636.92 711.746L1675.9 674.372" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath100" d="M1086.4 692.872L1126.27 777.778C1129.4 784.445 1136.11 788.702 1143.47 788.702L1441.05 788.702C1448.3 788.702 1454.93 792.832 1458.12 799.348L1503.9 892.872" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<g id="SkillSlot00">
+<rect id="Rectangle 2" x="447.904" y="897.872" width="148" height="148" rx="15" fill="url(#paint0_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1" x="445.904" y="895.872" width="152" height="152" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot01">
+<rect id="Rectangle 2_2" x="373.904" y="491.872" width="148" height="148" rx="15" fill="url(#paint1_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_2" x="371.904" y="489.872" width="152" height="152" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot010">
+<rect id="Rectangle 2_3" x="1012.9" y="598.872" width="148" height="148" rx="15" fill="url(#paint2_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_3" x="1010.9" y="596.872" width="152" height="152" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot0102">
+<rect id="Rectangle 2_4" x="1353.9" y="533.872" width="98" height="98" rx="15" fill="url(#paint3_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_4" x="1351.9" y="531.872" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot0114">
+<rect id="Rectangle 2_5" x="847.903" y="22.8712" width="98" height="98" rx="15" fill="url(#paint4_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_5" x="845.903" y="20.8712" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot0113">
+<rect id="Rectangle 2_6" x="1076.9" y="103.871" width="98" height="98" rx="15" fill="url(#paint5_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_6" x="1074.9" y="101.871" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot0112">
+<rect id="Rectangle 2_7" x="1353.9" y="122.871" width="98" height="98" rx="15" fill="url(#paint6_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_7" x="1351.9" y="120.871" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot0111">
+<rect id="Rectangle 2_8" x="1557.9" y="203.871" width="98" height="98" rx="15" fill="url(#paint7_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_8" x="1555.9" y="201.871" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot0110">
+<rect id="Rectangle 2_9" x="1149.9" y="345.872" width="98" height="98" rx="15" fill="url(#paint8_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_9" x="1147.9" y="343.872" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot0101">
+<rect id="Rectangle 2_10" x="1657.9" y="617.872" width="98" height="98" rx="15" fill="url(#paint9_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_10" x="1655.9" y="615.872" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot001">
+<rect id="Rectangle 2_11" x="811.903" y="940.872" width="98" height="98" rx="15" fill="url(#paint10_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_11" x="809.903" y="938.872" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot002">
+<rect id="Rectangle 2_12" x="738.903" y="692.872" width="98" height="98" rx="15" fill="url(#paint11_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_12" x="736.903" y="690.872" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot0100">
+<rect id="Rectangle 2_13" x="1453.9" y="861.872" width="98" height="98" rx="15" fill="url(#paint12_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_13" x="1451.9" y="859.872" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot000">
+<rect id="Rectangle 2_14" x="718.903" y="1147.87" width="98" height="98" rx="15" fill="url(#paint13_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_14" x="716.903" y="1145.87" width="102" height="102" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot011">
+<rect id="Rectangle 2_15" x="718.903" y="270.872" width="148" height="148" rx="15" fill="url(#paint14_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_15" x="716.903" y="268.872" width="152" height="152" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="Group 1">
+<path id="ArrowPath20" d="M1122.98 1275.53L1122.98 1426.45C1122.98 1433.03 1126.38 1439.13 1131.97 1442.6L1232.98 1505.25" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath24" d="M1150.9 1183.21L1218.09 1126.3C1221.52 1123.39 1225.87 1121.79 1230.37 1121.79L1469.82 1121.79C1474.09 1121.79 1478.23 1123.23 1481.58 1125.86L1554.4 1183.21" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath2" d="M157.404 826.372L219.702 1190.58C221.262 1199.7 229.172 1206.37 238.43 1206.37L455.904 1206.37L587.904 1387.79L939.014 1387.79C944.358 1387.79 949.455 1385.54 953.056 1381.59L1090.9 1230.37" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath21" d="M1174.98 1238.53L1231.36 1324.45C1234.87 1329.8 1240.84 1333.03 1247.24 1333.03L1403.7 1333.03C1410.39 1333.03 1416.58 1336.54 1420.01 1342.28L1454.48 1399.96" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath22" d="M1190.98 1237.03L1265.98 1291.67C1269.23 1294.04 1273.15 1295.32 1277.17 1295.32L1678.24 1295.32C1684.63 1295.32 1690.6 1298.53 1694.11 1303.88L1747.48 1385.03" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<path id="ArrowPath23" d="M1178.98 1185.03L1272.01 1248.43C1275.16 1250.58 1278.89 1251.73 1282.71 1251.73L1846.89 1251.73C1852.35 1251.73 1857.55 1254.09 1861.16 1258.19L1908.48 1312.03" stroke="#61FFFF" stroke-width="10" stroke-linecap="round"/>
+<g id="SkillSlot020">
+<rect id="Rectangle 2_16" x="1" y="-1" width="98" height="98" rx="15" transform="matrix(1 0 0 -1 1180.98 1547.03)" fill="url(#paint15_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_16" x="-1" y="1" width="102" height="102" rx="17" transform="matrix(1 0 0 -1 1180.98 1551.03)" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot021">
+<rect id="Rectangle 2_17" x="1" y="-1" width="98" height="98" rx="15" transform="matrix(1 0 0 -1 1409.98 1466.03)" fill="url(#paint16_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_17" x="-1" y="1" width="102" height="102" rx="17" transform="matrix(1 0 0 -1 1409.98 1470.03)" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot022">
+<rect id="Rectangle 2_18" x="1" y="-1" width="98" height="98" rx="15" transform="matrix(1 0 0 -1 1686.98 1447.03)" fill="url(#paint17_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_18" x="-1" y="1" width="102" height="102" rx="17" transform="matrix(1 0 0 -1 1686.98 1451.03)" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot023">
+<rect id="Rectangle 2_19" x="1" y="-1" width="98" height="98" rx="15" transform="matrix(1 0 0 -1 1890.98 1366.03)" fill="url(#paint18_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_19" x="-1" y="1" width="102" height="102" rx="17" transform="matrix(1 0 0 -1 1890.98 1370.03)" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot024">
+<rect id="Rectangle 2_20" x="1" y="-1" width="98" height="98" rx="15" transform="matrix(1 0 0 -1 1502.9 1223.87)" fill="url(#paint19_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_20" x="-1" y="1" width="102" height="102" rx="17" transform="matrix(1 0 0 -1 1502.9 1227.87)" stroke="#61FFFF" stroke-width="2"/>
+</g>
+<g id="SkillSlot02">
+<rect id="Rectangle 2_21" x="1" y="-1" width="148" height="148" rx="15" transform="matrix(1 0 0 -1 1051.98 1299.03)" fill="url(#paint20_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_21" x="-1" y="1" width="152" height="152" rx="17" transform="matrix(1 0 0 -1 1051.98 1303.03)" stroke="#61FFFF" stroke-width="2"/>
+</g>
+</g>
+<g id="SkillSlot0">
+<rect id="Rectangle 2_22" x="100.904" y="699.872" width="148" height="148" rx="15" fill="url(#paint21_linear_1_67)" stroke="#CE1B1B" stroke-width="2"/>
+<rect id="Rectangle 1_22" x="98.9036" y="697.872" width="152" height="152" rx="17" stroke="#61FFFF" stroke-width="2"/>
+</g>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1_67" x1="521.904" y1="896.872" x2="521.904" y2="1046.87" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1_67" x1="447.904" y1="490.872" x2="447.904" y2="640.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint2_linear_1_67" x1="1086.9" y1="597.872" x2="1086.9" y2="747.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint3_linear_1_67" x1="1402.9" y1="532.872" x2="1402.9" y2="632.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint4_linear_1_67" x1="896.903" y1="21.8712" x2="896.903" y2="121.871" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint5_linear_1_67" x1="1125.9" y1="102.871" x2="1125.9" y2="202.871" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint6_linear_1_67" x1="1402.9" y1="121.871" x2="1402.9" y2="221.871" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint7_linear_1_67" x1="1606.9" y1="202.871" x2="1606.9" y2="302.871" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint8_linear_1_67" x1="1198.9" y1="344.872" x2="1198.9" y2="444.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint9_linear_1_67" x1="1706.9" y1="616.872" x2="1706.9" y2="716.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint10_linear_1_67" x1="860.903" y1="939.872" x2="860.903" y2="1039.87" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint11_linear_1_67" x1="787.903" y1="691.872" x2="787.903" y2="791.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint12_linear_1_67" x1="1502.9" y1="860.872" x2="1502.9" y2="960.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint13_linear_1_67" x1="767.903" y1="1146.87" x2="767.903" y2="1246.87" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint14_linear_1_67" x1="792.903" y1="269.872" x2="792.903" y2="419.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint15_linear_1_67" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint16_linear_1_67" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint17_linear_1_67" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint18_linear_1_67" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint19_linear_1_67" x1="50" y1="0" x2="50" y2="100" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint20_linear_1_67" x1="75" y1="0" x2="75" y2="150" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+<linearGradient id="paint21_linear_1_67" x1="174.904" y1="698.872" x2="174.904" y2="848.872" gradientUnits="userSpaceOnUse">
+<stop stop-color="#561F1F"/>
+<stop offset="1" stop-color="#233F3F"/>
+</linearGradient>
+</defs>
+</svg>

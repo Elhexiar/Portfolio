@@ -11,7 +11,7 @@ function MapsAndCards() {
         <div>
           <h2>Maps & Cards</h2>
           <img
-            src="./src/assets/m&c-main-art.png"
+            src="/m&c-main-art.png"
             alt="Maps & Cards Game main art"
             style={{
               maxWidth: "200px",

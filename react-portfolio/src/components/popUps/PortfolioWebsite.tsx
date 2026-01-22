@@ -12,8 +12,8 @@ function PortfolioWebsite() {
           <h2>Portfolio Website</h2>
           <p>
             This portfolio website is a personal project to showcase my work and
-            skills. It is built using modern web technologies and designed to be
-            responsive and user-friendly.
+            skills. It is my first experience with React and TypeScript, and I
+            built it to improve my web development skills.
           </p>
           <Keyword keyword="React" />
           <Keyword keyword="TypeScript" />

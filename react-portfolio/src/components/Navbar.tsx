@@ -4,6 +4,7 @@ interface NavbarProps {
   childrenList?: {
     tabChildren: React.ReactNode;
     contentChildren: React.ReactNode;
+    contentStyle?: React.CSSProperties;
   }[];
 }
 
@@ -11,17 +12,7 @@ function Navbar({ childrenList }: NavbarProps) {
   let [selectedIndex, setSelectedIndex] = React.useState(-1);
 
   return (
-    <div
-      style={{
-        padding: "10px",
-        paddingTop: "50px",
-        display: "flex",
-        width: "80%",
-        height: "500px",
-        flexDirection: "column",
-        alignItems: "center",
-      }}
-    >
+    <div className="content-overhaul-container">
       <nav
         className="navbar navbar-expand-lg"
         style={{ width: "100%", height: "fit-content" }}
@@ -45,7 +36,7 @@ function Navbar({ childrenList }: NavbarProps) {
               onClick={() => setSelectedIndex(-1)}
             >
               <img
-                src="./src/assets/close-icon.png"
+                src="/close-icon.png"
                 alt="Close"
                 className="nav-close-button"
                 style={{}}
@@ -56,7 +47,10 @@ function Navbar({ childrenList }: NavbarProps) {
       </nav>
 
       {childrenList?.[selectedIndex] ? (
-        <div className="tab-content">
+        <div
+          className="tab-content"
+          style={childrenList?.[selectedIndex]?.contentStyle}
+        >
           {childrenList?.[selectedIndex]?.contentChildren}
         </div>
       ) : null}

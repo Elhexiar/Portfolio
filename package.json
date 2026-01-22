@@ -1,9 +1,4 @@
 {
-  "name": "portfolio",
-  "scripts": {
-    "build": "cd react-portfolio && npm install && npm run build",
-    "dev": "cd react-portfolio && npm run dev"
-  },
   "dependencies": {
     "bootstrap": "^5.3.8"
   }
