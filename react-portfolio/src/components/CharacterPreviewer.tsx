@@ -27,6 +27,10 @@ function CharacterPreviewer() {
         gap: "10px",
         height: "100%",
         overflow: "hidden",
+        position: "relative",
+        left: 0,
+
+        animation: "dropLeftCharacter 0.8s ease-in forwards",
       }}
     >
       <img

@@ -5,7 +5,7 @@ function MapsAndCards() {
   return (
     <ProjectCard
       projectTitle="Maps & Cards"
-      projectDescription="Card game with autobattler mechanics, Last year project."
+      projectDescription="Card game with autobattler mechanics, final year project."
       projectKeywords={["Unreal Engine", "C++", "BP", "Software Architecture"]}
       projectPopUpContent={
         <div>

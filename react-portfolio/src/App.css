@@ -38,7 +38,7 @@
           height: 100%;
           position: relative;
 
-          animation: dropDown 0.8s ease-out forwards;
+          /* animation: dropDown 0.8s ease-out forwards; */
 
 
 }
@@ -95,6 +95,9 @@
     height: 100%;
     flex-direction: column;
     align-items: center;
+    position: relative;
+    right : 0;
+    animation: dropRightNavbar 0.8s cubic-bezier(.06,.77,.54,.97) forwards;
 }
 
 .navbar{
@@ -105,14 +108,57 @@
     border-style: solid;
     color : rgb(209, 51, 51);
     font-weight: 600;
+
+
     
 
+}
+
+
+
+@keyframes dropRightNavbar {
+  from {
+    right: -100%;
+    opacity: 0;
+  }
+  to {
+    right: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes dropLeftCharacter {
+  from {
+    left: -10%;
+    opacity: 0;
+  }
+  to {
+    left: 0;
+    opacity: 1;
+  }
 }
 
 .nav-link{
 
   font-family: var(--default-title-font-family);
+  position : relative;
+  bottom: 0;
+  opacity: 0 ;
 
+  animation: dropUpNavlinks 0.3s ease-out forwards;
+  animation-delay: 0.6s;
+    
+}
+
+@keyframes dropUpNavlinks {
+  from {
+    bottom: -50%;
+    opacity: 0;
+  }
+  to {
+    bottom: 0;
+    opacity: 1;
+  }
 }
 
 .nav-link:hover{
@@ -129,7 +175,7 @@
 
 
 
-                animation: dropLeft 0.3s ease-out forwards;
+                animation: close-button-dropleft 0.3s ease-out forwards;
 }
 
 .nav-close-button{
@@ -150,7 +196,7 @@
 
   }
 
-@keyframes dropLeft {
+@keyframes close-button-dropleft {
   from {
     right: 30px;
     opacity: 0;

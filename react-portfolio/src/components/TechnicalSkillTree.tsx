@@ -372,7 +372,7 @@ function TechnicalSkillTree() {
             data-bs-toggle="tooltip"
             data-bs-title="<div>
             <h5>Blueprints</h5>
-            <p>My last year project was mostly done in Blueprints (BP) as it allowed the rapid prototyping of game mechanics and logic without deep programming knowledge.
+            <p>My final year project was mostly done in Blueprints (BP) as it allowed the rapid prototyping of game mechanics and logic without deep programming knowledge.
             which helped involve non-programmers in the development process.</p>
             </div>"
             data-bs-trigger="hover"
@@ -414,7 +414,7 @@ function TechnicalSkillTree() {
             data-bs-toggle="tooltip"
             data-bs-title="<div>
             <h5>AI (Behaviour Trees)</h5>
-            <p>My last year project being originally an RTS it involved implementing AI using behaviour trees. It helped separate squad and individual behaviour and allowed Game Designers to modify behaviour without interfering with the codebase</p>
+            <p>My final year project being originally an RTS it involved implementing AI using behaviour trees. It helped separate squad and individual behaviour and allowed Game Designers to modify behaviour without interfering with the codebase</p>
             </div>"
             data-bs-trigger="hover"
             data-bs-html="true"
@@ -456,7 +456,7 @@ function TechnicalSkillTree() {
             data-bs-toggle="tooltip"
             data-bs-title="<div>
             <h5>Optimisation</h5>
-            <p>I was tasked to handle performance optimization in my last year project, ensuring smooth gameplay and efficient resource management.</p>
+            <p>I was tasked to handle performance optimization in my final year project, ensuring smooth gameplay and efficient resource management.</p>
             <p>I learned it was often more a role of management, policing of the project and scope more than raw technical abilities.</p>
             <p>I have still a lot to learn in this domain.</p>
             </div>"
@@ -705,7 +705,7 @@ function TechnicalSkillTree() {
             data-bs-toggle="tooltip"
             data-bs-title="<div>
             <h5>Unreal Engine</h5>
-            <p>Having done my last year project on Unreal Engine,
+            <p>Having done my final year project on Unreal Engine,
              I have practical experience with its features and capabilities on large scale projects.</p>
             </div>"
             data-bs-trigger="hover"
