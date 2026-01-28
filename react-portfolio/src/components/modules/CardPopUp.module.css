@@ -57,6 +57,13 @@
 }
 
 .popUpCloseButtonContainer:hover{
+    color: #61ffff;
+    border-color: #61ffff;
+    border: outset 2px #61ffff;
+
+}
+
+.popUpCloseButtonContainer:hover{
     filter:  saturate(0.7) brightness(1.3);
 }
 

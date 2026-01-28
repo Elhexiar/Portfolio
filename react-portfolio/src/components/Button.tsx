@@ -16,7 +16,7 @@ interface ButtonProps {
 
 function Button({
   text,
-  color = "primary",
+  color,
   onButtonClick,
   buttonStyle,
   textStyle,
@@ -24,7 +24,7 @@ function Button({
   return (
     <button
       type="button"
-      className={`btn btn-${color}`}
+      className={color ? `btn btn-${color}` : "custom-button"}
       onClick={() => {
         onButtonClick();
         console.log(text);

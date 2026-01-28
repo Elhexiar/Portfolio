@@ -1,4 +1,4 @@
-import Button from "./Button";
+import CPButton from "./CPButton";
 import char0 from "/character-standing-0.png";
 import char1 from "/character-standing-1.png";
 import char2 from "/character-standing-2.png";
@@ -39,19 +39,15 @@ function CharacterPreviewer() {
         style={{ objectFit: "contain", width: "100%", height: "90%" }}
       />
       <div style={{ display: "flex", justifyContent: "space-evenly" }}>
-        <Button
-          text="<="
-          onButtonClick={() => {
-            handleChangeIndex(-1);
-          }}
-          buttonStyle={{ width: "30%", height: "50px", display: "block" }}
+        <CPButton
+          children={["=>"]}
+          direction="left"
+          onClick={() => handleChangeIndex(-1)}
         />
-        <Button
-          text="=>"
-          onButtonClick={() => {
-            handleChangeIndex(1);
-          }}
-          buttonStyle={{ width: "30%", height: "50px", display: "block" }}
+        <CPButton
+          children={["=>"]}
+          direction="right"
+          onClick={() => handleChangeIndex(1)}
         />
       </div>
     </div>

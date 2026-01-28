@@ -14,19 +14,142 @@
     font-family: var(--default-title-font-family);
 }
 
-
+@font-face {
+    font-family: 'Stray';
+    src: url('/stray.ttf') format('truetype');
+}
 
 
 .bg {
-  background: linear-gradient(0deg, #0d1925, #3d1417);
+  /* background: linear-gradient(0deg, #0d1925, #3d1417); */
   
+background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 100%);  background-position: 0vw 0vh;
+  background-size: 100% 200%;
 }
+
+.left-side-glyphs-container{
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          height: 100%;
+          display: flex;
+          align-items: end;
+          overflow: hidden;
+          pointer-events: none;
+          background: linear-gradient(0deg,rgba(206, 27, 27, 1) 0%, rgba(206, 27, 27, 0) 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+}
+
+
+.left-side-glyphs{
+          font-family: Stray;
+          color : rgb(255, 97, 97);
+          font-size: 8px;
+          padding-left: 10px;
+          writing-mode: vertical-lr;
+          text-wrap-mode: nowrap;
+
+          animation: scrollDown 20s linear infinite;
+
+}
+
+.right-side-glyphs-container{
+          position: absolute;
+          right: 0;
+          bottom: 0;
+          height: 100%;
+          display: flex;
+          align-items: start;
+          overflow: hidden;
+          pointer-events: none;
+          background: linear-gradient(0deg,rgba(206, 27, 27, 1) 0%, rgba(206, 27, 27, 0) 100%);
+          -webkit-background-clip: text;
+          background-clip: text;
+          -webkit-text-fill-color: transparent;
+}
+
+.right-side-glyphs{
+          font-family: Stray;
+          color : rgb(255, 97, 97);
+          font-size: 8px;
+          padding-right: 10px;
+          writing-mode: vertical-rl;
+          text-wrap-mode: nowrap;
+
+          animation: scrollUp 20s linear infinite;
+
+}
+
+@keyframes scrollDown {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(50%);
+    }
+}
+
+@keyframes scrollUp {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
+    }
+}
+
 
 .list-group{
 
     border-radius : 0px;
 
 }
+
+/* .custom-button{
+    background-image: var(--button-bg-gradient);
+    border-color: rgb(206, 27, 27);
+    font-family: var(--default-text-font-family);
+    color : #61ffff;
+    background-size: 400%;
+    background-position: 0%;
+    transition: background-position 0.3s;
+    } */
+
+.custom-button{
+    font-family: var(--default-text-font-family);
+    color : var(--default-border-color);
+    background-position: 0%;
+    transition: background-position 0.3s;
+
+      background-image: url("/custom-button.png");
+      background-color: transparent;
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      border: none;
+      cursor: pointer;
+
+      width: 100px;
+      height: 40px;
+    }
+
+    .custom-button.left{
+      transform : scaleX(-1);
+    }
+
+    .custom-button:hover {
+      translate: 10px 0px;
+      color: #61ffff;
+      filter: brightness(1.2) saturate(1.2);
+      transition: all 0.2s ease;
+    }
+
+    .custom-button.left:hover {
+      translate: -10px 0px;
+    }
+
 
 .main-container{
 
@@ -164,6 +287,15 @@
 .nav-link:hover{
     color : #fd6464;
     font-weight: 600;
+}
+
+.nav-link.active{
+    color : #61ffff;
+    font-weight: 700;
+    text-decoration: underline;
+    text-underline-offset: 5px;
+    text-decoration-thickness: 2px;
+    
 }
 
 .nav-close-button-container{
@@ -333,6 +465,13 @@ html::-webkit-scrollbar-thumb {
   animation: drawSlot 0.45s linear forwards;
   animation-fill-mode: both;
   animation-delay: var(--slot-delay);
+}
+#SkillTree g[id^="SkillSlot"]:hover {
+  stroke: #61ffff;
+  transform: scale(1.2);
+  transform-box: fill-box;
+  transform-origin: center;
+  transition: all 0.2s ease;
 }
 
 @keyframes fadeSlotContent {

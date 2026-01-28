@@ -9,7 +9,7 @@ import ProjectCard from "./components/ProjectCard";
 import MapsAndCards from "./components/popUps/MapsAndCards";
 import PortfolioWebsite from "./components/popUps/PortfolioWebsite";
 import TechnicalSkillTree from "./components/TechnicalSkillTree";
-import Keyword from "./components/Keyword";
+import Citadel from "./components/popUps/Citadel";
 
 declare module "bootstrap";
 
@@ -35,6 +35,22 @@ function App() {
         overflow: "hidden",
       }}
     >
+      <div className="left-side-glyphs-container">
+        <div className="left-side-glyphs">
+          MY NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR
+          STAY AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES. MY
+          NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR STAY
+          AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES.
+        </div>
+      </div>
+      <div className="right-side-glyphs-container">
+        <div className="right-side-glyphs">
+          MY NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR
+          STAY AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES. MY
+          NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR STAY
+          AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES.
+        </div>
+      </div>
       <div className="main-container">
         <CharacterPreviewer />
 
@@ -49,33 +65,7 @@ function App() {
               contentChildren: [
                 <MapsAndCards />,
                 <PortfolioWebsite />,
-                <ProjectCard
-                  projectTitle="CITADEL"
-                  projectDescription="A Small tower defense plateformer game"
-                  projectKeywords={["JS", "Phaser"]}
-                  projectPopUpContent={
-                    <div>
-                      <h2>CITADEL</h2>
-                      <img
-                        src="/citadel-main-art.png"
-                        alt="Citadel Game main art"
-                        style={{
-                          maxWidth: "200px",
-                          height: "300px",
-                          objectFit: "contain",
-                        }}
-                      ></img>
-                      <p>
-                        Citadel is a small tower defense platformer game where
-                        players must strategically place towers to defend
-                        against waves of enemies while gathering ressources by
-                        mining the underground in between waves.
-                      </p>
-                      <Keyword keyword="JavaScript" />{" "}
-                      <Keyword keyword="Phaser" />
-                    </div>
-                  }
-                />,
+                <Citadel />,
                 <ProjectCard
                   projectTitle="UI Toolkit Systems"
                   projectDescription="A collection of UI systems and tools for UIToolkit I made during an internship."

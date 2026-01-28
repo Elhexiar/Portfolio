@@ -16,12 +16,13 @@ function CardPopUp({ onClose, content, title }: CardPopUpProps) {
         default={{
           x: window.innerWidth / 2 - window.innerWidth / 4,
           y: window.innerHeight / 4 - window.innerHeight / 6,
-          width: window.innerWidth / 2,
-          height: window.innerHeight / 2,
+          width: window.innerWidth / 1.5,
+          height: window.innerHeight / 1.5,
         }}
         bounds="window"
         onClick={(e: React.MouseEvent) => e.stopPropagation()}
         className={styles.popUpRndContainer}
+        cancel={`.${styles.popUpContent}`}
       >
         <div className={styles.popUpContainer}>
           <div className={styles.popUpTopBar}>
@@ -38,7 +39,9 @@ function CardPopUp({ onClose, content, title }: CardPopUpProps) {
               <img src="" alt="X" />
             </div>
           </div>
-          <div className={styles.popUpContent}>{content}</div>
+          <div className={styles.popUpContent} style={{ cursor: "default" }}>
+            {content}
+          </div>
         </div>
       </Rnd>,
       document.body,

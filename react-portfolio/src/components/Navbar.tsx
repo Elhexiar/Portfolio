@@ -22,7 +22,7 @@ function Navbar({ childrenList }: NavbarProps) {
             <a
               key={index}
               style={{ marginRight: "30px" }}
-              className="nav-link"
+              className={`nav-link${selectedIndex === index ? " active" : ""}`}
               href="#"
               onClick={() => setSelectedIndex(index)}
             >

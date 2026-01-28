@@ -24,6 +24,14 @@
     
 }
 
+.CardContainer:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px #00000033;
+  border-color: #61ffff;
+  border-width: 2px;
+  transition: all 0.1s ease;
+}
+
 .CardTitle {
   font-size: 1.5rem;
   font-weight: 500;

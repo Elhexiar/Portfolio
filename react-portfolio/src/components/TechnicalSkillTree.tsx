@@ -62,6 +62,7 @@ function TechnicalSkillTree() {
         }}
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
+        overflow="visible"
       >
         <g id="SkillTree">
           <path
@@ -175,7 +176,7 @@ function TechnicalSkillTree() {
             data-bs-toggle="tooltip"
             data-bs-title="<div>
             <h5>General Dev Skills</h5>
-            <p>Game Development was my primary focus for many years, but I have also gained experience in web development and software engineering in general.</p>
+            <p>Game Development was my primary focus for many years, but I have also gained experience in general software development and engineering. I also have more universal soft skills that apply in virtually all jobs</p>
             </div>"
             data-bs-trigger="hover"
             data-bs-html="true"
@@ -200,6 +201,15 @@ function TechnicalSkillTree() {
               rx="17"
               stroke="#61FFFF"
               stroke-width="2"
+            />
+            <image
+              href="/general-dev-skills.png"
+              x="348"
+              y="895.872"
+              width="152"
+              height="152"
+              preserveAspectRatio="xMidYMid slice"
+              pointerEvents="none"
             />
           </g>
           <g
@@ -579,7 +589,18 @@ function TechnicalSkillTree() {
               pointerEvents="none"
             />
           </g>
-          <g id="SkillSlot001">
+          <g
+            id="SkillSlot001"
+            data-bs-toggle="tooltip"
+            data-bs-title="<div>
+            <h5>Front End</h5>
+            <p>As you can see I also have experience in front-end development, creating user-friendly interfaces and ensuring responsive design.</p>
+            <p> Although this website is my first experience with React and TypeScript, I am eager to expand my skills in web development.</p>
+            <p>My Experience with UI/UX in game development also helps me understand any new front end framework or language much easier.</p>
+            </div>"
+            data-bs-trigger="hover"
+            data-bs-html="true"
+          >
             <rect
               id="Rectangle 2_11"
               x="714"
@@ -591,29 +612,6 @@ function TechnicalSkillTree() {
               stroke="#CE1B1B"
               stroke-width="2"
             />
-            <g id="SkillSlot002">
-              <rect
-                id="Rectangle 2_12"
-                x="641"
-                y="692.872"
-                width="98"
-                height="98"
-                rx="15"
-                fill="url(#paint11_linear_1_67)"
-                stroke="#CE1B1B"
-                stroke-width="2"
-              />
-              <rect
-                id="Rectangle 1_12"
-                x="639"
-                y="690.872"
-                width="102"
-                height="102"
-                rx="17"
-                stroke="#61FFFF"
-                stroke-width="2"
-              />
-            </g>
 
             <rect
               id="Rectangle 1_11"
@@ -624,6 +622,58 @@ function TechnicalSkillTree() {
               rx="17"
               stroke="#61FFFF"
               stroke-width="2"
+            />
+            <image
+              href="/front-end-icon.png"
+              x="712"
+              y="938.872"
+              width="102"
+              height="102"
+              preserveAspectRatio="xMidYMid slice"
+              pointerEvents="none"
+            />
+          </g>
+          <g
+            id="SkillSlot002"
+            data-bs-toggle="tooltip"
+            data-bs-title="<div>
+            <h5>Soft Skills</h5>
+            <p>I am someone who values effective communication, teamwork, and adaptability. I believe these skills are essential for successful project collaboration and personal growth.</p>
+            <p>Team success is always my priority, and I strive to contribute positively to any team I'm part of.</p>
+            <p>Curiosity and continuous learning are also key aspects of my personal and professional development.</p>
+            </div>"
+            data-bs-trigger="hover"
+            data-bs-html="true"
+          >
+            <rect
+              id="Rectangle 2_12"
+              x="641"
+              y="652.872"
+              width="148"
+              height="148"
+              rx="15"
+              fill="url(#paint11_linear_1_67)"
+              stroke="#CE1B1B"
+              stroke-width="2"
+            />
+            <rect
+              id="Rectangle 1_12"
+              x="639"
+              y="650.872"
+              width="152"
+              height="152"
+              rx="17"
+              stroke="#61FFFF"
+              stroke-width="2"
+            />
+            <image
+              href="/soft-skill.png"
+              x="639"
+              y="650.872"
+              width="152"
+              height="152"
+              preserveAspectRatio="xMidYMid slice"
+              pointerEvents="none"
             />
           </g>
           <g
@@ -698,6 +748,15 @@ function TechnicalSkillTree() {
               rx="17"
               stroke="#61FFFF"
               stroke-width="2"
+            />
+            <image
+              href="/architecture-icon.png"
+              x="619"
+              y="1145.87"
+              width="102"
+              height="102"
+              preserveAspectRatio="xMidYMid slice"
+              pointerEvents="none"
             />
           </g>
           <g
@@ -911,9 +970,9 @@ function TechnicalSkillTree() {
           <linearGradient
             id="paint11_linear_1_67"
             x1="690"
-            y1="691.872"
+            y1="651.872"
             x2="690"
-            y2="791.872"
+            y2="751.872"
             gradientUnits="userSpaceOnUse"
           >
             <stop stop-color="#561F1F" />
