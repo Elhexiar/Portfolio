@@ -10,6 +10,11 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
   const [displayedIndex, setDisplayedIndex] = useState(alreadyTyped);
   const [isTyping, setIsTyping] = useState(true);
 
+  // THIS WAS HELL ON EARTH TO MAKE WORK BUT IT FINALLY DOES
+
+  //   I devideded the text into segments to be able to style some parts differently (like strong)
+  //   cons it scales really bad since they are hardcoded but for now it's fine
+  //   would love to learn how to do this effect with a string input only in the future
   const textSegments = [
     "Hi ! I'm Mathis, junior game developer and programming enthusiast.",
     "\nI have a strong urge to create things and solve problems, I'm focusing on programming as a career path but I also draw and play music on the side.",
@@ -30,6 +35,7 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
   }, 0);
 
   useEffect(() => {
+    //timer to increment displayedIndex until it reaches totalChars
     if (displayedIndex < totalChars) {
       const timer = setTimeout(() => {
         setDisplayedIndex((current) =>
@@ -61,11 +67,12 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
 
       //   Only show part of the segment based on displayedIndex
       if (typeof segment === "string") {
+        // check how many characters of the segment should be visible
         const visibleText =
           displayedIndex >= segmentEnd
-            ? segment
+            ? segment // full segment visible
             : displayedIndex > segmentStart
-              ? segment.slice(0, displayedIndex - segmentStart)
+              ? segment.slice(0, displayedIndex - segmentStart) // partial segment visible
               : "";
 
         // insert line breaks for instead of \n characters
@@ -76,7 +83,7 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
           </React.Fragment>
         ));
 
-        // handle strong segments
+        // handle strong segments DO NOT PUT \n IN STRONG TAGS THEY ARE NOT HANDLED ICBA TO ADD IT
       } else if (segment.type === "strong") {
         const visibleText =
           displayedIndex >= segmentEnd

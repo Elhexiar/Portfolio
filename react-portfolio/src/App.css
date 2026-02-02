@@ -36,16 +36,19 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
           align-items: end;
           overflow: hidden;
           pointer-events: none;
-          background: linear-gradient(0deg,rgba(206, 27, 27, 1) 0%, rgba(206, 27, 27, 0) 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
+          background: none;
+          -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
 }
 
 
 .left-side-glyphs{
           font-family: Stray;
-          color : rgb(255, 97, 97);
+          color : var(--default-border-color);
           font-size: 8px;
           padding-left: 10px;
           writing-mode: vertical-lr;
@@ -64,15 +67,18 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
           align-items: start;
           overflow: hidden;
           pointer-events: none;
-          background: linear-gradient(0deg,rgba(206, 27, 27, 1) 0%, rgba(206, 27, 27, 0) 100%);
-          -webkit-background-clip: text;
-          background-clip: text;
-          -webkit-text-fill-color: transparent;
+          background: none;
+          -webkit-mask-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+          mask-image: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 100%);
+          -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+          -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
 }
 
 .right-side-glyphs{
           font-family: Stray;
-          color : rgb(255, 97, 97);
+          color : var(--default-border-color);
           font-size: 8px;
           padding-right: 10px;
           writing-mode: vertical-rl;
@@ -93,10 +99,10 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
 
 @keyframes scrollUp {
     0% {
-        transform: translateY(0);
+        transform: translateY(5%);
     }
     100% {
-        transform: translateY(-50%);
+        transform: translateY(-45%);
     }
 }
 
