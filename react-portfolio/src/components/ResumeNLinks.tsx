@@ -1,5 +1,3 @@
-import React from "react";
-
 // cache the resume files in the public folder for faster loading
 const resumeFiles = ["/en-resume.pdf", "/fr-resume.pdf"];
 
