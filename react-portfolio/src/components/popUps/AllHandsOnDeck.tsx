@@ -1,7 +1,7 @@
 import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 
-function PortfolioWebsite() {
+function AllHandsOnDeck() {
   return (
     <ProjectCard
       projectTitle="Portfolio Website"
@@ -61,15 +61,10 @@ function PortfolioWebsite() {
             what I know now, but I am proud of the progress I made with this
             project.
           </p>
-          <p>
-            PS : I know the skills tree animation loops every time the tab is
-            open but handling that for the AboutMe tab was such a chore I just
-            gave up on it for now... Maybe later when i'll have some free time
-          </p>
         </div>
       }
     />
   );
 }
 
-export default PortfolioWebsite;
+export default AllHandsOnDeck;

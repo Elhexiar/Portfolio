@@ -133,6 +133,8 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
 
       width: 100px;
       height: 40px;
+      transition: all 0.2s ease;
+
     }
 
     .custom-button.left{
@@ -143,7 +145,6 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
       translate: 10px 0px;
       color: #61ffff;
       filter: brightness(1.2) saturate(1.2);
-      transition: all 0.2s ease;
     }
 
     .custom-button.left:hover {
@@ -422,6 +423,7 @@ html::-webkit-scrollbar-thumb {
   stroke-dasharray: 1000;
   stroke-dashoffset: 1000;
   animation: drawPath 0.4s linear forwards;
+  animation-iteration-count: 1;
 }
 
 /* Tier 1 - from root */
@@ -464,6 +466,7 @@ html::-webkit-scrollbar-thumb {
   opacity: 0;
   animation: drawSlot 0.45s linear forwards;
   animation-fill-mode: both;
+  animation-iteration-count: 1;
   animation-delay: var(--slot-delay);
 }
 #SkillTree g[id^="SkillSlot"]:hover {
@@ -487,6 +490,7 @@ html::-webkit-scrollbar-thumb {
   visibility: hidden;
   animation: fadeSlotContent 0.25s ease-out forwards;
   animation-fill-mode: both;
+  animation-iteration-count: 1;
   animation-delay: calc(var(--slot-delay) + 0.2s);
 }
 

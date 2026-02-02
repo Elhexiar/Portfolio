@@ -11,6 +11,19 @@ interface NavbarProps {
 function Navbar({ childrenList }: NavbarProps) {
   let [selectedIndex, setSelectedIndex] = React.useState(-1);
 
+  /* Automatically open the first tab after 2 seconds if no tab was selected */
+  const AUTO_OPEN_DELAY = 1500;
+
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setSelectedIndex((currentIndex) =>
+        currentIndex === -1 ? 0 : currentIndex,
+      );
+    }, AUTO_OPEN_DELAY);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
     <div className="content-overhaul-container">
       <nav

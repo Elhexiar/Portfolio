@@ -1,13 +1,20 @@
 import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 
+const mainArtImg = new Image();
+mainArtImg.src = "/citadel-title.png";
+const gameplayImg = new Image();
+gameplayImg.src = "/citadel-gameplay-preview.gif";
+const citadelTitleImg = new Image();
+citadelTitleImg.src = "/citadel-main-art.png";
+
 function Citadel() {
   return (
     <ProjectCard
       projectTitle="Citadel"
       projectDescription="Citadel is a browser-based tower defense plateformer i made to test gameplay concepts."
       projectKeywords={["JavaScript", "Phaser"]}
-      projectImage="/citadel-title.png"
+      projectImage={mainArtImg.src}
       projectPopUpContent={
         <div>
           <h2>Citadel</h2>
@@ -20,7 +27,7 @@ function Citadel() {
             }}
           >
             <img
-              src="/citadel-main-art.png"
+              src={citadelTitleImg.src}
               alt="Citadel Game main art"
               style={{
                 maxHeight: "300px",
@@ -33,6 +40,14 @@ function Citadel() {
               <Keyword keyword="Phaser" />
             </div>
           </div>
+          <a
+            href="https://phaser-plateformer-01.miriel-mathis.workers.dev/"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ fontSize: "2.5em" }}
+          >
+            Play it here!
+          </a>
           <p
             style={{
               paddingBottom: "15px",

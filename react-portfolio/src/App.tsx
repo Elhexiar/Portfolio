@@ -2,7 +2,7 @@ import CharacterPreviewer from "./components/CharacterPreviewer";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import "./Tooltip.css";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Tooltip } from "bootstrap";
 import Navbar from "./components/Navbar";
 import ProjectCard from "./components/ProjectCard";
@@ -10,6 +10,9 @@ import MapsAndCards from "./components/popUps/MapsAndCards";
 import PortfolioWebsite from "./components/popUps/PortfolioWebsite";
 import TechnicalSkillTree from "./components/TechnicalSkillTree";
 import Citadel from "./components/popUps/Citadel";
+import UIToolkit from "./components/popUps/UIToolkit";
+import AboutMe from "./components/AboutMe";
+import ResumeNLinks from "./components/ResumeNLinks";
 
 declare module "bootstrap";
 
@@ -22,6 +25,8 @@ function App() {
       (tooltipTriggerEl) => new Tooltip(tooltipTriggerEl),
     );
   }, []);
+
+  let [aboutMeAlreadyTyped, setAboutMeAlreadyTyped] = useState(0);
 
   return (
     <div
@@ -58,7 +63,12 @@ function App() {
           childrenList={[
             {
               tabChildren: "About Me",
-              contentChildren: <div>Content for About Me</div>,
+              contentChildren: [
+                <AboutMe
+                  alreadyTyped={aboutMeAlreadyTyped}
+                  handleTotalCharsTyped={setAboutMeAlreadyTyped}
+                />,
+              ],
             },
             {
               tabChildren: "Projects",
@@ -66,11 +76,7 @@ function App() {
                 <MapsAndCards />,
                 <PortfolioWebsite />,
                 <Citadel />,
-                <ProjectCard
-                  projectTitle="UI Toolkit Systems"
-                  projectDescription="A collection of UI systems and tools for UIToolkit I made during an internship."
-                  projectKeywords={["Unity", "C#", "UIToolkit"]}
-                />,
+                <UIToolkit />,
                 <ProjectCard
                   projectTitle="All Hands On Deck"
                   projectDescription="A First Person puzzle game where you play as someone stuck on a sinking military ship."
@@ -90,7 +96,7 @@ function App() {
             },
             {
               tabChildren: "Resume & Links",
-              contentChildren: <div>Content for Resume</div>,
+              contentChildren: <ResumeNLinks />,
             },
           ]}
         />

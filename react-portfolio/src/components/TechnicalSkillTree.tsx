@@ -31,6 +31,31 @@ Skill Tree List:
 function TechnicalSkillTree() {
   const svgRef = useRef<SVGSVGElement | null>(null);
 
+  // Preload all images used in the skill tree
+  useEffect(() => {
+    const imageUrls = [
+      "/general-dev-skills.png",
+      "/controller-icon.png",
+      "/unity-icon.png",
+      "/csharp-icon.png",
+      "/cpp-icon.png",
+      "/bp-icon.png",
+      "/bht-icon.png",
+      "/performance-icon.png",
+      "/tooling.png",
+      "/ui-icon.png",
+      "/front-end-icon.png",
+      "/soft-skill.png",
+      "/architecture-icon.png",
+      "/unreal-icon.png",
+    ];
+
+    imageUrls.forEach((url) => {
+      const img = new Image();
+      img.src = url;
+    });
+  }, []);
+
   useEffect(() => {
     if (!svgRef.current) return;
     const triggers = svgRef.current.querySelectorAll(

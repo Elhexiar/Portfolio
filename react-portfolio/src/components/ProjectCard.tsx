@@ -9,6 +9,7 @@ interface ProjectCardProps {
   projectDescription?: string;
   projectKeywords?: string[];
   projectPopUpContent?: React.ReactNode;
+  ClosePopUp?: () => void;
 }
 
 function ProjectCard({
