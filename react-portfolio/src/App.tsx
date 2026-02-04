@@ -13,6 +13,7 @@ import Citadel from "./components/popUps/Citadel";
 import UIToolkit from "./components/popUps/UIToolkit";
 import AboutMe from "./components/AboutMe";
 import ResumeNLinks from "./components/ResumeNLinks";
+import AllHandsOnDeck from "./components/popUps/AllHandsOnDeck";
 
 declare module "bootstrap";
 
@@ -77,11 +78,7 @@ function App() {
                 <PortfolioWebsite />,
                 <Citadel />,
                 <UIToolkit />,
-                <ProjectCard
-                  projectTitle="All Hands On Deck"
-                  projectDescription="A First Person puzzle game where you play as someone stuck on a sinking military ship."
-                  projectKeywords={["Unity", "C#"]}
-                />,
+                <AllHandsOnDeck />,
                 <ProjectCard
                   projectTitle="Guignol Bagnole"
                   projectDescription="A small racing game made during the GMTK Game Jam 2025."

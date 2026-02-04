@@ -370,6 +370,19 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
 
 }
 
+.github-link {
+  color: #e04739;
+  text-decoration: none;
+  line-height: 2em;
+  margin: 5px;
+  font-weight: 600;
+}
+
+.github-link:hover {
+  color: #ff6b5b;
+  text-decoration: underline;
+}
+
 @keyframes expandFill{
   from {
     width: 0%;
@@ -383,12 +396,8 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
   }
 }
 
-/* I need to add all this boilerplate to have custom scrollbars 
-since from what i gather scrollbars are not handled the same across browsers 
-cant remember where i got that code from :/ */
 
-/* if you read this there is a funny bug interaction when you try to drag the popup
-   and your cursor goes over the scrollbar, the drag doesnt stop but does weird stuff */
+
 
 /* Firefox */
 html, .tab-content {

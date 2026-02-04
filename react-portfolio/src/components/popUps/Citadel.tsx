@@ -32,6 +32,8 @@ function Citadel() {
               style={{
                 maxHeight: "300px",
                 objectFit: "contain",
+                border: "1px solid",
+                borderColor: "var(--default-border-color)",
               }}
               draggable={false}
             ></img>
@@ -60,9 +62,24 @@ function Citadel() {
             enemies by building towers and mining ressources in the underground
             in between waves.
           </p>
+          <img
+            src="/citadel-gameplay0.png"
+            alt="Citadel Game gameplay screenshot"
+            style={{
+              maxWidth: "600px",
+              height: "250px",
+              objectFit: "contain",
+              border: "1px solid",
+              borderColor: "var(--default-border-color)",
+            }}
+            draggable={false}
+          ></img>
 
           <h3
-            style={{ paddingBottom: "5px", borderBottom: "#61ffff 1px solid" }}
+            style={{
+              paddingBottom: "5px",
+              borderBottom: "var(--default-border-color) 1px solid",
+            }}
           >
             Context
           </h3>
@@ -79,21 +96,26 @@ function Citadel() {
             mechanics.
           </p>
           <img
-            src="/citadel-gameplay-preview.gif"
+            src="/citadel-gameplay1.png"
             alt="Citadel Game gameplay screenshot"
             style={{
               maxWidth: "600px",
               height: "250px",
               objectFit: "contain",
+              border: "1px solid",
+              borderColor: "var(--default-border-color)",
             }}
             draggable={false}
           ></img>
-
           <h3
-            style={{ paddingBottom: "5px", borderBottom: "#61ffff 1px solid" }}
+            style={{
+              paddingBottom: "5px",
+              borderBottom: "var(--default-border-color) 1px solid",
+            }}
           >
             Breakdown
           </h3>
+
           <p>
             For a more detailed breakdown of Citadel, please visit my{" "}
             <a

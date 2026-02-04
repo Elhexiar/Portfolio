@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./modules/AboutMe.module.css";
 
+const profileImage = new Image();
+profileImage.src = "profile-pic.png";
+
 interface AboutMeProps {
   alreadyTyped?: number;
   handleTotalCharsTyped?: (charsTyped: number) => void;
@@ -106,9 +109,10 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
         Mathis Miriel{" "}
         <div className={styles.aboutMeDescriptionContainer}>
           <img
-            src="https://placehold.co/600x600"
+            src={profileImage.src}
             alt="Mathis Miriel"
             className={styles.aboutMeImage}
+            style={{ border: "var(--default-border-color) solid 1px" }}
           />
           <span className={styles.aboutMeDescriptionText}>Mathis MIRIEL</span>
           <span className={styles.aboutMeDescriptionText}>

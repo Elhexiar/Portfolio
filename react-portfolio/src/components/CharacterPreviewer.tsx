@@ -2,12 +2,14 @@ import CPButton from "./CPButton";
 import char0 from "/character-standing-0.png";
 import char1 from "/character-standing-1.png";
 import char2 from "/character-standing-2.png";
+import char3 from "/character-standing-3.png";
+import char4 from "/character-standing-4.png";
 import { useState } from "react";
 
-const ImageArray = [char0, char1, char2];
+const ImageArray = [char0, char1, char2, char3, char4];
 
 function CharacterPreviewer() {
-  let [selectedIndex, setSelectedIndex] = useState(1);
+  let [selectedIndex, setSelectedIndex] = useState(2);
 
   const handleChangeIndex = (indexToAdd: number) => {
     let newIndex = selectedIndex + indexToAdd;
