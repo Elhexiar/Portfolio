@@ -1,6 +1,8 @@
 import React from "react";
 
 interface NavbarProps {
+  selectedIndex?: number;
+  setSelectedIndex?: (index: number) => void;
   childrenList?: {
     tabChildren: React.ReactNode;
     contentChildren: React.ReactNode;
@@ -8,21 +10,19 @@ interface NavbarProps {
   }[];
 }
 
-function Navbar({ childrenList }: NavbarProps) {
-  let [selectedIndex, setSelectedIndex] = React.useState(-1);
+function Navbar({
+  selectedIndex: propSelectedIndex,
+  setSelectedIndex: propSetSelectedIndex,
+  childrenList,
+}: NavbarProps) {
+  let [selectedIndex, setSelectedIndex] = React.useState(
+    propSelectedIndex ?? -1,
+  );
 
-  /* Automatically open the first tab after 2 seconds if no tab was selected */
-  const AUTO_OPEN_DELAY = 1500;
-
-  React.useEffect(() => {
-    const timer = setTimeout(() => {
-      setSelectedIndex((currentIndex) =>
-        currentIndex === -1 ? 0 : currentIndex,
-      );
-    }, AUTO_OPEN_DELAY);
-
-    return () => clearTimeout(timer);
-  }, []);
+  // Use prop values if provided, otherwise use local state
+  const actualSelectedIndex =
+    propSelectedIndex !== undefined ? propSelectedIndex : selectedIndex;
+  const actualSetSelectedIndex = propSetSelectedIndex ?? setSelectedIndex;
 
   return (
     <div className="content-overhaul-container">
@@ -35,18 +35,18 @@ function Navbar({ childrenList }: NavbarProps) {
             <a
               key={index}
               style={{ marginRight: "30px" }}
-              className={`nav-link${selectedIndex === index ? " active" : ""}`}
+              className={`nav-link${actualSelectedIndex === index ? " active" : ""}`}
               href="#"
-              onClick={() => setSelectedIndex(index)}
+              onClick={() => actualSetSelectedIndex(index)}
             >
               {child.tabChildren}
             </a>
           ))}
-          {childrenList?.[selectedIndex] ? (
+          {childrenList?.[actualSelectedIndex] ? (
             <div
               className="nav-close-button-container"
               style={{}}
-              onClick={() => setSelectedIndex(-1)}
+              onClick={() => actualSetSelectedIndex(-1)}
             >
               <img
                 src="/close-icon.png"
@@ -59,12 +59,12 @@ function Navbar({ childrenList }: NavbarProps) {
         </div>
       </nav>
 
-      {childrenList?.[selectedIndex] ? (
+      {childrenList?.[actualSelectedIndex] ? (
         <div
           className="tab-content"
-          style={childrenList?.[selectedIndex]?.contentStyle}
+          style={childrenList?.[actualSelectedIndex]?.contentStyle}
         >
-          {childrenList?.[selectedIndex]?.contentChildren}
+          {childrenList?.[actualSelectedIndex]?.contentChildren}
         </div>
       ) : null}
     </div>

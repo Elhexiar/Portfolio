@@ -161,7 +161,7 @@ function MapsAndCards() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub Profile ( Still under construction )
+              GitHub Repository
             </a>
             .
           </p>

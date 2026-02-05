@@ -95,3 +95,16 @@ strong:hover {
   cursor: pointer;
   transform: scale(1.03) translateY(-2px);
 }
+
+.linkSegment {
+  color: var(--highlight-color);
+  display: inline-block;
+  text-decoration: underline double;
+  transition: color 100ms ease, transform 100ms ease;
+}
+
+.linkSegment:hover {
+  color: #ff7f74;
+  cursor: pointer;
+  transform: scale(1.03) translateY(-2px);
+}

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./modules/AboutMe.module.css";
+import { useNavbar } from "../App";
 
 const profileImage = new Image();
 profileImage.src = "profile-pic.png";
@@ -10,6 +11,7 @@ interface AboutMeProps {
 }
 
 function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
+  const { setSelectedIndex } = useNavbar();
   const [displayedIndex, setDisplayedIndex] = useState(alreadyTyped);
   const [isTyping, setIsTyping] = useState(true);
 
@@ -26,7 +28,12 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
     " or a ",
     { type: "strong", text: "web development apprenticeship" },
     " to further my skills.",
-    '\n\nFeel free to check out my projects and skills in the "Projects" and "Skills" tabs, and contact me if you want to collaborate or have any opportunity in mind !',
+    "\n\nFeel free to check out my projects and skills in the ",
+    { type: "link", text: "Projects", index: 1 },
+    " and ",
+    { type: "link", text: "Skills", index: 2 },
+    " tabs, and contact me if you want to collaborate or have any opportunity in mind !",
+    "\n\n THIS PORTFOLIO IS STILL A WORK IN PROGRESS SO EXPECT SOME BUGS AND DESIGN CHANGES IN THE FUTURE ESPECIALLY FOR PHOTOS",
   ];
 
   const typeSpeed = 5; // milliseconds per character
@@ -86,8 +93,10 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
           </React.Fragment>
         ));
 
+        // TODO : Refcator this mess Pretier is cool but readability becomes painfull
         // handle strong segments DO NOT PUT \n IN STRONG TAGS THEY ARE NOT HANDLED ICBA TO ADD IT
-      } else if (segment.type === "strong") {
+      } else if (typeof segment === "object" && segment.type === "strong") {
+        // splice
         const visibleText =
           displayedIndex >= segmentEnd
             ? segment.text
@@ -95,7 +104,37 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
               ? segment.text.slice(0, displayedIndex - segmentStart)
               : "";
 
+        //create stong html element
         content = visibleText && <strong>{visibleText}</strong>;
+        // same with link segments
+      } else if (typeof segment === "object" && segment.type === "link") {
+        const linkSegment = segment as {
+          type: "link";
+          text: string;
+          index: number;
+        };
+
+        // splice
+        const visibleText =
+          displayedIndex >= segmentEnd
+            ? linkSegment.text
+            : displayedIndex > segmentStart
+              ? linkSegment.text.slice(0, displayedIndex - segmentStart)
+              : "";
+
+        // create link html element
+        content = visibleText && (
+          <a
+            href="#"
+            onClick={(e) => {
+              e.preventDefault();
+              setSelectedIndex(linkSegment.index);
+            }}
+            className={styles.linkSegment}
+          >
+            {visibleText}
+          </a>
+        );
       }
 
       charCount += segmentLength;

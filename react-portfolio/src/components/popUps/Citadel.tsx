@@ -123,7 +123,7 @@ function Citadel() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub Repo ( Still under construction )
+              GitHub Repo
             </a>
             .
           </p>
