@@ -9,13 +9,18 @@ import { useState } from "react";
 const ImageArray = [char0, char1, char2, char3, char4];
 
 function CharacterPreviewer() {
+  ImageArray.forEach((image) => {
+    const img = new Image();
+    img.src = image;
+  });
+
   let [selectedIndex, setSelectedIndex] = useState(2);
 
   const handleChangeIndex = (indexToAdd: number) => {
     let newIndex = selectedIndex + indexToAdd;
     if (newIndex < 0) {
       newIndex = 0;
-    } else if (newIndex >= ImageArray.length - 1) {
+    } else if (newIndex >= ImageArray.length) {
       newIndex = ImageArray.length - 1;
     }
     setSelectedIndex(newIndex);
@@ -33,6 +38,7 @@ function CharacterPreviewer() {
         left: 0,
 
         animation: "dropLeftCharacter 0.8s ease-in forwards",
+        filter: "drop-shadow(0px 0px 3px rgba(255, 0, 0, 0.555))",
       }}
     >
       <img

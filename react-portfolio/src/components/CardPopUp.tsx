@@ -29,7 +29,7 @@ function CardPopUp({ onClose, content, title }: CardPopUpProps) {
         x: window.innerWidth / 2 - window.innerWidth / 4,
         y: window.innerHeight / 4 - window.innerHeight / 6,
         width: window.innerWidth / 1.5,
-        height: window.innerHeight / 1.5,
+        height: window.innerHeight / 1.2,
       }}
       bounds="window"
       onClick={(e: React.MouseEvent) => e.stopPropagation()}

@@ -33,6 +33,7 @@
 
 .popUpTitle{
     color: var(--text-color);
+    text-shadow: #61ffff98 1px 1px 2px;
     font-family: var(--default-title-font-family);
     font-size: 1.2rem;
     font-weight: 600;
@@ -70,6 +71,8 @@
 .popUpContent{
     padding: 16px;
     color: var(--text-color);
+    text-shadow: #61ffff98 1px 1px 2px;
+
     font-size: 1rem;
     overflow-y: auto;
     flex-grow: 1;
