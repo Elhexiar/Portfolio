@@ -1,13 +1,16 @@
 import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 
+const projectPreviewArt = new Image();
+projectPreviewArt.src = "/no-hands-on-deck-cover-art.png";
+
 function AllHandsOnDeck() {
   return (
     <ProjectCard
       projectTitle="All Hands On Deck"
       projectDescription="A small puzzle game where you try to escape a sinking aircraft carrier"
       projectKeywords={["Unity", "C#"]}
-      projectImage="/no-hands-on-deck-cover-art.png"
+      projectImage={projectPreviewArt.src}
       projectPopUpContent={
         <div>
           <h2>All Hands On Deck</h2>

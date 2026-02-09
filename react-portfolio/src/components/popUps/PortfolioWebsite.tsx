@@ -1,13 +1,16 @@
 import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 
+const mainArtImg = new Image();
+mainArtImg.src = "/front-end-icon.png";
+
 function PortfolioWebsite() {
   return (
     <ProjectCard
       projectTitle="Portfolio Website"
       projectDescription="My personal portfolio website to showcase my projects and skills."
       projectKeywords={["React", "TypeScript"]}
-      projectImage="/front-end-icon.png"
+      projectImage={mainArtImg.src}
       projectPopUpContent={
         <div>
           <h2>Portfolio Website</h2>

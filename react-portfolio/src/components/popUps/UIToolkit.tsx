@@ -1,13 +1,16 @@
 import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 
+const projectPreviewArt = new Image();
+projectPreviewArt.src = "/ui-icon.png";
+
 function UIToolkit() {
   return (
     <ProjectCard
       projectTitle="UI Toolkit Systems"
       projectDescription="During an internship, I developed a collection of UI systems and tools for Unity's UIToolkit."
       projectKeywords={["Unity", "C#", "UIToolkit"]}
-      projectImage="/ui-icon.png"
+      projectImage={projectPreviewArt.src}
       projectPopUpContent={
         <div>
           <h2>UI Toolkit Systems</h2>

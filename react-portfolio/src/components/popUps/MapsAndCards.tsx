@@ -2,6 +2,8 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 
 // Preload images
+const projectPreviewArt = new Image();
+projectPreviewArt.src = "/m&c.png";
 const mainArtImg = new Image();
 mainArtImg.src = "/m&c-main-art.png";
 const gameplayImg = new Image();
@@ -13,7 +15,7 @@ function MapsAndCards() {
       projectTitle="Maps & Cards"
       projectDescription="Card game with autobattler mechanics, final year project."
       projectKeywords={["Unreal Engine", "C++", "BP", "Software Architecture"]}
-      projectImage="/m&c.png"
+      projectImage={projectPreviewArt.src}
       projectPopUpContent={
         <div>
           <h2>Maps & Cards</h2>
