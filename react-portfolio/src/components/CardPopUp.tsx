@@ -48,7 +48,7 @@ function CardPopUp({ onClose, content, title }: CardPopUpProps) {
               }
             }}
           >
-            <img src="" alt="X" />
+            <div style={{ cursor: "pointer" }}>X</div>
           </div>
         </div>
         <div className={styles.popUpContent} style={{ cursor: "default" }}>
