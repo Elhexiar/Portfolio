@@ -14,6 +14,7 @@ import UIToolkit from "./components/popUps/UIToolkit";
 import AboutMe from "./components/AboutMe";
 import ResumeNLinks from "./components/ResumeNLinks";
 import AllHandsOnDeck from "./components/popUps/AllHandsOnDeck";
+import GamificationRiderPlugin from "./components/popUps/GamificationRiderPlugin";
 
 declare module "bootstrap";
 
@@ -57,9 +58,7 @@ function App() {
   let [navbarSelectedIndex, setNavbarSelectedIndex] = useState(-1);
 
   // Auto-open first tab after delay on page load
-
   const delayBeforeAutoOpen = 1500;
-
   useEffect(() => {
     const timer = setTimeout(() => {
       setNavbarSelectedIndex(0);
@@ -126,6 +125,7 @@ function App() {
                   <Citadel />,
                   <UIToolkit />,
                   <AllHandsOnDeck />,
+                  <GamificationRiderPlugin />,
                   <ProjectCard
                     projectTitle="Guignol Bagnole"
                     projectDescription="A small racing game made during the GMTK Game Jam 2025."

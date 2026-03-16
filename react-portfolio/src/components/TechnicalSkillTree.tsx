@@ -1,5 +1,5 @@
 import { Tooltip } from "bootstrap";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 /*
 Skill Tree List:
@@ -30,6 +30,7 @@ Skill Tree List:
 
 function TechnicalSkillTree() {
   const svgRef = useRef<SVGSVGElement | null>(null);
+  const [imagesLoaded, setImagesLoaded] = useState(false);
 
   // Preload all images used in the skill tree
   useEffect(() => {
@@ -50,10 +51,21 @@ function TechnicalSkillTree() {
       "/unreal-icon.png",
     ];
 
-    imageUrls.forEach((url) => {
-      const img = new Image();
-      img.src = url;
-    });
+    const loadImage = (url: string) => {
+      return new Promise<void>((resolve, reject) => {
+        const img = new Image();
+        img.onload = () => resolve();
+        img.onerror = () => reject(new Error(`Failed to load ${url}`));
+        img.src = url;
+      });
+    };
+
+    Promise.all(imageUrls.map(loadImage))
+      .then(() => setImagesLoaded(true))
+      .catch((err) => {
+        console.error("Error preloading images:", err);
+        setImagesLoaded(true); // Show anyway even if some images fail
+      });
   }, []);
 
   useEffect(() => {
@@ -64,6 +76,24 @@ function TechnicalSkillTree() {
     const instances = Array.from(triggers).map((el) => new Tooltip(el));
     return () => instances.forEach((t) => t.dispose());
   }, []);
+
+  if (!imagesLoaded) {
+    return (
+      <div
+        style={{
+          position: "absolute",
+          width: "100%",
+          height: "100%",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          color: "#61FFFF",
+        }}
+      >
+        Loading...
+      </div>
+    );
+  }
 
   return (
     <div

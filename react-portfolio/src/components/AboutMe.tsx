@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styles from "./modules/AboutMe.module.css";
 import { useNavbar } from "../App";
+import { Rnd } from "react-rnd";
+import popUpStyle from "./modules/CardPopUp.module.css";
+import ReactDOM from "react-dom";
 
 const profileImage = new Image();
 profileImage.src = "profile-pic.png";
@@ -14,6 +17,8 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
   const { setSelectedIndex } = useNavbar();
   const [displayedIndex, setDisplayedIndex] = useState(alreadyTyped);
   const [isTyping, setIsTyping] = useState(true);
+  const [favoriteVideoGamesWindowOpen, setFavoriteVideoGamesWindowOpen] =
+    useState(false);
 
   // THIS WAS HELL ON EARTH TO MAKE WORK BUT IT FINALLY DOES
 
@@ -171,7 +176,15 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
           </span>
           <span className={styles.aboutMeDescriptionText}>
             <strong style={{ textDecoration: "underline" }}>Likes</strong> :
-            programming, playing piano, drawing, video games
+            programming, playing piano, drawing,{" "}
+            <a
+              href="#"
+              style={{ color: "var(--highlight-color)" }}
+              
+              onClick={() => setFavoriteVideoGamesWindowOpen(true)}
+            >
+              video games
+            </a>
           </span>
         </div>
       </h2>
@@ -179,6 +192,46 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
         {renderContent()}
         {isTyping && <span className={styles.cursor}>▌</span>}
       </p>
+      {favoriteVideoGamesWindowOpen &&
+        ReactDOM.createPortal(
+          <Rnd className={styles.popUpRndContainer}>
+            
+            <div
+              className={popUpStyle.popUpContainer}
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                alignItems: "center",
+              }}
+            >
+              <div
+              style={{ borderBottom : "var(--default-border-color) 1px solid", height : "40px", width : "100%", display : "flex", justifyContent : "flex-end", paddingRight : "10px", boxSizing : "border-box" }}
+              ><div
+              className="nav-close-button-container"
+              style={{ cursor : "pointer" , display : "flex", alignItems : "center", justifyContent : "center", width : "30px", height : "30px" }}
+              onClick={() => setFavoriteVideoGamesWindowOpen(false)}
+                >
+              <img
+                src="/close-icon.png"
+                alt="Close"
+                className="nav-close-button"
+                style={{}}
+              />
+            </div></div>
+            
+              <h3 className={popUpStyle.popUpTitle}>Favorite Video Games</h3>
+              <ul className={popUpStyle.popUpContent}>
+                <li>Stronghold Franchise</li>
+                <li>Xcom Franchise</li>
+                <li>Anno1800</li>
+                <li>Ultrakill</li>
+                <li>Frostpunk Franchise</li>
+                <li>The Witcher 3</li>
+              </ul>
+            </div>
+          </Rnd>,
+          document.body,
+        )}
     </div>
   );
 }
