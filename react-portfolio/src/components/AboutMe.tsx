@@ -194,8 +194,16 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
       </p>
       {favoriteVideoGamesWindowOpen &&
         ReactDOM.createPortal(
-          <Rnd className={styles.popUpRndContainer}>
-            
+          <Rnd className={styles.popUpRndContainer}
+          
+            default={{
+              x: window.innerWidth / 2 - 150,
+              y: window.innerHeight / 2 - 150,
+              width: 300,
+              height: 300
+
+            }}
+          >
             <div
               className={popUpStyle.popUpContainer}
               style={{
@@ -225,6 +233,7 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
                 <li>Xcom Franchise</li>
                 <li>Anno1800</li>
                 <li>Ultrakill</li>
+                <li>CyberPunk2077</li>
                 <li>Frostpunk Franchise</li>
                 <li>The Witcher 3</li>
               </ul>
