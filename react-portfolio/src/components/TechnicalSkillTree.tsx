@@ -69,13 +69,15 @@ function TechnicalSkillTree() {
   }, []);
 
   useEffect(() => {
-    if (!svgRef.current) return;
+    if (!imagesLoaded || !svgRef.current) return;
     const triggers = svgRef.current.querySelectorAll(
       '[data-bs-toggle="tooltip"]',
     );
-    const instances = Array.from(triggers).map((el) => new Tooltip(el));
+    const instances = Array.from(triggers).map((el) =>
+      Tooltip.getOrCreateInstance(el),
+    );
     return () => instances.forEach((t) => t.dispose());
-  }, []);
+  }, [imagesLoaded]);
 
   if (!imagesLoaded) {
     return (
