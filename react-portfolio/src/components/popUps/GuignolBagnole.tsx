@@ -3,7 +3,7 @@ import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
 const projectPreviewArt = new Image();
-projectPreviewArt.src = "/GB/panorama.png";
+projectPreviewArt.src = "/GB/logo.png";
 
 function GuignolBagnole() {
   const { tr } = useLanguage();
