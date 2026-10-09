@@ -15,20 +15,19 @@ import AboutMe from "./components/AboutMe";
 import ResumeNLinks from "./components/ResumeNLinks";
 import AllHandsOnDeck from "./components/popUps/AllHandsOnDeck";
 import GamificationRiderPlugin from "./components/popUps/GamificationRiderPlugin";
+import BorneFlash from "./components/popUps/BorneFlash";
 import { useLanguage } from "./i18n";
 
 declare module "bootstrap";
 
 /*
-Welcome to my portfolio ! This project is a work in progress
-It was my first website so i used it as a learning experience,
-Do not expect a well thought out and clean codebase 
-(for example i learned about Contexts way at the end unfortunately)
-since i learned react as i built it you can kind of see the evolution 
-of my learning experience in this code base if you're interested in that,
+Welcome to my portfolio !
+It was my first website and I learned React while building it,
+so you can see the evolution of my learning in this codebase
+(for example Contexts only show up in the later parts like the FR/EN switch).
 
-If you just want to see my projects and skills feel free to check my github instead
-contact me if you want to collaborate on a project or have any opportunity in mind !
+If you just want to see my projects and skills feel free to check my github instead,
+and contact me if you want to collaborate on a project or have any opportunity in mind !
 */
 
 // creating a global context for the navbar
@@ -124,10 +123,11 @@ function App() {
               {
                 tabChildren: tr({ fr: "Projets", en: "Projects" }),
                 contentChildren: [
-                  <MapsAndCards />,
-                  <PortfolioWebsite />,
-                  <Citadel />,
+                  <BorneFlash />,
                   <UIToolkit />,
+                  <MapsAndCards />,
+                  <Citadel />,
+                  <PortfolioWebsite />,
                   <AllHandsOnDeck />,
                   <GamificationRiderPlugin />,
                   <ProjectCard

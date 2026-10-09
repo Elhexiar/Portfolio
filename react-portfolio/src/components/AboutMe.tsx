@@ -34,34 +34,36 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
   //   would love to learn how to do this effect with a string input only in the future
   const textSegments = tr<TextSegment[]>({
     fr: [
-      "Bonjour ! Je suis Mathis, développeur de jeux vidéo junior et passionné de programmation.",
-      "\nJ'ai un fort besoin de créer et de résoudre des problèmes. J'ai choisi la programmation comme métier, mais je dessine et je fais de la musique à côté.",
+      "Bonjour ! Je suis Mathis, développeur fullstack en formation Concepteur Développeur d'Applications à l'AFPA de Brest, et passionné de programmation.",
+      "\nJ'ai un fort besoin de créer et de résoudre des problèmes. Après un DUT en électronique et un diplôme de Game Designer option programmation à l'ESMA, je me suis tourné vers le développement d'applications : ce que j'aime avant tout, c'est concevoir des architectures propres et bien documentées, que ce soit sur un backend Spring Boot, une appli web ou un moteur de jeu. À côté, je dessine et je fais de la musique.",
       "\n\nJe recherche actuellement un ",
-      { type: "strong", text: "poste de développeur de jeux vidéo junior" },
-      " ou une ",
-      { type: "strong", text: "alternance en développement web" },
-      " pour continuer à progresser.",
+      { type: "strong", text: "stage du 9 novembre au 29 janvier" },
+      " pour valider mon titre, et je suis ouvert à une ",
+      { type: "strong", text: "alternance ou un poste sur le long terme" },
+      " par la suite.",
       "\n\nN'hésitez pas à parcourir mes projets et mes compétences dans les onglets ",
       { type: "link", text: "Projets", index: 1 },
       " et ",
       { type: "link", text: "Compétences", index: 2 },
-      ", et à me contacter si vous souhaitez collaborer ou si vous avez une opportunité à me proposer !",
-      "\n\n CE PORTFOLIO EST ENCORE EN CONSTRUCTION, ATTENDEZ-VOUS À QUELQUES BUGS ET CHANGEMENTS DE DESIGN, SURTOUT POUR LES PHOTOS",
+      ", à récupérer mon CV dans ",
+      { type: "link", text: "CV & Liens", index: 3 },
+      ", et à me contacter si vous avez une opportunité à me proposer !",
     ],
     en: [
-      "Hi ! I'm Mathis, junior game developer and programming enthusiast.",
-      "\nI have a strong urge to create things and solve problems, I'm focusing on programming as a career path but I also draw and play music on the side.",
-      "\n\nI am currently looking for either a ",
-      { type: "strong", text: "junior game developer position" },
-      " or a ",
-      { type: "strong", text: "web development apprenticeship" },
-      " to further my skills.",
+      "Hi ! I'm Mathis, fullstack developer currently training as an Application Designer & Developer (CDA) at AFPA Brest, and programming enthusiast.",
+      "\nI have a strong urge to create things and solve problems. After a degree in electronics and a Game Designer degree with a programming major at ESMA, I moved towards application development : what I enjoy most is designing clean, well documented architectures, whether it's a Spring Boot backend, a web app or a game engine. On the side, I also draw and play music.",
+      "\n\nI am currently looking for an ",
+      { type: "strong", text: "internship from November 9 to January 29" },
+      " to complete my degree, and I'm open to a ",
+      { type: "strong", text: "work-study contract or a long-term position" },
+      " afterwards.",
       "\n\nFeel free to check out my projects and skills in the ",
       { type: "link", text: "Projects", index: 1 },
       " and ",
       { type: "link", text: "Skills", index: 2 },
-      " tabs, and contact me if you want to collaborate or have any opportunity in mind !",
-      "\n\n THIS PORTFOLIO IS STILL A WORK IN PROGRESS SO EXPECT SOME BUGS AND DESIGN CHANGES IN THE FUTURE ESPECIALLY FOR PHOTOS",
+      " tabs, grab my resume in ",
+      { type: "link", text: "Resume & Links", index: 3 },
+      ", and contact me if you have any opportunity in mind !",
     ],
   });
 
@@ -185,8 +187,8 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
           <span className={styles.aboutMeDescriptionText}>Mathis MIRIEL</span>
           <span className={styles.aboutMeDescriptionText}>
             {tr({
-              fr: "Développeur de jeux vidéo & étudiant développeur web",
-              en: "Game Developer & Student Web Developer",
+              fr: "Développeur Fullstack, en formation CDA",
+              en: "Fullstack Developer, CDA trainee",
             })}
           </span>
           <span className={styles.aboutMeDescriptionText}>

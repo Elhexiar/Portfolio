@@ -24,14 +24,14 @@ function PortfolioWebsite() {
           <Keyword keyword="TypeScript" />
           <p>
             {tr({
-              fr: "Ce site est un projet personnel pour présenter mon travail et mes compétences. C'est ma première expérience avec React et TypeScript, et je l'ai construit pour progresser en développement web. Je sais que ce n'est pas le portfolio le plus simple à utiliser, mais je voulais tenter quelque chose de créatif, différent des templates qu'on voit partout.",
-              en: "This portfolio website is a personal project to showcase my work and skills. It is my first experience with React and TypeScript, and I built it to improve my web development skills. I am well aware it is not the most user-friendly portfolio website out there, but I wanted to try and do something creative and different from the usual templates you can see everytime.",
+              fr: "Ce site est un projet personnel pour présenter mon travail et mes compétences. C'était mon premier projet React et TypeScript, et je l'ai construit pour progresser en développement web. Je voulais tenter quelque chose de créatif, inspiré des interfaces de jeux vidéo, et différent des templates qu'on voit partout.",
+              en: "This portfolio website is a personal project to showcase my work and skills. It was my first React and TypeScript project, and I built it to improve my web development skills. I wanted to try something creative, inspired by video game interfaces, and different from the usual templates you can see everywhere.",
             })}
           </p>
           <p>
             {tr({
-              fr: "J'avais très peu d'expérience en développement web moderne avant ce projet, j'ai donc beaucoup appris sur React, TypeScript et le web design en le construisant. Je me suis concentré sur un design plutôt épuré et moderne, responsive et créatif, qui met en valeur mes compétences et ma curiosité.",
-              en: "I had very little experience with modern web development prior to this project, so I learned a lot about React, TypeScript, and web design while building this site. I focused on creating a clean-ish and modern design that is responsive, creative and hopefully showcases my skills and curiosity effectively.",
+              fr: "J'avais très peu d'expérience en développement web moderne avant ce projet, j'ai donc beaucoup appris sur React, TypeScript et le web design en le construisant. Je me suis concentré sur un design moderne et créatif, qui met en valeur mes compétences et ma curiosité.",
+              en: "I had very little experience with modern web development prior to this project, so I learned a lot about React, TypeScript, and web design while building this site. I focused on creating a modern and creative design that showcases my skills and curiosity.",
             })}
           </p>
           <p>
@@ -70,8 +70,8 @@ function PortfolioWebsite() {
           </p>
           <p>
             {tr({
-              fr: "PS : je sais que l'animation de l'arbre de compétences se rejoue à chaque ouverture de l'onglet, mais gérer ça pour l'onglet À propos a été une telle corvée que j'ai laissé tomber pour l'instant... Peut-être plus tard, quand j'aurai du temps libre.",
-              en: "PS : I know the skills tree animation loops every time the tab is open but handling that for the AboutMe tab was such a chore I just gave up on it for now... Maybe later when i'll have some free time",
+              fr: "Dernières évolutions : une version FR / EN faite maison avec un Context React (sans librairie), une adaptation complète pour mobile, et la refonte de l'onglet CV & Liens.",
+              en: "Latest updates : a home made FR / EN version using a React Context (no library), a full mobile layout, and a redesign of the Resume & Links tab.",
             })}
           </p>
         </div>

@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 150" fill="none" stroke="#61ffff" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+  <!-- charging station body -->
+  <rect x="55" y="15" width="60" height="115" rx="8" />
+  <!-- screen -->
+  <rect x="67" y="28" width="36" height="24" rx="3" />
+  <!-- lightning bolt -->
+  <path d="M90 64 L77 88 H90 L82 112 L100 82 H87 Z" stroke-width="5" />
+  <!-- base -->
+  <path d="M45 135 H125" />
+  <!-- cable and plug -->
+  <path d="M115 50 H130 C142 50 145 58 145 68 V105 C145 115 150 118 158 118" />
+  <rect x="158" y="108" width="20" height="20" rx="3" />
+  <path d="M178 113 H186 M178 123 H186" stroke-width="5" />
+</svg>

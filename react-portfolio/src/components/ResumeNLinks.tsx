@@ -1,11 +1,9 @@
 import styles from "./modules/ResumeNLinks.module.css";
-import { useLanguage, type Lang } from "../i18n";
+import { useLanguage } from "../i18n";
 
-// one resume per language, the one matching the current language is shown first
-const resumes: Record<Lang, { file: string; downloadName: string }> = {
-  fr: { file: "/fr-resume.pdf", downloadName: "Mathis-Miriel-CV-FR.pdf" },
-  en: { file: "/en-resume.pdf", downloadName: "Mathis-Miriel-Resume-EN.pdf" },
-};
+// stable url so it can be shared directly : mathis-miriel-dev.org/cv.pdf
+// only a french version for now, an english one will come later
+const resume = { file: "/cv.pdf", downloadName: "Mathis-Miriel-CV.pdf" };
 
 const contactLinks = [
   {
@@ -30,8 +28,6 @@ const contactLinks = [
 
 function ResumeNLinks() {
   const { lang, tr } = useLanguage();
-  const otherLang: Lang = lang === "fr" ? "en" : "fr";
-  const resume = resumes[lang];
 
   return (
     <div className={styles.container}>
@@ -93,18 +89,14 @@ function ResumeNLinks() {
           >
             {tr({ fr: "Télécharger (PDF)", en: "Download (PDF)" })}
           </a>
-          <a
-            href={resumes[otherLang].file}
-            target="_blank"
-            rel="noreferrer"
-            className={styles.secondaryLink}
-          >
-            {tr({ fr: "English version", en: "Version française" })}
-          </a>
+          {lang === "en" && (
+            <span className={styles.resumeNote}>
+              (French only for now, an English version is coming)
+            </span>
+          )}
         </div>
         <div className={styles.resumePreview}>
           <iframe
-            key={resume.file}
             src={resume.file + "#zoom=page-width&toolbar=0&navpanes=0"}
             title={tr({ fr: "Aperçu du CV", en: "Resume preview" })}
           />

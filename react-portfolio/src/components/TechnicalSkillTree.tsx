@@ -13,10 +13,10 @@ const tooltips = {
     { fr: "Compétences générales en dev", en: "General Dev Skills" },
     {
       fr: [
-        "Le développement de jeux vidéo a été mon axe principal pendant plusieurs années, mais j'ai aussi acquis de l'expérience en développement logiciel et en ingénierie de manière plus générale. J'ai également des soft skills plus universelles, utiles dans quasiment tous les métiers.",
+        "Le développement de jeux vidéo a été mon axe principal pendant plusieurs années, mais je me suis tourné vers le développement d'applications avec ma formation CDA : web, backend, bases de données et conception (UML, Merise). J'ai également des soft skills plus universelles, utiles dans quasiment tous les métiers.",
       ],
       en: [
-        "Game Development was my primary focus for many years, but I have also gained experience in general software development and engineering. I also have more universal soft skills that apply in virtually all jobs",
+        "Game Development was my primary focus for many years, but I moved towards application development with my CDA training : web, backend, databases and software design (UML, Merise). I also have more universal soft skills that apply in virtually all jobs.",
       ],
     },
   ),
@@ -24,10 +24,10 @@ const tooltips = {
     { fr: "Développement de jeux vidéo", en: "Game Development" },
     {
       fr: [
-        "Développeur de jeux vidéo à l'origine, j'ai des bases solides en programmation orientée objet et en architecture logicielle.",
+        "Développeur de jeux vidéo à l'origine, j'en ai gardé des bases solides en programmation orientée objet, en architecture logicielle et en performance.",
       ],
       en: [
-        "Originaly a game developer, i have strong foundation in OOP and software architecture.",
+        "Originally a game developer, I kept a strong foundation in OOP, software architecture and performance from it.",
       ],
     },
   ),
@@ -126,17 +126,17 @@ const tooltips = {
     },
   ),
   frontEnd: tooltip(
-    { fr: "Front-end", en: "Front End" },
+    { fr: "Développement web", en: "Web Development" },
     {
       fr: [
-        "Comme vous pouvez le voir, j'ai aussi de l'expérience en développement front-end : création d'interfaces agréables à utiliser et responsive design.",
-        "Même si ce site est ma première expérience avec React et TypeScript, j'ai à cœur de développer mes compétences en développement web.",
-        "Mon expérience de l'UI/UX dans le jeu vidéo m'aide aussi à prendre en main beaucoup plus facilement un nouveau framework ou langage front-end.",
+        "Front-end : JavaScript / TypeScript, React (ce site !), Vue 3, et du responsive design.",
+        "Back-end : Node / Express et Java / Spring Boot pour les API, PostgreSQL pour les données, Vitest pour les tests.",
+        "Mon expérience de l'UI/UX dans le jeu vidéo m'aide aussi à prendre en main beaucoup plus facilement un nouveau framework.",
       ],
       en: [
-        "As you can see I also have experience in front-end development, creating user-friendly interfaces and ensuring responsive design.",
-        "Although this website is my first experience with React and TypeScript, I am eager to expand my skills in web development.",
-        "My Experience with UI/UX in game development also helps me understand any new front end framework or language much easier.",
+        "Front end : JavaScript / TypeScript, React (this website !), Vue 3, and responsive design.",
+        "Back end : Node / Express and Java / Spring Boot for APIs, PostgreSQL for data, Vitest for testing.",
+        "My experience with UI/UX in game development also helps me pick up any new framework much more easily.",
       ],
     },
   ),

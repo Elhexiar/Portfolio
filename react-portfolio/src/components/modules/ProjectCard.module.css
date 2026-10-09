@@ -13,7 +13,7 @@
   overflow: hidden;
   transition: transform 0.2s;
   width: 250px;
-  height: 350px;
+  min-height: 350px;
 
   display: flex;
   flex-direction: column;

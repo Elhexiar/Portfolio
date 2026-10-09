@@ -11,18 +11,23 @@ function UIToolkit() {
   return (
     <ProjectCard
       projectTitle={tr({
-        fr: "Systèmes UI Toolkit",
-        en: "UI Toolkit Systems",
+        fr: "Stage Enki Digital : AR & UI",
+        en: "Enki Digital Internship : AR & UI",
       })}
       projectDescription={tr({
-        fr: "Pendant un stage, j'ai développé un ensemble de systèmes et d'outils d'interface pour l'UIToolkit de Unity.",
-        en: "During an internship, I developed a collection of UI systems and tools for Unity's UIToolkit.",
+        fr: "Applications mobiles en réalité augmentée pour l'Office de Tourisme de Rennes et le Stade Rennais, et systèmes d'interface UI Toolkit.",
+        en: "Augmented reality mobile apps for the Rennes Tourism Office and Stade Rennais, and UI Toolkit interface systems.",
       })}
-      projectKeywords={["Unity", "C#", "UIToolkit"]}
+      projectKeywords={["Unity", "C#", "AR Foundation", "UIToolkit"]}
       projectImage={projectPreviewArt.src}
       projectPopUpContent={
         <div>
-          <h2>{tr({ fr: "Systèmes UI Toolkit", en: "UI Toolkit Systems" })}</h2>
+          <h2>
+            {tr({
+              fr: "Stage Enki Digital : AR & UI",
+              en: "Enki Digital Internship : AR & UI",
+            })}
+          </h2>
           <div
             style={{
               display: "flex",
@@ -46,7 +51,9 @@ function UIToolkit() {
             <div>
               <Keyword keyword="Unity" />
               <Keyword keyword="C#" />
+              <Keyword keyword="AR Foundation" />
               <Keyword keyword="UIToolkit" />
+              <Keyword keyword="iOS / Android" />
             </div>
           </div>
           <p
@@ -57,15 +64,27 @@ function UIToolkit() {
             }}
           >
             {tr({
-              fr: "Pendant mon stage de 2 mois chez ENKI Digital, j'ai développé un ensemble de systèmes et d'outils d'interface pour l'UIToolkit de Unity, afin de simplifier le développement des interfaces.",
-              en: "During my 2 months internship at ENKI Digital, I developed a collection of UI systems and tools for Unity's UIToolkit to streamline UI development processes.",
+              fr: "Pendant mon stage de 2 mois chez ENKI Digital (Pacé), j'ai travaillé sur des applications mobiles en réalité augmentée pour l'Office de Tourisme de Rennes et le Stade Rennais, et développé un ensemble de systèmes et d'outils d'interface pour l'UIToolkit de Unity.",
+              en: "During my 2 months internship at ENKI Digital (Pacé, near Rennes), I worked on augmented reality mobile apps for the Rennes Tourism Office and Stade Rennais, and developed a collection of UI systems and tools for Unity's UIToolkit.",
             })}
           </p>
 
           <h3
             style={{ paddingBottom: "5px", borderBottom: "#61ffff 1px solid" }}
           >
-            {tr({ fr: "Contexte", en: "Context" })}
+            {tr({ fr: "Réalité augmentée", en: "Augmented Reality" })}
+          </h3>
+          <p>
+            {tr({
+              fr: "J'ai fait de la R&D et de l'intégration avec AR Foundation pour superposer des objets 3D dans l'environnement réel, sur iOS et Android. Le studio a malheureusement fermé pendant mon stage, mais c'est un domaine dans lequel j'aimerais beaucoup continuer !",
+              en: "I did R&D and integration with AR Foundation to overlay 3D objects in the real environment, on iOS and Android. Sadly the studio closed during my internship, but it's a field I would love to keep working in !",
+            })}
+          </p>
+
+          <h3
+            style={{ paddingBottom: "5px", borderBottom: "#61ffff 1px solid" }}
+          >
+            {tr({ fr: "Systèmes UI Toolkit", en: "UI Toolkit Systems" })}
           </h3>
           <p
             style={{
