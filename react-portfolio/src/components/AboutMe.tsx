@@ -35,7 +35,7 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
   const textSegments = tr<TextSegment[]>({
     fr: [
       "Bonjour ! Je suis Mathis, développeur fullstack en formation Concepteur Développeur d'Applications à l'AFPA de Brest, et passionné de programmation.",
-      "\nJ'ai un fort besoin de créer et de résoudre des problèmes. Après un DUT en électronique et un diplôme de Game Designer option programmation à l'ESMA, je me suis tourné vers le développement d'applications : ce que j'aime avant tout, c'est concevoir des architectures propres et bien documentées, que ce soit sur un backend Spring Boot, une appli web ou un moteur de jeu. À côté, je dessine et je fais de la musique.",
+      "\nAprès un DUT en électronique et un diplôme de Game Designer option programmation à l'ESMA, je me suis tourné vers le développement d'applications : ce que j'aime avant tout, c'est concevoir des architectures propres et bien documentées, que ce soit sur un backend Spring Boot, une appli web ou un moteur de jeu. À côté, je dessine et je fais de la musique.",
       "\n\nJe recherche actuellement un ",
       { type: "strong", text: "stage du 9 novembre au 29 janvier" },
       " pour valider mon titre, et je suis ouvert à une ",
@@ -223,7 +223,6 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
             <a
               href="#"
               style={{ color: "var(--highlight-color)" }}
-              
               onClick={() => setFavoriteVideoGamesWindowOpen(true)}
             >
               {tr({ fr: "les jeux vidéo", en: "video games" })}
@@ -237,14 +236,13 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
       </p>
       {favoriteVideoGamesWindowOpen &&
         ReactDOM.createPortal(
-          <Rnd className={styles.popUpRndContainer}
-          
+          <Rnd
+            className={styles.popUpRndContainer}
             default={{
               x: window.innerWidth / 2 - 150,
               y: window.innerHeight / 2 - 150,
               width: 300,
-              height: 300
-
+              height: 300,
             }}
           >
             <div
@@ -256,20 +254,37 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
               }}
             >
               <div
-              style={{ borderBottom : "var(--default-border-color) 1px solid", height : "40px", width : "100%", display : "flex", justifyContent : "flex-end", paddingRight : "10px", boxSizing : "border-box" }}
-              ><div
-              className="nav-close-button-container"
-              style={{ cursor : "pointer" , display : "flex", alignItems : "center", justifyContent : "center", width : "30px", height : "30px" }}
-              onClick={() => setFavoriteVideoGamesWindowOpen(false)}
+                style={{
+                  borderBottom: "var(--default-border-color) 1px solid",
+                  height: "40px",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "flex-end",
+                  paddingRight: "10px",
+                  boxSizing: "border-box",
+                }}
+              >
+                <div
+                  className="nav-close-button-container"
+                  style={{
+                    cursor: "pointer",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: "30px",
+                    height: "30px",
+                  }}
+                  onClick={() => setFavoriteVideoGamesWindowOpen(false)}
                 >
-              <img
-                src="/close-icon.png"
-                alt={tr({ fr: "Fermer", en: "Close" })}
-                className="nav-close-button"
-                style={{}}
-              />
-            </div></div>
-            
+                  <img
+                    src="/close-icon.png"
+                    alt={tr({ fr: "Fermer", en: "Close" })}
+                    className="nav-close-button"
+                    style={{}}
+                  />
+                </div>
+              </div>
+
               <h3 className={popUpStyle.popUpTitle}>
                 {tr({ fr: "Jeux vidéo préférés", en: "Favorite Video Games" })}
               </h3>
