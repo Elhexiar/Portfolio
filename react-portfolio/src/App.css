@@ -313,6 +313,50 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
     
 }
 
+/* FR / EN switch, on the opposite side of the close button */
+.lang-switch{
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  gap: 4px;
+  font-family: var(--default-title-font-family);
+  font-size: 0.85em;
+}
+
+.lang-switch button{
+  background: transparent;
+  border: 1px solid var(--default-border-color);
+  color: var(--default-border-color);
+  padding: 1px 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-switch button:hover{
+  color: #fd6464;
+  border-color: #fd6464;
+}
+
+.lang-switch button.active{
+  color: #61ffff;
+  border-color: #61ffff;
+  text-shadow: #61ffff98 1px 1px 2px;
+  font-weight: 700;
+}
+
+/* on small screens the nav links wrap, so put the switch on its own line */
+@media (max-width: 768px){
+  .lang-switch{
+    position: static;
+    transform: none;
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 5px;
+  }
+}
+
 .nav-close-button-container{
                 position: absolute;
                 right: 10px;

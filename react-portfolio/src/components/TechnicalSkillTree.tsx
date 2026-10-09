@@ -1,5 +1,200 @@
 import { Tooltip } from "bootstrap";
 import { useEffect, useRef, useState } from "react";
+import { useLanguage, type Translated } from "../i18n";
+
+// Tooltip contents (html strings for bootstrap) for each skill slot
+const tooltip = (title: Translated<string>, paragraphs: Translated<string[]>) => ({
+  fr: `<div><h5>${title.fr}</h5>${paragraphs.fr.map((p) => `<p>${p}</p>`).join("")}</div>`,
+  en: `<div><h5>${title.en}</h5>${paragraphs.en.map((p) => `<p>${p}</p>`).join("")}</div>`,
+});
+
+const tooltips = {
+  generalDev: tooltip(
+    { fr: "Compétences générales en dev", en: "General Dev Skills" },
+    {
+      fr: [
+        "Le développement de jeux vidéo a été mon axe principal pendant plusieurs années, mais j'ai aussi acquis de l'expérience en développement logiciel et en ingénierie de manière plus générale. J'ai également des soft skills plus universelles, utiles dans quasiment tous les métiers.",
+      ],
+      en: [
+        "Game Development was my primary focus for many years, but I have also gained experience in general software development and engineering. I also have more universal soft skills that apply in virtually all jobs",
+      ],
+    },
+  ),
+  gameDev: tooltip(
+    { fr: "Développement de jeux vidéo", en: "Game Development" },
+    {
+      fr: [
+        "Développeur de jeux vidéo à l'origine, j'ai des bases solides en programmation orientée objet et en architecture logicielle.",
+      ],
+      en: [
+        "Originaly a game developer, i have strong foundation in OOP and software architecture.",
+      ],
+    },
+  ),
+  unity: tooltip(
+    { fr: "Unity", en: "Unity" },
+    {
+      fr: [
+        "Le premier moteur que j'ai appris, et le seul que j'ai utilisé en contexte professionnel. J'apprécie particulièrement ses possibilités en matière d'outillage et de compute shaders par rapport aux autres moteurs.",
+      ],
+      en: [
+        "The first engine I learned and also the only one i used professionally, I particullarly like the options for tooling and compute shaders compared to other Engines.",
+      ],
+    },
+  ),
+  csharp: tooltip(
+    { fr: "C#", en: "C#" },
+    {
+      fr: [
+        "En travaillant sur Unity ces dernières années, j'ai acquis une solide maîtrise du C#, en mettant l'accent sur un code propre, compréhensible par les autres et maintenable.",
+      ],
+      en: [
+        "While working on unity these past years I have developed a strong understanding of C# programming, focusing on clean code understandable by others and maintainability.",
+      ],
+    },
+  ),
+  cpp: tooltip(
+    { fr: "C++", en: "C++" },
+    {
+      fr: [
+        "Mon projet de fin d'études m'a permis d'apprendre le C++, et un emploi d'un mois chez SABENA m'a apporté une expérience pratique.",
+      ],
+      en: [
+        "My last year project gave me the opportunity to learn C++, while a one month job a SABENA helped me gain practical experience.",
+      ],
+    },
+  ),
+  blueprints: tooltip(
+    { fr: "Blueprints", en: "Blueprints" },
+    {
+      fr: [
+        "Mon projet de fin d'études a été réalisé en grande partie en Blueprints (BP), ce qui a permis de prototyper rapidement les mécaniques et la logique de jeu sans connaissances poussées en programmation, et donc d'impliquer les non-programmeurs dans le développement.",
+      ],
+      en: [
+        "My final year project was mostly done in Blueprints (BP) as it allowed the rapid prototyping of game mechanics and logic without deep programming knowledge. which helped involve non-programmers in the development process.",
+      ],
+    },
+  ),
+  ai: tooltip(
+    { fr: "IA (Behaviour Trees)", en: "AI (Behaviour Trees)" },
+    {
+      fr: [
+        "Mon projet de fin d'études étant à l'origine un RTS, il a fallu implémenter l'IA avec des behaviour trees. Cela a permis de séparer le comportement de l'escouade de celui de chaque unité, et aux Game Designers de modifier les comportements sans toucher au code.",
+      ],
+      en: [
+        "My final year project being originally an RTS it involved implementing AI using behaviour trees. It helped separate squad and individual behaviour and allowed Game Designers to modify behaviour without interfering with the codebase",
+      ],
+    },
+  ),
+  optimisation: tooltip(
+    { fr: "Optimisation", en: "Optimisation" },
+    {
+      fr: [
+        "J'étais chargé de l'optimisation des performances sur mon projet de fin d'études, pour garantir un gameplay fluide et une gestion efficace des ressources.",
+        "J'ai appris que c'est souvent davantage un rôle de gestion, de suivi du projet et du périmètre, que de pure technique.",
+        "J'ai encore beaucoup à apprendre dans ce domaine.",
+      ],
+      en: [
+        "I was tasked to handle performance optimization in my final year project, ensuring smooth gameplay and efficient resource management.",
+        "I learned it was often more a role of management, policing of the project and scope more than raw technical abilities.",
+        "I have still a lot to learn in this domain.",
+      ],
+    },
+  ),
+  unrealTooling: tooltip(
+    { fr: "Outillage", en: "Tooling" },
+    {
+      fr: [
+        "L'outillage représente une part énorme du développement : il permet des workflows efficaces et de l'automatisation.",
+        "Dans le jeu vidéo, une grande partie de la productivité de l'équipe dépend des outils à sa disposition. Ils doivent être fiables et faciles à comprendre, quel que soit le profil technique de l'utilisateur.",
+      ],
+      en: [
+        "Tooling takes a huge portion of the development process, enabling efficient workflows and automation.",
+        "In Game dev a lot of the team's productivity relies on the tools available to them. They need to be reliable and easily understandable by someone no matter their technical background.",
+      ],
+    },
+  ),
+  uiToolkit: tooltip(
+    { fr: "UIToolkit", en: "UIToolkit" },
+    {
+      fr: [
+        "Pendant mon stage chez ENKI DIGITAL, j'ai travaillé sur différents systèmes d'interface avec l'UIToolkit de Unity. J'ai créé des composants réutilisables et optimisé les performances de l'interface pour une meilleure expérience sur mobile et tablette.",
+      ],
+      en: [
+        "During my internship at ENKI DIGITAL I worked on various UI systems using Unity's UIToolkit. I created reusable components and optimized UI performance for better user experience on mobile and tablet devices.",
+      ],
+    },
+  ),
+  frontEnd: tooltip(
+    { fr: "Front-end", en: "Front End" },
+    {
+      fr: [
+        "Comme vous pouvez le voir, j'ai aussi de l'expérience en développement front-end : création d'interfaces agréables à utiliser et responsive design.",
+        "Même si ce site est ma première expérience avec React et TypeScript, j'ai à cœur de développer mes compétences en développement web.",
+        "Mon expérience de l'UI/UX dans le jeu vidéo m'aide aussi à prendre en main beaucoup plus facilement un nouveau framework ou langage front-end.",
+      ],
+      en: [
+        "As you can see I also have experience in front-end development, creating user-friendly interfaces and ensuring responsive design.",
+        "Although this website is my first experience with React and TypeScript, I am eager to expand my skills in web development.",
+        "My Experience with UI/UX in game development also helps me understand any new front end framework or language much easier.",
+      ],
+    },
+  ),
+  softSkills: tooltip(
+    { fr: "Soft skills", en: "Soft Skills" },
+    {
+      fr: [
+        "J'accorde beaucoup d'importance à une communication efficace, au travail en équipe et à l'adaptabilité. Ces qualités sont pour moi essentielles à la réussite d'un projet collectif et à l'évolution personnelle.",
+        "La réussite de l'équipe est toujours ma priorité, et je m'efforce d'apporter une contribution positive à chaque équipe dont je fais partie.",
+        "La curiosité et l'apprentissage continu sont aussi au cœur de mon développement personnel et professionnel.",
+      ],
+      en: [
+        "I am someone who values effective communication, teamwork, and adaptability. I believe these skills are essential for successful project collaboration and personal growth.",
+        "Team success is always my priority, and I strive to contribute positively to any team I'm part of.",
+        "Curiosity and continuous learning are also key aspects of my personal and professional development.",
+      ],
+    },
+  ),
+  unityTooling: tooltip(
+    { fr: "Outillage", en: "Tooling" },
+    {
+      fr: [
+        "J'ai acquis beaucoup d'expérience sur l'outillage Unity chez ENKI DIGITAL : je sais gérer les données de différentes manières dans l'éditeur et créer des outils sur mesure pour améliorer l'efficacité des workflows.",
+      ],
+      en: [
+        "I gained a lot of experience on Unity Tooling at ENKI DIGITAL, I know how to handle various ways to handle data in the editor and create custom tools to improve workflow efficiency.",
+      ],
+    },
+  ),
+  architecture: tooltip(
+    { fr: "Architecture logicielle", en: "Software Architecture" },
+    {
+      fr: [
+        "Sur mes différents projets, j'ai toujours été chargé de concevoir et de mettre en place la structure globale du logiciel, en veillant à son évolutivité, sa maintenabilité et ses performances.",
+        "Même pendant mon stage chez ENKI DIGITAL, on m'a confié la conception de l'architecture de nouvelles fonctionnalités à partir de zéro.",
+      ],
+      en: [
+        "On my different projects I was always asigned the task of designing and implementing the overall structure of the software, ensuring scalability, maintainability, and performance.",
+        "Even during my internship at ENKI DIGITAL I was tasked with designing the architecture of new features from scratch.",
+      ],
+    },
+  ),
+  unreal: tooltip(
+    { fr: "Unreal Engine", en: "Unreal Engine" },
+    {
+      fr: [
+        "Ayant réalisé mon projet de fin d'études sur Unreal Engine, j'ai une expérience concrète de ses fonctionnalités et de ses possibilités sur des projets de grande envergure.",
+      ],
+      en: [
+        "Having done my final year project on Unreal Engine, I have practical experience with its features and capabilities on large scale projects.",
+      ],
+    },
+  ),
+  root: {
+    fr: "<div><h5>MIRIEL-MATHIS root:</h5></div>",
+    en: "<div><h5>MIRIEL-MATHIS root:</h5></div>",
+  },
+};
 
 /*
 Skill Tree List:
@@ -29,6 +224,7 @@ Skill Tree List:
 */
 
 function TechnicalSkillTree() {
+  const { lang, tr } = useLanguage();
   const svgRef = useRef<SVGSVGElement | null>(null);
   const [imagesLoaded, setImagesLoaded] = useState(false);
 
@@ -77,7 +273,8 @@ function TechnicalSkillTree() {
       Tooltip.getOrCreateInstance(el),
     );
     return () => instances.forEach((t) => t.dispose());
-  }, [imagesLoaded]);
+    // bootstrap reads the title only on creation, so recreate the tooltips when the language changes
+  }, [imagesLoaded, lang]);
 
   if (!imagesLoaded) {
     return (
@@ -92,7 +289,7 @@ function TechnicalSkillTree() {
           color: "#61FFFF",
         }}
       >
-        Loading...
+        {tr({ fr: "Chargement...", en: "Loading..." })}
       </div>
     );
   }
@@ -231,10 +428,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot00"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>General Dev Skills</h5>
-            <p>Game Development was my primary focus for many years, but I have also gained experience in general software development and engineering. I also have more universal soft skills that apply in virtually all jobs</p>
-            </div>"
+            data-bs-title={tr(tooltips.generalDev)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -272,10 +466,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot01"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Game Development</h5>
-            <p>Originaly a game developer, i have strong foundation in OOP and software architecture.</p>
-            </div>"
+            data-bs-title={tr(tooltips.gameDev)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -313,11 +504,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot010"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Unity</h5>
-            <p>The first engine I learned and also the only one i used professionally,
-             I particullarly like the options for tooling and compute shaders compared to other Engines.</p>
-            </div>"
+            data-bs-title={tr(tooltips.unity)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -355,10 +542,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0102"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>C#</h5>
-            <p>While working on unity these past years I have developed a strong understanding of C# programming, focusing on clean code understandable by others and maintainability.</p>
-            </div>"
+            data-bs-title={tr(tooltips.csharp)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -396,10 +580,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0114"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>C++</h5>
-            <p>My last year project gave me the opportunity to learn C++, while a one month job a SABENA helped me gain practical experience.</p>
-            </div>"
+            data-bs-title={tr(tooltips.cpp)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -437,11 +618,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0113"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Blueprints</h5>
-            <p>My final year project was mostly done in Blueprints (BP) as it allowed the rapid prototyping of game mechanics and logic without deep programming knowledge.
-            which helped involve non-programmers in the development process.</p>
-            </div>"
+            data-bs-title={tr(tooltips.blueprints)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -479,10 +656,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0112"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>AI (Behaviour Trees)</h5>
-            <p>My final year project being originally an RTS it involved implementing AI using behaviour trees. It helped separate squad and individual behaviour and allowed Game Designers to modify behaviour without interfering with the codebase</p>
-            </div>"
+            data-bs-title={tr(tooltips.ai)}
             data-bs-trigger="hover"
             data-bs-html="true"
             data-bs-placement="right"
@@ -521,12 +695,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0111"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Optimisation</h5>
-            <p>I was tasked to handle performance optimization in my final year project, ensuring smooth gameplay and efficient resource management.</p>
-            <p>I learned it was often more a role of management, policing of the project and scope more than raw technical abilities.</p>
-            <p>I have still a lot to learn in this domain.</p>
-            </div>"
+            data-bs-title={tr(tooltips.optimisation)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -564,11 +733,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0110"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Tooling</h5>
-            <p>Tooling takes a huge portion of the development process, enabling efficient workflows and automation.</p>
-            <p>In Game dev a lot of the team's productivity relies on the tools available to them. They need to be reliable and easily understandable by someone no matter their technical background.</p>
-            </div>"
+            data-bs-title={tr(tooltips.unrealTooling)}
             data-bs-trigger="hover"
             data-bs-html="true"
             data-bs-placement="right"
@@ -607,11 +772,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0101"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>UIToolkit</h5>
-            <p>During my internship at ENKI DIGITAL I worked on various UI systems using Unity's UIToolkit.
-             I created reusable components and optimized UI performance for better user experience on mobile and tablet devices.</p>
-            </div>"
+            data-bs-title={tr(tooltips.uiToolkit)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -649,12 +810,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot001"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Front End</h5>
-            <p>As you can see I also have experience in front-end development, creating user-friendly interfaces and ensuring responsive design.</p>
-            <p> Although this website is my first experience with React and TypeScript, I am eager to expand my skills in web development.</p>
-            <p>My Experience with UI/UX in game development also helps me understand any new front end framework or language much easier.</p>
-            </div>"
+            data-bs-title={tr(tooltips.frontEnd)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -693,12 +849,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot002"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Soft Skills</h5>
-            <p>I am someone who values effective communication, teamwork, and adaptability. I believe these skills are essential for successful project collaboration and personal growth.</p>
-            <p>Team success is always my priority, and I strive to contribute positively to any team I'm part of.</p>
-            <p>Curiosity and continuous learning are also key aspects of my personal and professional development.</p>
-            </div>"
+            data-bs-title={tr(tooltips.softSkills)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -736,10 +887,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0100"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Tooling</h5>
-            <p>I gained a lot of experience on Unity Tooling at ENKI DIGITAL, I know how to handle various ways to handle data in the editor and create custom tools to improve workflow efficiency.</p>
-            </div>"
+            data-bs-title={tr(tooltips.unityTooling)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -777,11 +925,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot000"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Software Architecture</h5>
-            <p>On my different projects I was always asigned the task of designing and implementing the overall structure of the software, ensuring scalability, maintainability, and performance.</p>
-            <p>Even during my internship at ENKI DIGITAL I was tasked with designing the architecture of new features from scratch.</p>
-            </div>"
+            data-bs-title={tr(tooltips.architecture)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -819,11 +963,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot011"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>Unreal Engine</h5>
-            <p>Having done my final year project on Unreal Engine,
-             I have practical experience with its features and capabilities on large scale projects.</p>
-            </div>"
+            data-bs-title={tr(tooltips.unreal)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >
@@ -861,9 +1001,7 @@ function TechnicalSkillTree() {
           <g
             id="SkillSlot0"
             data-bs-toggle="tooltip"
-            data-bs-title="<div>
-            <h5>MIRIEL-MATHIS root:</h5>
-            </div>"
+            data-bs-title={tr(tooltips.root)}
             data-bs-trigger="hover"
             data-bs-html="true"
           >

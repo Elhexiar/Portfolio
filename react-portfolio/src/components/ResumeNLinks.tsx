@@ -1,7 +1,11 @@
+import { useLanguage } from "../i18n";
+
 // cache the resume files in the public folder for faster loading
 const resumeFiles = ["/en-resume.pdf", "/fr-resume.pdf"];
 
 function ResumeNLinks() {
+  const { tr } = useLanguage();
+
   return (
     <div
       style={{
@@ -14,8 +18,8 @@ function ResumeNLinks() {
         justifyContent: "center",
       }}
     >
-      <h2>Links and Resume</h2>
-      <h3>Links</h3>
+      <h2>{tr({ fr: "Liens et CV", en: "Links and Resume" })}</h2>
+      <h3>{tr({ fr: "Liens", en: "Links" })}</h3>
       <ul>
         <li>
           <a
@@ -40,7 +44,7 @@ function ResumeNLinks() {
           </a>
         </li>
       </ul>
-      <h3>Resume</h3>
+      <h3>{tr({ fr: "CV", en: "Resume" })}</h3>
       <div
         style={{
           height: "100%",
@@ -49,15 +53,15 @@ function ResumeNLinks() {
           width: "45%",
         }}
       >
-        <span>English resume</span>
+        <span>{tr({ fr: "CV en anglais", en: "English resume" })}</span>
         <div>
           <a href="/en-resume.pdf" target="_blank" rel="noreferrer">
-            Open PDF
+            {tr({ fr: "Ouvrir le PDF", en: "Open PDF" })}
           </a>
         </div>
         <iframe
           src={resumeFiles[0] + "#zoom=page-fit&toolbar=0&scrollbar=0"}
-          title="English resume"
+          title={tr({ fr: "CV en anglais", en: "English resume" })}
           style={{
             width: "100%",
             height: "90%",
@@ -74,15 +78,15 @@ function ResumeNLinks() {
           width: "45%",
         }}
       >
-        <span>French resume</span>
+        <span>{tr({ fr: "CV en français", en: "French resume" })}</span>
         <div>
           <a href="/fr-resume.pdf" target="_blank" rel="noreferrer">
-            Open PDF
+            {tr({ fr: "Ouvrir le PDF", en: "Open PDF" })}
           </a>
         </div>
         <iframe
           src={resumeFiles[1] + "#zoom=page-fit&toolbar=0&scrollbar=0"}
-          title="French resume"
+          title={tr({ fr: "CV en français", en: "French resume" })}
           style={{
             width: "100%",
             height: "90%",

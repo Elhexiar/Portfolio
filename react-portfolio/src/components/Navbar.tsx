@@ -1,4 +1,7 @@
 import React from "react";
+import { useLanguage, type Lang } from "../i18n";
+
+const languages: Lang[] = ["fr", "en"];
 
 interface NavbarProps {
   selectedIndex?: number;
@@ -15,6 +18,7 @@ function Navbar({
   setSelectedIndex: propSetSelectedIndex,
   childrenList,
 }: NavbarProps) {
+  const { lang, setLang, tr } = useLanguage();
   let [selectedIndex, setSelectedIndex] = React.useState(
     propSelectedIndex ?? -1,
   );
@@ -31,6 +35,23 @@ function Navbar({
         style={{ width: "100%", height: "fit-content" }}
       >
         <div className="container-fluid" style={{ justifyContent: "center" }}>
+          <div
+            className="lang-switch"
+            role="group"
+            aria-label={tr({ fr: "Langue", en: "Language" })}
+          >
+            {languages.map((language) => (
+              <button
+                key={language}
+                type="button"
+                className={lang === language ? "active" : ""}
+                aria-pressed={lang === language}
+                onClick={() => setLang(language)}
+              >
+                {language.toUpperCase()}
+              </button>
+            ))}
+          </div>
           {childrenList?.map((child, index) => (
             <a
               key={index}
@@ -50,7 +71,7 @@ function Navbar({
             >
               <img
                 src="/close-icon.png"
-                alt="Close"
+                alt={tr({ fr: "Fermer", en: "Close" })}
                 className="nav-close-button"
                 style={{}}
               />

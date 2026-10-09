@@ -1,5 +1,6 @@
 import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
+import { useLanguage } from "../../i18n";
 
 const mainArtImg = new Image();
 mainArtImg.src = "/citadel-title.png";
@@ -9,10 +10,17 @@ const citadelTitleImg = new Image();
 citadelTitleImg.src = "/citadel-main-art.png";
 
 function Citadel() {
+  const { tr } = useLanguage();
+
+  const description = tr({
+    fr: "Citadel est un jeu de plateforme / tower defense jouable dans le navigateur, que j'ai créé pour tester des concepts de gameplay.",
+    en: "Citadel is a browser-based tower defense platformer i made to test gameplay concepts.",
+  });
+
   return (
     <ProjectCard
       projectTitle="Citadel"
-      projectDescription="Citadel is a browser-based tower defense plateformer i made to test gameplay concepts."
+      projectDescription={description}
       projectKeywords={["JavaScript", "Phaser"]}
       projectImage={mainArtImg.src}
       projectPopUpContent={
@@ -28,7 +36,10 @@ function Citadel() {
           >
             <img
               src={citadelTitleImg.src}
-              alt="Citadel Game main art"
+              alt={tr({
+                fr: "Illustration principale de Citadel",
+                en: "Citadel Game main art",
+              })}
               style={{
                 maxHeight: "300px",
                 objectFit: "contain",
@@ -48,7 +59,7 @@ function Citadel() {
             rel="noopener noreferrer"
             style={{ fontSize: "2.5em" }}
           >
-            Play it here!
+            {tr({ fr: "Jouer ici !", en: "Play it here!" })}
           </a>
           <p
             style={{
@@ -57,14 +68,18 @@ function Citadel() {
               fontSize: "1.25em",
             }}
           >
-            Citadel is a browser-based tower defense plateformer i made to test
-            gameplay concepts. You will need to defend your base from waves of
-            enemies by building towers and mining ressources in the underground
-            in between waves.
+            {description}{" "}
+            {tr({
+              fr: "Vous devez défendre votre base contre des vagues d'ennemis en construisant des tours, et miner des ressources sous terre entre les vagues.",
+              en: "You will need to defend your base from waves of enemies by building towers and mining ressources in the underground in between waves.",
+            })}
           </p>
           <img
             src="/citadel-gameplay0.png"
-            alt="Citadel Game gameplay screenshot"
+            alt={tr({
+              fr: "Capture d'écran de gameplay de Citadel",
+              en: "Citadel Game gameplay screenshot",
+            })}
             style={{
               maxWidth: "600px",
               height: "250px",
@@ -81,7 +96,7 @@ function Citadel() {
               borderBottom: "var(--default-border-color) 1px solid",
             }}
           >
-            Context
+            {tr({ fr: "Contexte", en: "Context" })}
           </h3>
           <p
             style={{
@@ -89,15 +104,17 @@ function Citadel() {
               marginBottom: "5px",
             }}
           >
-            Developed for an assignement, I already had enough to pass the class
-            so I decided to use this project to experiment with gameplay ideas I
-            had in mind for a while. The idea of mixing tower defense and
-            platforming intrigued me, I wanted to see if i could implement those
-            mechanics.
+            {tr({
+              fr: "Développé dans le cadre d'un devoir. J'avais déjà de quoi valider le cours, j'ai donc profité de ce projet pour expérimenter des idées de gameplay que j'avais en tête depuis un moment. Mélanger tower defense et plateforme m'intriguait, et je voulais voir si j'arrivais à implémenter ces mécaniques.",
+              en: "Developed for an assignment, I already had enough to pass the class so I decided to use this project to experiment with gameplay ideas I had in mind for a while. The idea of mixing tower defense and platforming intrigued me, I wanted to see if i could implement those mechanics.",
+            })}
           </p>
           <img
             src="/citadel-gameplay1.png"
-            alt="Citadel Game gameplay screenshot"
+            alt={tr({
+              fr: "Capture d'écran de gameplay de Citadel",
+              en: "Citadel Game gameplay screenshot",
+            })}
             style={{
               maxWidth: "600px",
               height: "250px",
@@ -113,17 +130,20 @@ function Citadel() {
               borderBottom: "var(--default-border-color) 1px solid",
             }}
           >
-            Breakdown
+            {tr({ fr: "Détails", en: "Breakdown" })}
           </h3>
 
           <p>
-            For a more detailed breakdown of Citadel, please visit my{" "}
+            {tr({
+              fr: "Pour une présentation plus détaillée de Citadel, rendez-vous sur mon ",
+              en: "For a more detailed breakdown of Citadel, please visit my ",
+            })}
             <a
               href="https://github.com/Elhexiar/phaser-plateformer-citadel"
               target="_blank"
               rel="noopener noreferrer"
             >
-              GitHub Repo
+              {tr({ fr: "dépôt GitHub", en: "GitHub Repo" })}
             </a>
             .
           </p>

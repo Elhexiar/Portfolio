@@ -15,6 +15,7 @@ import AboutMe from "./components/AboutMe";
 import ResumeNLinks from "./components/ResumeNLinks";
 import AllHandsOnDeck from "./components/popUps/AllHandsOnDeck";
 import GamificationRiderPlugin from "./components/popUps/GamificationRiderPlugin";
+import { useLanguage } from "./i18n";
 
 declare module "bootstrap";
 
@@ -45,6 +46,13 @@ export const useNavbar = () => {
 };
 
 function App() {
+  const { tr } = useLanguage();
+
+  const glyphsText = tr({
+    fr: "JE M'APPELLE MATHIS MIRIEL, BIENVENUE SUR MON PORTFOLIO. BONNE VISITE ET N'HÉSITEZ PAS À ME CONTACTER POUR TOUT PROJET OU OPPORTUNITÉ. ",
+    en: "MY NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR STAY AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES. ",
+  });
+
   useEffect(() => {
     const tooltipTriggerList = document.querySelectorAll(
       '[data-bs-toggle="tooltip"]',
@@ -87,18 +95,14 @@ function App() {
       >
         <div className="left-side-glyphs-container">
           <div className="left-side-glyphs">
-            MY NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR
-            STAY AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES.
-            MY NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR
-            STAY AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES.
+            {glyphsText}
+            {glyphsText}
           </div>
         </div>
         <div className="right-side-glyphs-container">
           <div className="right-side-glyphs">
-            MY NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR
-            STAY AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES.
-            MY NAME IS MATHIS MIRIEL WELCOME TO MY PORTFOLIO, PLEASE ENJOY YOUR
-            STAY AND FEEL FREE TO CONTACT ME FOR ANY PROJECTS OR OPPORTUNITIES.
+            {glyphsText}
+            {glyphsText}
           </div>
         </div>
         <div className="main-container">
@@ -109,7 +113,7 @@ function App() {
             setSelectedIndex={setNavbarSelectedIndex}
             childrenList={[
               {
-                tabChildren: "About Me",
+                tabChildren: tr({ fr: "À propos", en: "About Me" }),
                 contentChildren: [
                   <AboutMe
                     alreadyTyped={aboutMeAlreadyTyped}
@@ -118,7 +122,7 @@ function App() {
                 ],
               },
               {
-                tabChildren: "Projects",
+                tabChildren: tr({ fr: "Projets", en: "Projects" }),
                 contentChildren: [
                   <MapsAndCards />,
                   <PortfolioWebsite />,
@@ -128,18 +132,21 @@ function App() {
                   <GamificationRiderPlugin />,
                   <ProjectCard
                     projectTitle="Guignol Bagnole"
-                    projectDescription="A small racing game made during the GMTK Game Jam 2025."
+                    projectDescription={tr({
+                      fr: "Un petit jeu de course réalisé pendant la GMTK Game Jam 2025.",
+                      en: "A small racing game made during the GMTK Game Jam 2025.",
+                    })}
                     projectKeywords={["Unreal Engine"]}
                   />,
                 ],
               },
               {
-                tabChildren: "Skills",
+                tabChildren: tr({ fr: "Compétences", en: "Skills" }),
                 contentChildren: <TechnicalSkillTree />,
                 contentStyle: { height: "100%", overflowY: "hidden" },
               },
               {
-                tabChildren: "Resume & Links",
+                tabChildren: tr({ fr: "CV & Liens", en: "Resume & Links" }),
                 contentChildren: <ResumeNLinks />,
               },
             ]}
