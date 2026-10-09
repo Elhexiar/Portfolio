@@ -51,7 +51,7 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
     ],
     en: [
       "Hi ! I'm Mathis, fullstack developer currently training as an Application Designer & Developer (CDA) at AFPA Brest, and programming enthusiast.",
-      "\nI have a strong urge to create things and solve problems. After a degree in electronics and a Game Designer degree with a programming major at ESMA, I moved towards application development : what I enjoy most is designing clean, well documented architectures, whether it's a Spring Boot backend, a web app or a game engine. On the side, I also draw and play music.",
+      "\nAfter a degree in electronics and a Game Designer degree with a programming major at ESMA, I moved towards application development : what I enjoy most is designing clean, well documented architectures, whether it's a Spring Boot backend, a web app or a game engine. On the side, I also draw and play music.",
       "\n\nI am currently looking for an ",
       { type: "strong", text: "internship from November 9 to January 29" },
       " to complete my degree, and I'm open to a ",
