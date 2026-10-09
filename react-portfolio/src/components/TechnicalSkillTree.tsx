@@ -296,6 +296,7 @@ function TechnicalSkillTree() {
 
   return (
     <div
+      className="skill-tree-container"
       style={{
         position: "absolute",
         width: "100%",

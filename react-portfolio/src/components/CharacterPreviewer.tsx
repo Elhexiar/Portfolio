@@ -28,6 +28,7 @@ function CharacterPreviewer() {
 
   return (
     <div
+      className="character-previewer"
       style={{
         display: "flex",
         flexDirection: "column",

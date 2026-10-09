@@ -589,3 +589,48 @@ html::-webkit-scrollbar-thumb {
 
 
 
+
+/* ---------- phones ---------- */
+@media (max-width: 768px){
+  /* decorative stuff takes too much room on a small screen */
+  .character-previewer,
+  .left-side-glyphs-container,
+  .right-side-glyphs-container,
+  .nav-close-button-container{
+    display: none !important;
+  }
+
+  .main-container{
+    flex-direction: column;
+    padding: 8px;
+    gap: 0;
+  }
+
+  .content-overhaul-container{
+    width: 100%;
+    padding: 0;
+    padding-top: 8px;
+  }
+
+  .navbar .container-fluid{
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  .navbar .nav-link{
+    margin: 0 8px !important;
+    font-size: 0.85rem;
+  }
+
+  .tab-content{
+    overflow-x: auto;
+    justify-content: center;
+  }
+
+  /* the skill tree is wide, let it scroll sideways instead of shrinking to nothing */
+  .skill-tree-container{
+    min-width: 700px;
+    left: 0;
+    top: 0;
+  }
+}

@@ -23,14 +23,23 @@ function CardPopUp({ onClose, content, title }: CardPopUpProps) {
       document.removeEventListener("keydown", handleEscapeKey);
     };
   }, [onClose]);
+  // on phones the window takes the whole screen and can't be dragged around
+  const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
   return ReactDOM.createPortal(
     <Rnd
-      default={{
-        x: window.innerWidth / 2 - window.innerWidth / 4,
-        y: window.innerHeight / 4 - window.innerHeight / 6,
-        width: window.innerWidth / 1.5,
-        height: window.innerHeight / 1.2,
-      }}
+      default={
+        isMobile
+          ? { x: 0, y: 0, width: window.innerWidth, height: window.innerHeight }
+          : {
+              x: window.innerWidth / 2 - window.innerWidth / 4,
+              y: window.innerHeight / 4 - window.innerHeight / 6,
+              width: window.innerWidth / 1.5,
+              height: window.innerHeight / 1.2,
+            }
+      }
+      disableDragging={isMobile}
+      enableResizing={!isMobile}
       bounds="window"
       onClick={(e: React.MouseEvent) => e.stopPropagation()}
       className={styles.popUpRndContainer}

@@ -80,3 +80,17 @@
     width: 100%;
     height: 100%;
 }
+/* project popups have fixed size images, keep them inside the window */
+.popUpContent img {
+  max-width: 100%;
+}
+
+@media (max-width: 768px) {
+  .popUpContent {
+    padding: 10px;
+  }
+
+  .popUpContent img {
+    height: auto !important;
+  }
+}

@@ -1,100 +1,115 @@
-import { useLanguage } from "../i18n";
+import styles from "./modules/ResumeNLinks.module.css";
+import { useLanguage, type Lang } from "../i18n";
 
-// cache the resume files in the public folder for faster loading
-const resumeFiles = ["/en-resume.pdf", "/fr-resume.pdf"];
+// one resume per language, the one matching the current language is shown first
+const resumes: Record<Lang, { file: string; downloadName: string }> = {
+  fr: { file: "/fr-resume.pdf", downloadName: "Mathis-Miriel-CV-FR.pdf" },
+  en: { file: "/en-resume.pdf", downloadName: "Mathis-Miriel-Resume-EN.pdf" },
+};
+
+const contactLinks = [
+  {
+    badge: "@",
+    label: "Email",
+    value: "miriel.mathis@gmail.com",
+    href: "mailto:miriel.mathis@gmail.com",
+  },
+  {
+    badge: "in",
+    label: "LinkedIn",
+    value: "in/mathis-miriel",
+    href: "https://www.linkedin.com/in/mathis-miriel/",
+  },
+  {
+    badge: "</>",
+    label: "GitHub",
+    value: "Elhexiar",
+    href: "https://github.com/Elhexiar",
+  },
+];
 
 function ResumeNLinks() {
-  const { tr } = useLanguage();
+  const { lang, tr } = useLanguage();
+  const otherLang: Lang = lang === "fr" ? "en" : "fr";
+  const resume = resumes[lang];
 
   return (
-    <div
-      style={{
-        padding: "20px",
-        width: "100%",
-        height: "auto",
-        overflowY: "auto",
+    <div className={styles.container}>
+      <section className={styles.section}>
+        <h3 className={styles.sectionTitle}>
+          {tr({ fr: "Disponibilité", en: "Availability" })}
+        </h3>
+        <p className={styles.availability}>
+          <span className={styles.statusDot} />
+          {tr({
+            fr: "Stage du 9 novembre 2026 au 29 janvier 2027, puis ouvert à une alternance ou un poste sur le long terme. Région de Rennes.",
+            en: "Internship from November 9, 2026 to January 29, 2027, then open to a work-study contract or a long-term position. Rennes area, France.",
+          })}
+        </p>
+      </section>
 
-        alignContent: "center",
-        justifyContent: "center",
-      }}
-    >
-      <h2>{tr({ fr: "Liens et CV", en: "Links and Resume" })}</h2>
-      <h3>{tr({ fr: "Liens", en: "Links" })}</h3>
-      <ul>
-        <li>
+      <section className={styles.section}>
+        <h3 className={styles.sectionTitle}>
+          {tr({ fr: "Contact", en: "Contact" })}
+        </h3>
+        <div className={styles.linkGrid}>
+          {contactLinks.map((link) => (
+            <a
+              key={link.label}
+              href={link.href}
+              target={link.href.startsWith("mailto:") ? undefined : "_blank"}
+              rel="noopener noreferrer"
+              className={styles.linkCard}
+            >
+              <span className={styles.badge} aria-hidden="true">
+                {link.badge}
+              </span>
+              <span className={styles.linkText}>
+                <span className={styles.linkLabel}>{link.label}</span>
+                <span className={styles.linkValue}>{link.value}</span>
+              </span>
+            </a>
+          ))}
+        </div>
+      </section>
+
+      <section className={`${styles.section} ${styles.resumeSection}`}>
+        <h3 className={styles.sectionTitle}>
+          {tr({ fr: "CV", en: "Resume" })}
+        </h3>
+        <div className={styles.resumeActions}>
           <a
-            href="
-                https://www.linkedin.com/in/mathis-miriel/
-                "
+            href={resume.file}
             target="_blank"
             rel="noreferrer"
+            className={styles.actionButton}
           >
-            LinkedIn
+            {tr({ fr: "Ouvrir le CV", en: "Open resume" })}
           </a>
-        </li>
-        <li>
           <a
-            href="
-                    https://github.com/Elhexiar
-                "
+            href={resume.file}
+            download={resume.downloadName}
+            className={styles.actionButton}
+          >
+            {tr({ fr: "Télécharger (PDF)", en: "Download (PDF)" })}
+          </a>
+          <a
+            href={resumes[otherLang].file}
             target="_blank"
             rel="noreferrer"
+            className={styles.secondaryLink}
           >
-            GitHub
-          </a>
-        </li>
-      </ul>
-      <h3>{tr({ fr: "CV", en: "Resume" })}</h3>
-      <div
-        style={{
-          height: "100%",
-          float: "right",
-          marginRight: "20px",
-          width: "45%",
-        }}
-      >
-        <span>{tr({ fr: "CV en anglais", en: "English resume" })}</span>
-        <div>
-          <a href="/en-resume.pdf" target="_blank" rel="noreferrer">
-            {tr({ fr: "Ouvrir le PDF", en: "Open PDF" })}
+            {tr({ fr: "English version", en: "Version française" })}
           </a>
         </div>
-        <iframe
-          src={resumeFiles[0] + "#zoom=page-fit&toolbar=0&scrollbar=0"}
-          title={tr({ fr: "CV en anglais", en: "English resume" })}
-          style={{
-            width: "100%",
-            height: "90%",
-            border: "none",
-            maxWidth: "600px",
-          }}
-        />
-      </div>
-      <div
-        style={{
-          height: "100%",
-          float: "right",
-          marginRight: "20px",
-          width: "45%",
-        }}
-      >
-        <span>{tr({ fr: "CV en français", en: "French resume" })}</span>
-        <div>
-          <a href="/fr-resume.pdf" target="_blank" rel="noreferrer">
-            {tr({ fr: "Ouvrir le PDF", en: "Open PDF" })}
-          </a>
+        <div className={styles.resumePreview}>
+          <iframe
+            key={resume.file}
+            src={resume.file + "#zoom=page-width&toolbar=0&navpanes=0"}
+            title={tr({ fr: "Aperçu du CV", en: "Resume preview" })}
+          />
         </div>
-        <iframe
-          src={resumeFiles[1] + "#zoom=page-fit&toolbar=0&scrollbar=0"}
-          title={tr({ fr: "CV en français", en: "French resume" })}
-          style={{
-            width: "100%",
-            height: "90%",
-            border: "none",
-            maxWidth: "600px",
-          }}
-        />
-      </div>
+      </section>
     </div>
   );
 }

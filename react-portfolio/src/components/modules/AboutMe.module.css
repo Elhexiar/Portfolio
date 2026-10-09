@@ -111,3 +111,30 @@ strong:hover {
   cursor: pointer;
   transform: scale(1.03) translateY(-2px);
 }
+/* phones : the profile card goes on top of the text instead of floating next to it */
+@media (max-width: 768px) {
+  .aboutMeContainer {
+    padding: 1rem;
+  }
+
+  .nameTitle {
+    font-size: 1.8rem;
+  }
+
+  .aboutMeText {
+    font-size: 1rem;
+  }
+
+  .aboutMeDescriptionContainer {
+    float: none;
+    width: 100%;
+    max-width: none;
+    margin: 0.75rem 0 1rem 0;
+  }
+
+  .aboutMeImage {
+    display: block;
+    max-width: 160px;
+    margin: 0 auto 10px auto;
+  }
+}
