@@ -604,3 +604,22 @@ html::-webkit-scrollbar-thumb {
     top: 0;
   }
 }
+
+/* skill names next to the slots : discreet by default, lit up when the slot is hovered */
+#SkillTree .skill-label{
+  font-family: var(--default-text-font-family);
+  fill: #61ffff;
+  fill-opacity: 0.55;
+  letter-spacing: 0.5px;
+  text-shadow: none;
+  /* dark outline so the name stays readable when a branch passes behind it */
+  stroke: #151a24;
+  stroke-width: 6px;
+  stroke-linejoin: round;
+  paint-order: stroke;
+  transition: fill-opacity 0.2s ease;
+}
+
+#SkillTree g[id^="SkillSlot"]:hover .skill-label{
+  fill-opacity: 1;
+}
