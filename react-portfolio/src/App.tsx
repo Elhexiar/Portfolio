@@ -5,7 +5,6 @@ import "./Tooltip.css";
 import { useEffect, useState, createContext, useContext } from "react";
 import { Tooltip } from "bootstrap";
 import Navbar from "./components/Navbar";
-import ProjectCard from "./components/ProjectCard";
 import MapsAndCards from "./components/popUps/MapsAndCards";
 import PortfolioWebsite from "./components/popUps/PortfolioWebsite";
 import TechnicalSkillTree from "./components/TechnicalSkillTree";
@@ -16,6 +15,7 @@ import ResumeNLinks from "./components/ResumeNLinks";
 import AllHandsOnDeck from "./components/popUps/AllHandsOnDeck";
 import GamificationRiderPlugin from "./components/popUps/GamificationRiderPlugin";
 import BorneFlash from "./components/popUps/BorneFlash";
+import GuignolBagnole from "./components/popUps/GuignolBagnole";
 import { useLanguage } from "./i18n";
 
 declare module "bootstrap";
@@ -115,6 +115,7 @@ function App() {
                 tabChildren: tr({ fr: "À propos", en: "About Me" }),
                 contentChildren: [
                   <AboutMe
+                    key="about-me"
                     alreadyTyped={aboutMeAlreadyTyped}
                     handleTotalCharsTyped={setAboutMeAlreadyTyped}
                   />,
@@ -123,21 +124,14 @@ function App() {
               {
                 tabChildren: tr({ fr: "Projets", en: "Projects" }),
                 contentChildren: [
-                  <BorneFlash />,
-                  <UIToolkit />,
-                  <MapsAndCards />,
-                  <Citadel />,
-                  <PortfolioWebsite />,
-                  <AllHandsOnDeck />,
-                  <GamificationRiderPlugin />,
-                  <ProjectCard
-                    projectTitle="Guignol Bagnole"
-                    projectDescription={tr({
-                      fr: "Un petit jeu de course réalisé pendant la GMTK Game Jam 2025.",
-                      en: "A small racing game made during the GMTK Game Jam 2025.",
-                    })}
-                    projectKeywords={["Unreal Engine"]}
-                  />,
+                  <BorneFlash key="borne-flash" />,
+                  <UIToolkit key="enki" />,
+                  <MapsAndCards key="maps-and-cards" />,
+                  <GuignolBagnole key="guignol-bagnole" />,
+                  <Citadel key="citadel" />,
+                  <PortfolioWebsite key="portfolio" />,
+                  <AllHandsOnDeck key="all-hands-on-deck" />,
+                  <GamificationRiderPlugin key="gamification-rider" />,
                 ],
               },
               {

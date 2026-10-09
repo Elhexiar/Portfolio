@@ -1,227 +1,499 @@
 import { Tooltip } from "bootstrap";
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLanguage, type Translated } from "../i18n";
 
-// Tooltip contents (html strings for bootstrap) for each skill slot
+/*
+Skill tree, generated from the data below instead of hand placed svg paths.
+To add a skill : add a node in the tree with its position, the links,
+animation delays and tooltips are computed automatically.
+
+Layout (left to right) :
+- /root
+  - Application development  -> Front-end, Back-end, Databases, Python & Data
+  - Design & methods         -> Architecture, Project management, Soft skills
+  - Video games & 3D         -> Unity  -> C#, UI Toolkit, AR Foundation, Tooling
+                             -> Unreal -> C++, Blueprints, AI, Optimisation
+*/
+
+// Tooltip contents (html strings for bootstrap)
 const tooltip = (title: Translated<string>, paragraphs: Translated<string[]>) => ({
   fr: `<div><h5>${title.fr}</h5>${paragraphs.fr.map((p) => `<p>${p}</p>`).join("")}</div>`,
   en: `<div><h5>${title.en}</h5>${paragraphs.en.map((p) => `<p>${p}</p>`).join("")}</div>`,
 });
 
-const tooltips = {
-  generalDev: tooltip(
-    { fr: "Compétences générales en dev", en: "General Dev Skills" },
-    {
-      fr: [
-        "Le développement de jeux vidéo a été mon axe principal pendant plusieurs années, mais je me suis tourné vers le développement d'applications avec ma formation CDA : web, backend, bases de données et conception (UML, Merise). J'ai également des soft skills plus universelles, utiles dans quasiment tous les métiers.",
-      ],
-      en: [
-        "Game Development was my primary focus for many years, but I moved towards application development with my CDA training : web, backend, databases and software design (UML, Merise). I also have more universal soft skills that apply in virtually all jobs.",
-      ],
-    },
-  ),
-  gameDev: tooltip(
-    { fr: "Développement de jeux vidéo", en: "Game Development" },
-    {
-      fr: [
-        "Développeur de jeux vidéo à l'origine, j'en ai gardé des bases solides en programmation orientée objet, en architecture logicielle et en performance.",
-      ],
-      en: [
-        "Originally a game developer, I kept a strong foundation in OOP, software architecture and performance from it.",
-      ],
-    },
-  ),
-  unity: tooltip(
-    { fr: "Unity", en: "Unity" },
-    {
-      fr: [
-        "Le premier moteur que j'ai appris, et le seul que j'ai utilisé en contexte professionnel. J'apprécie particulièrement ses possibilités en matière d'outillage et de compute shaders par rapport aux autres moteurs.",
-      ],
-      en: [
-        "The first engine I learned and also the only one i used professionally, I particullarly like the options for tooling and compute shaders compared to other Engines.",
-      ],
-    },
-  ),
-  csharp: tooltip(
-    { fr: "C#", en: "C#" },
-    {
-      fr: [
-        "En travaillant sur Unity ces dernières années, j'ai acquis une solide maîtrise du C#, en mettant l'accent sur un code propre, compréhensible par les autres et maintenable.",
-      ],
-      en: [
-        "While working on unity these past years I have developed a strong understanding of C# programming, focusing on clean code understandable by others and maintainability.",
-      ],
-    },
-  ),
-  cpp: tooltip(
-    { fr: "C++", en: "C++" },
-    {
-      fr: [
-        "Mon projet de fin d'études m'a permis d'apprendre le C++, et un emploi d'un mois chez SABENA m'a apporté une expérience pratique.",
-      ],
-      en: [
-        "My last year project gave me the opportunity to learn C++, while a one month job a SABENA helped me gain practical experience.",
-      ],
-    },
-  ),
-  blueprints: tooltip(
-    { fr: "Blueprints", en: "Blueprints" },
-    {
-      fr: [
-        "Mon projet de fin d'études a été réalisé en grande partie en Blueprints (BP), ce qui a permis de prototyper rapidement les mécaniques et la logique de jeu sans connaissances poussées en programmation, et donc d'impliquer les non-programmeurs dans le développement.",
-      ],
-      en: [
-        "My final year project was mostly done in Blueprints (BP) as it allowed the rapid prototyping of game mechanics and logic without deep programming knowledge. which helped involve non-programmers in the development process.",
-      ],
-    },
-  ),
-  ai: tooltip(
-    { fr: "IA (Behaviour Trees)", en: "AI (Behaviour Trees)" },
-    {
-      fr: [
-        "Mon projet de fin d'études étant à l'origine un RTS, il a fallu implémenter l'IA avec des behaviour trees. Cela a permis de séparer le comportement de l'escouade de celui de chaque unité, et aux Game Designers de modifier les comportements sans toucher au code.",
-      ],
-      en: [
-        "My final year project being originally an RTS it involved implementing AI using behaviour trees. It helped separate squad and individual behaviour and allowed Game Designers to modify behaviour without interfering with the codebase",
-      ],
-    },
-  ),
-  optimisation: tooltip(
-    { fr: "Optimisation", en: "Optimisation" },
-    {
-      fr: [
-        "J'étais chargé de l'optimisation des performances sur mon projet de fin d'études, pour garantir un gameplay fluide et une gestion efficace des ressources.",
-        "J'ai appris que c'est souvent davantage un rôle de gestion, de suivi du projet et du périmètre, que de pure technique.",
-        "J'ai encore beaucoup à apprendre dans ce domaine.",
-      ],
-      en: [
-        "I was tasked to handle performance optimization in my final year project, ensuring smooth gameplay and efficient resource management.",
-        "I learned it was often more a role of management, policing of the project and scope more than raw technical abilities.",
-        "I have still a lot to learn in this domain.",
-      ],
-    },
-  ),
-  unrealTooling: tooltip(
-    { fr: "Outillage", en: "Tooling" },
-    {
-      fr: [
-        "L'outillage représente une part énorme du développement : il permet des workflows efficaces et de l'automatisation.",
-        "Dans le jeu vidéo, une grande partie de la productivité de l'équipe dépend des outils à sa disposition. Ils doivent être fiables et faciles à comprendre, quel que soit le profil technique de l'utilisateur.",
-      ],
-      en: [
-        "Tooling takes a huge portion of the development process, enabling efficient workflows and automation.",
-        "In Game dev a lot of the team's productivity relies on the tools available to them. They need to be reliable and easily understandable by someone no matter their technical background.",
-      ],
-    },
-  ),
-  uiToolkit: tooltip(
-    { fr: "UIToolkit", en: "UIToolkit" },
-    {
-      fr: [
-        "Pendant mon stage chez ENKI DIGITAL, j'ai travaillé sur différents systèmes d'interface avec l'UIToolkit de Unity. J'ai créé des composants réutilisables et optimisé les performances de l'interface pour une meilleure expérience sur mobile et tablette.",
-      ],
-      en: [
-        "During my internship at ENKI DIGITAL I worked on various UI systems using Unity's UIToolkit. I created reusable components and optimized UI performance for better user experience on mobile and tablet devices.",
-      ],
-    },
-  ),
-  frontEnd: tooltip(
-    { fr: "Développement web", en: "Web Development" },
-    {
-      fr: [
-        "Front-end : JavaScript / TypeScript, React (ce site !), Vue 3, et du responsive design.",
-        "Back-end : Node / Express et Java / Spring Boot pour les API, PostgreSQL pour les données, Vitest pour les tests.",
-        "Mon expérience de l'UI/UX dans le jeu vidéo m'aide aussi à prendre en main beaucoup plus facilement un nouveau framework.",
-      ],
-      en: [
-        "Front end : JavaScript / TypeScript, React (this website !), Vue 3, and responsive design.",
-        "Back end : Node / Express and Java / Spring Boot for APIs, PostgreSQL for data, Vitest for testing.",
-        "My experience with UI/UX in game development also helps me pick up any new framework much more easily.",
-      ],
-    },
-  ),
-  softSkills: tooltip(
-    { fr: "Soft skills", en: "Soft Skills" },
-    {
-      fr: [
-        "J'accorde beaucoup d'importance à une communication efficace, au travail en équipe et à l'adaptabilité. Ces qualités sont pour moi essentielles à la réussite d'un projet collectif et à l'évolution personnelle.",
-        "La réussite de l'équipe est toujours ma priorité, et je m'efforce d'apporter une contribution positive à chaque équipe dont je fais partie.",
-        "La curiosité et l'apprentissage continu sont aussi au cœur de mon développement personnel et professionnel.",
-      ],
-      en: [
-        "I am someone who values effective communication, teamwork, and adaptability. I believe these skills are essential for successful project collaboration and personal growth.",
-        "Team success is always my priority, and I strive to contribute positively to any team I'm part of.",
-        "Curiosity and continuous learning are also key aspects of my personal and professional development.",
-      ],
-    },
-  ),
-  unityTooling: tooltip(
-    { fr: "Outillage", en: "Tooling" },
-    {
-      fr: [
-        "J'ai acquis beaucoup d'expérience sur l'outillage Unity chez ENKI DIGITAL : je sais gérer les données de différentes manières dans l'éditeur et créer des outils sur mesure pour améliorer l'efficacité des workflows.",
-      ],
-      en: [
-        "I gained a lot of experience on Unity Tooling at ENKI DIGITAL, I know how to handle various ways to handle data in the editor and create custom tools to improve workflow efficiency.",
-      ],
-    },
-  ),
-  architecture: tooltip(
-    { fr: "Architecture logicielle", en: "Software Architecture" },
-    {
-      fr: [
-        "Sur mes différents projets, j'ai toujours été chargé de concevoir et de mettre en place la structure globale du logiciel, en veillant à son évolutivité, sa maintenabilité et ses performances.",
-        "Même pendant mon stage chez ENKI DIGITAL, on m'a confié la conception de l'architecture de nouvelles fonctionnalités à partir de zéro.",
-      ],
-      en: [
-        "On my different projects I was always asigned the task of designing and implementing the overall structure of the software, ensuring scalability, maintainability, and performance.",
-        "Even during my internship at ENKI DIGITAL I was tasked with designing the architecture of new features from scratch.",
-      ],
-    },
-  ),
-  unreal: tooltip(
-    { fr: "Unreal Engine", en: "Unreal Engine" },
-    {
-      fr: [
-        "Ayant réalisé mon projet de fin d'études sur Unreal Engine, j'ai une expérience concrète de ses fonctionnalités et de ses possibilités sur des projets de grande envergure.",
-      ],
-      en: [
-        "Having done my final year project on Unreal Engine, I have practical experience with its features and capabilities on large scale projects.",
-      ],
-    },
-  ),
-  root: {
+interface SkillNode {
+  id: string;
+  icon?: string; // image in /public, if missing the label is written instead
+  label?: string;
+  size: number;
+  x: number; // left edge
+  y: number; // vertical center
+  linkMidX?: number; // x where the links to the children turn
+  tooltip: Translated<string>;
+  children?: SkillNode[];
+}
+
+// column positions and slot sizes
+const COL = [10, 330, 720, 1150];
+const BIG = 150;
+const MEDIUM = 110;
+const SMALL = 100;
+// rows of the 3rd column (9 slots) and the 4th one (8 slots)
+const row2 = (i: number) => 70 + i * 130;
+const row3 = (i: number) => 70 + i * 148.5;
+
+const skillTree: SkillNode = {
+  id: "root",
+  label: "/root",
+  size: BIG,
+  x: COL[0],
+  y: (265 + 720 + 1045) / 3,
+  linkMidX: 245,
+  tooltip: {
     fr: "<div><h5>MIRIEL-MATHIS root:</h5></div>",
     en: "<div><h5>MIRIEL-MATHIS root:</h5></div>",
   },
+  children: [
+    {
+      id: "app-dev",
+      icon: "/skills/layers.svg",
+      size: BIG,
+      x: COL[1],
+      y: 265,
+      linkMidX: 600,
+      tooltip: tooltip(
+        { fr: "Développement d'applications", en: "Application Development" },
+        {
+          fr: [
+            "Le cœur de ma formation CDA : concevoir et développer des applications web et desktop complètes, de l'interface jusqu'à la base de données.",
+            "Je fais aussi attention aux tests (Vitest, Selenium) et à la documentation tout au long du projet.",
+          ],
+          en: [
+            "The core of my CDA training : designing and developing complete web and desktop applications, from the interface down to the database.",
+            "I also care about testing (Vitest, Selenium) and documentation throughout the project.",
+          ],
+        },
+      ),
+      children: [
+        {
+          id: "front-end",
+          icon: "/front-end-icon.png",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(0),
+          tooltip: tooltip(
+            { fr: "Front-end", en: "Front End" },
+            {
+              fr: [
+                "JavaScript / TypeScript, React (ce site !), Vue 3 et Phaser.js pour mes jeux navigateur, avec des maquettes sur Figma.",
+                "Mon expérience de l'UI/UX dans le jeu vidéo m'aide à prendre en main beaucoup plus facilement un nouveau framework.",
+              ],
+              en: [
+                "JavaScript / TypeScript, React (this website !), Vue 3 and Phaser.js for my browser games, with mockups on Figma.",
+                "My experience with UI/UX in game development helps me pick up any new framework much more easily.",
+              ],
+            },
+          ),
+        },
+        {
+          id: "back-end",
+          icon: "/skills/backend.svg",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(1),
+          tooltip: tooltip(
+            { fr: "Back-end", en: "Back End" },
+            {
+              fr: [
+                "Java / Spring Boot : sur BorneFlash, je conçois et j'intègre les couches Service et Repository d'une partie du backend.",
+                "Node.js / Express pour mes API JavaScript.",
+              ],
+              en: [
+                "Java / Spring Boot : on BorneFlash, I design and integrate the Service and Repository layers of part of the backend.",
+                "Node.js / Express for my JavaScript APIs.",
+              ],
+            },
+          ),
+        },
+        {
+          id: "databases",
+          icon: "/skills/database.svg",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(2),
+          tooltip: tooltip(
+            { fr: "Bases de données", en: "Databases" },
+            {
+              fr: [
+                "SQL et PostgreSQL, avec une conception faite proprement en amont avec Merise (MCD, MLD).",
+                "Je suis responsable d'une partie de la conception de la base de données de BorneFlash.",
+              ],
+              en: [
+                "SQL and PostgreSQL, with a proper design done beforehand using Merise (conceptual and logical data models).",
+                "I am responsible for part of the database design of BorneFlash.",
+              ],
+            },
+          ),
+        },
+        {
+          id: "python-data",
+          icon: "/skills/data.svg",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(3),
+          tooltip: tooltip(
+            { fr: "Python & Data", en: "Python & Data" },
+            {
+              fr: [
+                "Pendant mon stage au laboratoire LTSI, j'ai créé des scripts Python (pandas, Matplotlib) pour analyser de gros volumes de données de traitement du signal et comparer différents algorithmes.",
+                "J'utilise aussi Python pour du scripting au quotidien.",
+              ],
+              en: [
+                "During my internship at the LTSI lab, I wrote Python scripts (pandas, Matplotlib) to analyse large volumes of signal processing data and compare different algorithms.",
+                "I also use Python for everyday scripting.",
+              ],
+            },
+          ),
+        },
+      ],
+    },
+    {
+      id: "design",
+      icon: "/general-dev-skills.png",
+      size: BIG,
+      x: COL[1],
+      y: 720,
+      linkMidX: 600,
+      tooltip: tooltip(
+        { fr: "Conception & méthodes", en: "Design & Methods" },
+        {
+          fr: [
+            "Tout ce qui se passe avant et autour du code, et qui fait qu'un projet tient la route sur la durée.",
+          ],
+          en: [
+            "Everything that happens before and around the code, and that keeps a project on track in the long run.",
+          ],
+        },
+      ),
+      children: [
+        {
+          id: "architecture",
+          icon: "/architecture-icon.png",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(4),
+          tooltip: tooltip(
+            { fr: "Architecture & documentation", en: "Architecture & Documentation" },
+            {
+              fr: [
+                "Sur mes différents projets, j'ai toujours été chargé de concevoir la structure globale du logiciel, en veillant à son évolutivité et sa maintenabilité.",
+                "Je documente systématiquement mes choix (UML, C4, PlantUML) : pour moi, la documentation fait partie intégrante du développement.",
+              ],
+              en: [
+                "On my different projects I was always in charge of designing the overall structure of the software, ensuring scalability and maintainability.",
+                "I always document my choices (UML, C4, PlantUML) : to me, documentation is part of development.",
+              ],
+            },
+          ),
+        },
+        {
+          id: "project-management",
+          icon: "/skills/git.svg",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(5),
+          tooltip: tooltip(
+            { fr: "Gestion de projet", en: "Project Management" },
+            {
+              fr: [
+                "Git, méthodes Agile, Jira et Taiga, sur des projets en équipe pluridisciplinaire allant jusqu'à 11 personnes.",
+              ],
+              en: [
+                "Git, Agile methods, Jira and Taiga, on multidisciplinary team projects of up to 11 people.",
+              ],
+            },
+          ),
+        },
+        {
+          id: "soft-skills",
+          icon: "/soft-skill.png",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(6),
+          tooltip: tooltip(
+            { fr: "Soft skills", en: "Soft Skills" },
+            {
+              fr: [
+                "J'accorde beaucoup d'importance à une communication efficace, au travail en équipe et à l'adaptabilité.",
+                "La réussite de l'équipe est toujours ma priorité : sur mon projet de fin d'études, j'ai repris le leadership pour pivoter le projet et le livrer dans les délais.",
+                "La curiosité et l'apprentissage continu sont aussi au cœur de mon développement personnel et professionnel.",
+              ],
+              en: [
+                "I value effective communication, teamwork, and adaptability.",
+                "Team success is always my priority : on my final year project, I took the lead to pivot the project and deliver it on time.",
+                "Curiosity and continuous learning are also key aspects of my personal and professional development.",
+              ],
+            },
+          ),
+        },
+      ],
+    },
+    {
+      id: "game-dev",
+      icon: "/controller-icon.png",
+      size: BIG,
+      x: COL[1],
+      y: 1045,
+      linkMidX: 600,
+      tooltip: tooltip(
+        { fr: "Jeu vidéo & 3D", en: "Video Games & 3D" },
+        {
+          fr: [
+            "Mon premier terrain de jeu : développeur de jeux vidéo à l'origine, j'en ai gardé des bases solides en programmation orientée objet, en temps réel et en performance.",
+          ],
+          en: [
+            "My first playground : originally a game developer, I kept a strong foundation in OOP, real time programming and performance from it.",
+          ],
+        },
+      ),
+      children: [
+        {
+          id: "unity",
+          icon: "/unity-icon.png",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(7),
+          // the two engines turn at different x so their links never cross
+          linkMidX: 930,
+          tooltip: tooltip(
+            { fr: "Unity", en: "Unity" },
+            {
+              fr: [
+                "Le premier moteur que j'ai appris, et celui que j'ai utilisé en contexte professionnel chez Enki Digital, notamment pour de la réalité augmentée sur mobile.",
+              ],
+              en: [
+                "The first engine I learned, and the one I used professionally at Enki Digital, especially for augmented reality on mobile.",
+              ],
+            },
+          ),
+          children: [
+            {
+              id: "csharp",
+              icon: "/csharp-icon.png",
+              size: SMALL,
+              x: COL[3],
+              y: row3(0),
+              tooltip: tooltip(
+                { fr: "C#", en: "C#" },
+                {
+                  fr: [
+                    "En travaillant sur Unity ces dernières années, j'ai acquis une solide maîtrise du C#, en mettant l'accent sur un code propre, compréhensible par les autres et maintenable.",
+                  ],
+                  en: [
+                    "While working on Unity these past years I have developed a strong understanding of C#, focusing on clean code that others can understand and maintain.",
+                  ],
+                },
+              ),
+            },
+            {
+              id: "ui-toolkit",
+              icon: "/ui-icon.png",
+              size: SMALL,
+              x: COL[3],
+              y: row3(1),
+              tooltip: tooltip(
+                { fr: "UI Toolkit", en: "UI Toolkit" },
+                {
+                  fr: [
+                    "Chez ENKI DIGITAL, j'ai conçu l'architecture UI complète d'une application avec l'UI Toolkit de Unity : composants réutilisables, navigation, notifications, data binding et localisation.",
+                  ],
+                  en: [
+                    "At ENKI DIGITAL, I designed the complete UI architecture of an app with Unity's UI Toolkit : reusable components, navigation, notifications, data binding and localization.",
+                  ],
+                },
+              ),
+            },
+            {
+              id: "ar-foundation",
+              icon: "/skills/ar.svg",
+              size: SMALL,
+              x: COL[3],
+              y: row3(2),
+              tooltip: tooltip(
+                { fr: "Réalité augmentée", en: "Augmented Reality" },
+                {
+                  fr: [
+                    "R&D et intégration avec AR Foundation pour superposer des objets 3D dans l'environnement réel, sur iOS et Android, pour l'Office de Tourisme de Rennes et le Stade Rennais.",
+                  ],
+                  en: [
+                    "R&D and integration with AR Foundation to overlay 3D objects in the real environment, on iOS and Android, for the Rennes Tourism Office and Stade Rennais.",
+                  ],
+                },
+              ),
+            },
+            {
+              id: "unity-tooling",
+              icon: "/tooling.png",
+              size: SMALL,
+              x: COL[3],
+              y: row3(3),
+              tooltip: tooltip(
+                { fr: "Outillage", en: "Tooling" },
+                {
+                  fr: [
+                    "Dans le jeu vidéo, une grande partie de la productivité de l'équipe dépend de ses outils. J'ai appris chez ENKI DIGITAL à gérer les données dans l'éditeur et à créer des outils sur mesure, fiables et faciles à comprendre pour tout le monde.",
+                  ],
+                  en: [
+                    "In game dev, a lot of the team's productivity relies on its tools. At ENKI DIGITAL I learned to handle data in the editor and to build custom tools that are reliable and easy to understand for everyone.",
+                  ],
+                },
+              ),
+            },
+          ],
+        },
+        {
+          id: "unreal",
+          icon: "/unreal-icon.png",
+          size: MEDIUM,
+          x: COL[2],
+          y: row2(8),
+          linkMidX: 1040,
+          tooltip: tooltip(
+            { fr: "Unreal Engine", en: "Unreal Engine" },
+            {
+              fr: [
+                "Ayant réalisé mon projet de fin d'études sur Unreal Engine, j'ai une expérience concrète de ses fonctionnalités sur un projet de 8 mois en équipe.",
+              ],
+              en: [
+                "Having done my final year project on Unreal Engine, I have practical experience with its features on an 8 months team project.",
+              ],
+            },
+          ),
+          children: [
+            {
+              id: "cpp",
+              icon: "/cpp-icon.png",
+              size: SMALL,
+              x: COL[3],
+              y: row3(4),
+              tooltip: tooltip(
+                { fr: "C++", en: "C++" },
+                {
+                  fr: [
+                    "Sur Unreal pour mon projet de fin d'études, mais aussi en industrie : chez Sabena Technics, j'ai conçu et documenté une API C++ pour un banc de test ARINC 429 (protocole avionique).",
+                  ],
+                  en: [
+                    "On Unreal for my final year project, but also in the industry : at Sabena Technics, I designed and documented a C++ API for an ARINC 429 test bench (avionics protocol).",
+                  ],
+                },
+              ),
+            },
+            {
+              id: "blueprints",
+              icon: "/bp-icon.png",
+              size: SMALL,
+              x: COL[3],
+              y: row3(5),
+              tooltip: tooltip(
+                { fr: "Blueprints", en: "Blueprints" },
+                {
+                  fr: [
+                    "Mon projet de fin d'études a été réalisé en grande partie en Blueprints, ce qui a permis de prototyper rapidement et d'impliquer les non-programmeurs dans le développement.",
+                  ],
+                  en: [
+                    "My final year project was mostly done in Blueprints, which allowed rapid prototyping and helped involve non-programmers in the development process.",
+                  ],
+                },
+              ),
+            },
+            {
+              id: "ai",
+              icon: "/bht-icon.png",
+              size: SMALL,
+              x: COL[3],
+              y: row3(6),
+              tooltip: tooltip(
+                { fr: "IA (Behaviour Trees)", en: "AI (Behaviour Trees)" },
+                {
+                  fr: [
+                    "Mon projet de fin d'études étant à l'origine un RTS, j'ai implémenté l'IA avec des behaviour trees et la navigation avec le NavMesh. Les Game Designers pouvaient ainsi modifier les comportements sans toucher au code.",
+                  ],
+                  en: [
+                    "My final year project being originally an RTS, I implemented the AI with behaviour trees and navigation with the NavMesh. Game Designers could then tweak behaviours without touching the code.",
+                  ],
+                },
+              ),
+            },
+            {
+              id: "optimisation",
+              icon: "/performance-icon.png",
+              size: SMALL,
+              x: COL[3],
+              y: row3(7),
+              tooltip: tooltip(
+                { fr: "Optimisation", en: "Optimisation" },
+                {
+                  fr: [
+                    "J'étais chargé des performances sur mon projet de fin d'études : profilage régulier, systèmes pensés pour la performance dès le départ, et multithreading.",
+                    "J'ai appris que c'est souvent autant une question de suivi du projet et du périmètre que de pure technique.",
+                  ],
+                  en: [
+                    "I was in charge of performance on my final year project : regular profiling, systems designed for performance from the start, and multithreading.",
+                    "I learned it is often as much about keeping track of the project and its scope as about raw technical skills.",
+                  ],
+                },
+              ),
+            },
+          ],
+        },
+      ],
+    },
+  ],
 };
 
-/*
-Skill Tree List:
-- Game Development
-  - Unity
-    - C#
-    - UIToolkit
-    - Tooling
-  - Unreal Engine
-    - C++
-    - Blueprints
-    - AI (Behavior Trees)
-    - Optimisation
-    - CommonUI
-    - Tooling
-  - Architecture
-    - Design Patterns
-    - UML documentation
-    - Data Structures
-    - Team Oriented Design
+const VIEW_WIDTH = COL[3] + SMALL + 20;
+const VIEW_HEIGHT = row2(8) + MEDIUM / 2 + 20;
 
-- Web Development
-  - Frontend
-    - React
+// flatten the tree, keeping the depth and the position among siblings for the animation delays
+interface PlacedNode {
+  node: SkillNode;
+  parent?: SkillNode;
+  depth: number;
+  order: number;
+}
 
+function flatten(node: SkillNode, depth = 0, order = 0, parent?: SkillNode): PlacedNode[] {
+  return [
+    { node, parent, depth, order },
+    ...(node.children ?? []).flatMap((child, i) => flatten(child, depth + 1, i, node)),
+  ];
+}
 
-*/
+const placedNodes = flatten(skillTree);
+
+// link with rounded corners : right edge of the parent -> turn at midX -> left edge of the child
+function linkPath(parent: SkillNode, child: SkillNode) {
+  const x1 = parent.x + parent.size + 2;
+  const y1 = parent.y;
+  const x2 = child.x - 2;
+  const y2 = child.y;
+  const midX = parent.linkMidX ?? (x1 + x2) / 2;
+  const dy = y2 - y1;
+  if (Math.abs(dy) < 1) return `M${x1} ${y1} H${x2}`;
+  const dir = Math.sign(dy);
+  const r = Math.min(25, Math.abs(dy) / 2);
+  return [
+    `M${x1} ${y1}`,
+    `H${midX - r}`,
+    `Q${midX} ${y1} ${midX} ${y1 + dir * r}`,
+    `V${y2 - dir * r}`,
+    `Q${midX} ${y2} ${midX + r} ${y2}`,
+    `H${x2}`,
+  ].join(" ");
+}
+
+const slotDelay = (depth: number, order: number) => depth * 0.3 + order * 0.05;
+const linkDelay = (depth: number, order: number) => 0.15 + (depth - 1) * 0.3 + order * 0.05;
 
 function TechnicalSkillTree() {
   const { lang, tr } = useLanguage();
@@ -230,22 +502,9 @@ function TechnicalSkillTree() {
 
   // Preload all images used in the skill tree
   useEffect(() => {
-    const imageUrls = [
-      "/general-dev-skills.png",
-      "/controller-icon.png",
-      "/unity-icon.png",
-      "/csharp-icon.png",
-      "/cpp-icon.png",
-      "/bp-icon.png",
-      "/bht-icon.png",
-      "/performance-icon.png",
-      "/tooling.png",
-      "/ui-icon.png",
-      "/front-end-icon.png",
-      "/soft-skill.png",
-      "/architecture-icon.png",
-      "/unreal-icon.png",
-    ];
+    const imageUrls = placedNodes
+      .map(({ node }) => node.icon)
+      .filter((url): url is string => !!url);
 
     const loadImage = (url: string) => {
       return new Promise<void>((resolve, reject) => {
@@ -306,7 +565,7 @@ function TechnicalSkillTree() {
     >
       <svg
         ref={svgRef}
-        viewBox="0 0 1661 1269"
+        viewBox={`0 0 ${VIEW_WIDTH} ${VIEW_HEIGHT}`}
         preserveAspectRatio="xMidYMid meet"
         style={{
           width: "100%",
@@ -319,907 +578,91 @@ function TechnicalSkillTree() {
         xmlns="http://www.w3.org/2000/svg"
         overflow="visible"
       >
-        <g id="SkillTree">
-          <path
-            id="ArrowPath1"
-            d="M76.8937 773.872L168.989 582.482C172.155 575.904 178.81 571.721 186.11 571.721L343.668 571.721"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath0"
-            d="M76.8938 773.872L168.29 960.721C171.478 967.239 178.101 971.372 185.357 971.372L424.5 971.372"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath00"
-            d="M423.547 971.969L515.571 1187.34C518.561 1194.33 525.435 1198.87 533.043 1198.87L667.5 1198.87"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath01"
-            d="M474.5 932.372L674.569 932.372C678.431 932.372 682.201 933.549 685.378 935.746L740.5 973.872"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath02"
-            d="M435 951.372L500 828.372L636.213 828.372C642.354 828.372 648.117 825.404 651.683 820.404L692 763.872"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath11"
-            d="M350 529.872L577.344 529.872C583.963 529.872 590.105 526.428 593.556 520.78L698 349.872"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath114"
-            d="M691 295.372L691 144.445C691 137.871 694.398 131.764 699.985 128.299L801 65.645"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath110"
-            d="M700 392.954L767.185 449.869C770.617 452.777 774.968 454.372 779.466 454.372L1018.92 454.372C1023.18 454.372 1027.32 452.938 1030.67 450.3L1103.5 392.954"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath113"
-            d="M743 332.372L799.372 246.449C802.885 241.096 808.856 237.872 815.259 237.872L971.721 237.872C978.406 237.872 984.6 234.358 988.03 228.619L1022.5 170.943"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath112"
-            d="M759 333.872L833.999 279.225C837.249 276.857 841.167 275.581 845.188 275.581L1246.26 275.581C1252.65 275.581 1258.62 272.365 1262.13 267.022L1315.5 185.872"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath111"
-            d="M747 385.872L840.024 322.465C843.179 320.314 846.908 319.164 850.725 319.164L1414.9 319.164C1420.37 319.164 1425.57 316.812 1429.17 312.709L1476.5 258.872"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath10"
-            d="M367 585.645L861.873 585.645C865.857 585.645 869.74 586.897 872.973 589.224L1001 681.372"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath102"
-            d="M991.5 632.872L1215.9 632.872C1220.17 632.872 1224.33 631.429 1227.68 628.776L1287 581.872"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath101"
-            d="M978 717.03L1525.86 717.03C1530.76 717.03 1535.47 715.137 1539.01 711.746L1578 674.372"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-          <path
-            id="ArrowPath100"
-            d="M988.5 692.872L1028.37 777.778C1031.5 784.445 1038.2 788.702 1045.57 788.702L1343.15 788.702C1350.4 788.702 1357.02 792.832 1360.21 799.348L1406 892.872"
-            stroke="#61FFFF"
-            stroke-width="10"
-            stroke-linecap="round"
-          />
-
-          <g
-            id="SkillSlot00"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.generalDev)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2"
-              x="350"
-              y="897.872"
-              width="148"
-              height="148"
-              rx="15"
-              fill="url(#paint0_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1"
-              x="348"
-              y="895.872"
-              width="152"
-              height="152"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/general-dev-skills.png"
-              x="348"
-              y="895.872"
-              width="152"
-              height="152"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot01"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.gameDev)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_2"
-              x="276"
-              y="491.872"
-              width="148"
-              height="148"
-              rx="15"
-              fill="url(#paint1_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_2"
-              x="274"
-              y="489.872"
-              width="152"
-              height="152"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/controller-icon.png"
-              x="274"
-              y="489.872"
-              width="152"
-              height="152"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot010"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.unity)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_3"
-              x="915"
-              y="598.872"
-              width="148"
-              height="148"
-              rx="15"
-              fill="url(#paint2_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_3"
-              x="913"
-              y="596.872"
-              width="152"
-              height="152"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/unity-icon.png"
-              x="913"
-              y="596.872"
-              width="152"
-              height="152"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0102"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.csharp)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_4"
-              x="1256"
-              y="533.872"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint3_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_4"
-              x="1254"
-              y="531.872"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/csharp-icon.png"
-              x="1254"
-              y="531.872"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0114"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.cpp)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_5"
-              x="750"
-              y="22.8721"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint4_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_5"
-              x="748"
-              y="20.8721"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/cpp-icon.png"
-              x="748"
-              y="20.8721"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0113"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.blueprints)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_6"
-              x="979"
-              y="103.872"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint5_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_6"
-              x="977"
-              y="101.872"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/bp-icon.png"
-              x="977"
-              y="101.872"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0112"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.ai)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-            data-bs-placement="right"
-          >
-            <rect
-              id="Rectangle 2_7"
-              x="1256"
-              y="122.872"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint6_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_7"
-              x="1254"
-              y="120.872"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/bht-icon.png"
-              x="1254"
-              y="120.872"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0111"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.optimisation)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_8"
-              x="1460"
-              y="203.872"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint7_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_8"
-              x="1458"
-              y="201.872"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/performance-icon.png" // put the image in public/images
-              x="1458"
-              y="201.872"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0110"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.unrealTooling)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-            data-bs-placement="right"
-          >
-            <rect
-              id="Rectangle 2_9"
-              x="1052"
-              y="345.872"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint8_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_9"
-              x="1050"
-              y="343.872"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/tooling.png" // put the image in public/images
-              x="1050"
-              y="343.872"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0101"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.uiToolkit)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_10"
-              x="1560"
-              y="617.872"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint9_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_10"
-              x="1558"
-              y="615.872"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/ui-icon.png"
-              x="1558"
-              y="615.872"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot001"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.frontEnd)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_11"
-              x="714"
-              y="940.872"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint10_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-
-            <rect
-              id="Rectangle 1_11"
-              x="712"
-              y="938.872"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/front-end-icon.png"
-              x="712"
-              y="938.872"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot002"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.softSkills)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_12"
-              x="641"
-              y="652.872"
-              width="148"
-              height="148"
-              rx="15"
-              fill="url(#paint11_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_12"
-              x="639"
-              y="650.872"
-              width="152"
-              height="152"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/soft-skill.png"
-              x="639"
-              y="650.872"
-              width="152"
-              height="152"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0100"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.unityTooling)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_12"
-              x="1356"
-              y="861.872"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint15_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_12"
-              x="1354"
-              y="859.872"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/tooling.png"
-              x="1354"
-              y="859.872"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot000"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.architecture)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_13"
-              x="621"
-              y="1147.87"
-              width="98"
-              height="98"
-              rx="15"
-              fill="url(#paint12_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_13"
-              x="619"
-              y="1145.87"
-              width="102"
-              height="102"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/architecture-icon.png"
-              x="619"
-              y="1145.87"
-              width="102"
-              height="102"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot011"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.unreal)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_14"
-              x="621"
-              y="270.872"
-              width="148"
-              height="148"
-              rx="15"
-              fill="url(#paint13_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_14"
-              x="619"
-              y="268.872"
-              width="152"
-              height="152"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <image
-              href="/unreal-icon.png"
-              x="621"
-              y="270.872"
-              width="148"
-              height="148"
-              preserveAspectRatio="xMidYMid slice"
-              pointerEvents="none"
-            />
-          </g>
-          <g
-            id="SkillSlot0"
-            data-bs-toggle="tooltip"
-            data-bs-title={tr(tooltips.root)}
-            data-bs-trigger="hover"
-            data-bs-html="true"
-          >
-            <rect
-              id="Rectangle 2_15"
-              x="3"
-              y="699.872"
-              width="148"
-              height="148"
-              rx="15"
-              fill="url(#paint14_linear_1_67)"
-              stroke="#CE1B1B"
-              stroke-width="2"
-            />
-            <rect
-              id="Rectangle 1_15"
-              x="1"
-              y="697.872"
-              width="152"
-              height="152"
-              rx="17"
-              stroke="#61FFFF"
-              stroke-width="2"
-            />
-            <text
-              x={1 + 152 / 2}
-              y={697.872 + 152 / 2}
-              textAnchor="middle"
-              dominantBaseline="middle"
-              fill="#61ffff"
-              fontSize="35"
-              fontFamily="Orbitron, sans-serif"
-              pointerEvents="none"
-            >
-              /root
-            </text>
-          </g>
-        </g>
         <defs>
-          <linearGradient
-            id="paint0_linear_1_67"
-            x1="424"
-            y1="896.872"
-            x2="424"
-            y2="1046.87"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint1_linear_1_67"
-            x1="350"
-            y1="490.872"
-            x2="350"
-            y2="640.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint2_linear_1_67"
-            x1="989"
-            y1="597.872"
-            x2="989"
-            y2="747.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint3_linear_1_67"
-            x1="1305"
-            y1="532.872"
-            x2="1305"
-            y2="632.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint4_linear_1_67"
-            x1="799"
-            y1="21.8721"
-            x2="799"
-            y2="121.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint5_linear_1_67"
-            x1="1028"
-            y1="102.872"
-            x2="1028"
-            y2="202.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint6_linear_1_67"
-            x1="1305"
-            y1="121.872"
-            x2="1305"
-            y2="221.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint7_linear_1_67"
-            x1="1509"
-            y1="202.872"
-            x2="1509"
-            y2="302.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint8_linear_1_67"
-            x1="1101"
-            y1="344.872"
-            x2="1101"
-            y2="444.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint9_linear_1_67"
-            x1="1609"
-            y1="616.872"
-            x2="1609"
-            y2="716.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint10_linear_1_67"
-            x1="763"
-            y1="939.872"
-            x2="763"
-            y2="1039.87"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint11_linear_1_67"
-            x1="690"
-            y1="651.872"
-            x2="690"
-            y2="751.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-
-          <linearGradient
-            id="paint15_linear_1_67"
-            x1="1405"
-            y1="860.872"
-            x2="1405"
-            y2="960.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint12_linear_1_67"
-            x1="670"
-            y1="1146.87"
-            x2="670"
-            y2="1246.87"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint13_linear_1_67"
-            x1="695"
-            y1="269.872"
-            x2="695"
-            y2="419.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
-          </linearGradient>
-          <linearGradient
-            id="paint14_linear_1_67"
-            x1="77"
-            y1="698.872"
-            x2="77"
-            y2="848.872"
-            gradientUnits="userSpaceOnUse"
-          >
-            <stop stop-color="#561F1F" />
-            <stop offset="1" stop-color="#233F3F" />
+          <linearGradient id="slotGradient" x1="0" y1="0" x2="0" y2="1">
+            <stop stopColor="#561F1F" />
+            <stop offset="1" stopColor="#233F3F" />
           </linearGradient>
         </defs>
+        <g id="SkillTree">
+          {/* links first so the slots are drawn on top of them */}
+          {placedNodes
+            .filter(({ parent }) => parent)
+            .map(({ node, parent, depth, order }) => (
+              <path
+                key={`link-${node.id}`}
+                d={linkPath(parent!, node)}
+                pathLength={1000}
+                stroke="#61FFFF"
+                strokeWidth={10}
+                strokeLinecap="round"
+                style={{ animationDelay: `${linkDelay(depth, order)}s` }}
+              />
+            ))}
+
+          {placedNodes.map(({ node, depth, order }) => {
+            const top = node.y - node.size / 2;
+            return (
+              <g
+                key={node.id}
+                id={`SkillSlot-${node.id}`}
+                data-bs-toggle="tooltip"
+                data-bs-title={tr(node.tooltip)}
+                data-bs-trigger="hover"
+                data-bs-html="true"
+                style={
+                  {
+                    "--slot-delay": `${slotDelay(depth, order)}s`,
+                  } as React.CSSProperties
+                }
+              >
+                <rect
+                  x={node.x}
+                  y={top}
+                  width={node.size}
+                  height={node.size}
+                  rx={15}
+                  fill="url(#slotGradient)"
+                  stroke="#CE1B1B"
+                  strokeWidth={2}
+                />
+                <rect
+                  x={node.x - 2}
+                  y={top - 2}
+                  width={node.size + 4}
+                  height={node.size + 4}
+                  rx={17}
+                  stroke="#61FFFF"
+                  strokeWidth={2}
+                />
+                {node.icon ? (
+                  <image
+                    href={node.icon}
+                    x={node.x - 2}
+                    y={top - 2}
+                    width={node.size + 4}
+                    height={node.size + 4}
+                    preserveAspectRatio="xMidYMid slice"
+                    pointerEvents="none"
+                  />
+                ) : (
+                  <text
+                    x={node.x + node.size / 2}
+                    y={node.y}
+                    textAnchor="middle"
+                    dominantBaseline="middle"
+                    fill="#61ffff"
+                    fontSize="35"
+                    fontFamily="Orbitron, sans-serif"
+                    pointerEvents="none"
+                  >
+                    {node.label}
+                  </text>
+                )}
+              </g>
+            );
+          })}
+        </g>
       </svg>
     </div>
   );
