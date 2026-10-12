@@ -2,10 +2,8 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
-const mainArtImg = new Image();
-mainArtImg.src = "/citadel-title.webp";
-const citadelTitleImg = new Image();
-citadelTitleImg.src = "/citadel-main-art.webp";
+const mainArtImg = "/citadel-title.webp";
+const citadelTitleImg = "/citadel-main-art.webp";
 
 function Citadel() {
   const { tr } = useLanguage();
@@ -20,7 +18,8 @@ function Citadel() {
       projectTitle="Citadel"
       projectDescription={description}
       projectKeywords={["JavaScript", "Phaser"]}
-      projectImage={mainArtImg.src}
+      projectImage={mainArtImg}
+      popUpPreload={[citadelTitleImg]}
       projectPopUpContent={
         <div>
           <h2>Citadel</h2>
@@ -33,7 +32,8 @@ function Citadel() {
             }}
           >
             <img
-              src={citadelTitleImg.src}
+              loading="lazy"
+              src={citadelTitleImg}
               alt={tr({
                 fr: "Illustration principale de Citadel",
                 en: "Citadel Game main art",
@@ -73,6 +73,7 @@ function Citadel() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/citadel-gameplay0.webp"
             alt={tr({
               fr: "Capture d'écran de gameplay de Citadel",
@@ -108,6 +109,7 @@ function Citadel() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/citadel-gameplay1.webp"
             alt={tr({
               fr: "Capture d'écran de gameplay de Citadel",

@@ -2,8 +2,7 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
-const projectPreviewArt = new Image();
-projectPreviewArt.src = "/no-hands-on-deck-cover-art.webp";
+const projectPreviewArt = "/no-hands-on-deck-cover-art.webp";
 
 function AllHandsOnDeck() {
   const { tr } = useLanguage();
@@ -16,11 +15,13 @@ function AllHandsOnDeck() {
         en: "A small puzzle game where you try to escape a sinking aircraft carrier",
       })}
       projectKeywords={["Unity", "C#"]}
-      projectImage={projectPreviewArt.src}
+      projectImage={projectPreviewArt}
+      popUpPreload={["/ahod0.webp"]}
       projectPopUpContent={
         <div>
           <h2>All Hands On Deck</h2>
           <img
+            loading="lazy"
             src="/ahod0.webp"
             alt={tr({
               fr: "Capture d'écran de All Hands On Deck",
@@ -83,6 +84,7 @@ function AllHandsOnDeck() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/ahod2.webp"
             alt={tr({
               fr: "Capture d'écran 2 de All Hands On Deck",
@@ -116,6 +118,7 @@ function AllHandsOnDeck() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/ahod1.webp"
             alt={tr({
               fr: "Capture d'écran 3 de All Hands On Deck",

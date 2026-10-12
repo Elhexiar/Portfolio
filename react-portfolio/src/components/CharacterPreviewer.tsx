@@ -5,16 +5,20 @@ import char2 from "/character-standing-2.webp";
 import char3 from "/character-standing-3.webp";
 import char4 from "/character-standing-4.webp";
 import { useState } from "react";
+import { preloadImages } from "../preload";
 
 const ImageArray = [char0, char1, char2, char3, char4];
 
 function CharacterPreviewer() {
-  ImageArray.forEach((image) => {
-    const img = new Image();
-    img.src = image;
-  });
-
   let [selectedIndex, setSelectedIndex] = useState(2);
+
+  // only fetch the poses the user is about to see : the ones next to the
+  // current one, once their pointer reaches the arrow buttons
+  const preloadNeighbours = (index = selectedIndex) => {
+    preloadImages(
+      [ImageArray[index - 1], ImageArray[index + 1]].filter(Boolean),
+    );
+  };
 
   const handleChangeIndex = (indexToAdd: number) => {
     let newIndex = selectedIndex + indexToAdd;
@@ -24,6 +28,7 @@ function CharacterPreviewer() {
       newIndex = ImageArray.length - 1;
     }
     setSelectedIndex(newIndex);
+    preloadNeighbours(newIndex);
   };
 
   return (
@@ -47,7 +52,11 @@ function CharacterPreviewer() {
         alt="Character Preview"
         style={{ objectFit: "contain", width: "100%", height: "90%" }}
       />
-      <div style={{ display: "flex", justifyContent: "space-evenly" }}>
+      <div
+        style={{ display: "flex", justifyContent: "space-evenly" }}
+        onPointerEnter={() => preloadNeighbours()}
+        onPointerDown={() => preloadNeighbours()}
+      >
         <CPButton
           children={["=>"]}
           direction="left"

@@ -2,8 +2,7 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
-const projectPreviewArt = new Image();
-projectPreviewArt.src = "/borneflash-icon.svg";
+const projectPreviewArt = "/borneflash-icon.svg";
 
 // TODO : add screenshots and the front-end part once the project is finished (november 2026)
 function BorneFlash() {
@@ -22,7 +21,7 @@ function BorneFlash() {
         en: "Management software for electric vehicle charging stations, ongoing team project at AFPA.",
       })}
       projectKeywords={["Java", "Spring Boot", "PostgreSQL", "Merise"]}
-      projectImage={projectPreviewArt.src}
+      projectImage={projectPreviewArt}
       projectPopUpContent={
         <div>
           <h2>BorneFlash</h2>

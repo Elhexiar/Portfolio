@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styles from "./modules/AboutMe.module.css";
 import { useNavbar } from "../App";
 import { Rnd } from "react-rnd";
@@ -11,8 +11,6 @@ type TextSegment =
   | { type: "strong"; text: string }
   | { type: "link"; text: string; index: number };
 
-const profileImage = new Image();
-profileImage.src = "profile-pic.webp";
 
 interface AboutMeProps {
   alreadyTyped?: number;
@@ -89,11 +87,14 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
     }
   }, [displayedIndex, totalChars, numberOfCharsPerInterval, typeSpeed]);
 
+  // Tell App how far we got only when the tab closes : reporting every tick
+  // re-rendered the whole app ~200 times per second while typing.
+  // A ref (not state) keeps the latest value without causing renders.
+  const displayedIndexRef = useRef(displayedIndex);
+  displayedIndexRef.current = displayedIndex;
   useEffect(() => {
-    if (handleTotalCharsTyped) {
-      handleTotalCharsTyped(displayedIndex);
-    }
-  }, [displayedIndex, handleTotalCharsTyped]);
+    return () => handleTotalCharsTyped?.(displayedIndexRef.current);
+  }, [handleTotalCharsTyped]);
 
   // Render content based on displayedIndex
   const renderContent = () => {
@@ -179,7 +180,7 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
         Mathis Miriel{" "}
         <div className={styles.aboutMeDescriptionContainer}>
           <img
-            src={profileImage.src}
+            src="/profile-pic.webp"
             alt="Mathis Miriel"
             className={styles.aboutMeImage}
             style={{ border: "var(--default-border-color) solid 1px" }}

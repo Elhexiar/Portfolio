@@ -2,11 +2,8 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
-// Preload images
-const projectPreviewArt = new Image();
-projectPreviewArt.src = "/m&c.webp";
-const mainArtImg = new Image();
-mainArtImg.src = "/m&c-main-art.webp";
+const projectPreviewArt = "/m&c.webp";
+const mainArtImg = "/m&c-main-art.webp";
 
 function MapsAndCards() {
   const { tr } = useLanguage();
@@ -69,7 +66,8 @@ function MapsAndCards() {
         en: "Card game with autobattler mechanics, final year project.",
       })}
       projectKeywords={["Unreal Engine", "C++", "BP", "Software Architecture"]}
-      projectImage={projectPreviewArt.src}
+      projectImage={projectPreviewArt}
+      popUpPreload={[mainArtImg, "/mnc-gameplay-preview-poster.webp"]}
       projectPopUpContent={
         <div>
           <h2>Maps & Cards</h2>
@@ -82,7 +80,8 @@ function MapsAndCards() {
             }}
           >
             <img
-              src="/m&c-main-art.webp"
+              loading="lazy"
+              src={mainArtImg}
               alt={tr({
                 fr: "Illustration principale de Maps & Cards",
                 en: "Maps & Cards Game main art",

@@ -2,8 +2,7 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
-const projectPreviewArt = new Image();
-projectPreviewArt.src = "/ui-icon.webp";
+const projectPreviewArt = "/ui-icon.webp";
 
 function UIToolkit() {
   const { tr } = useLanguage();
@@ -19,7 +18,7 @@ function UIToolkit() {
         en: "Augmented reality mobile apps for the Rennes Tourism Office and Stade Rennais, and UI Toolkit interface systems.",
       })}
       projectKeywords={["Unity", "C#", "AR Foundation", "UIToolkit"]}
-      projectImage={projectPreviewArt.src}
+      projectImage={projectPreviewArt}
       projectPopUpContent={
         <div>
           <h2>
@@ -37,6 +36,7 @@ function UIToolkit() {
             }}
           >
             <img
+              loading="lazy"
               src="/ui-icon.webp"
               alt={tr({
                 fr: "Illustration des systèmes UI Toolkit",
@@ -116,6 +116,7 @@ function UIToolkit() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/enki-quizz.webp"
             alt={tr({
               fr: "Serious Game pour l'Office de Tourisme de Rennes",
@@ -135,6 +136,7 @@ function UIToolkit() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/enki-notification.png"
             alt={tr({
               fr: "Système de notifications en jeu personnalisées",

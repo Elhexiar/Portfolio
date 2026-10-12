@@ -2,8 +2,7 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
-const mainArtImg = new Image();
-mainArtImg.src = "/rider.webp";
+const mainArtImg = "/rider.webp";
 
 function GamificationRiderPlugin() {
   const { tr } = useLanguage();
@@ -16,7 +15,8 @@ function GamificationRiderPlugin() {
         en: "A plugin to add gamification elements to the Rider IDE.",
       })}
       projectKeywords={["Kotlin", "Rider", "IDE Plugin"]}
-      projectImage={mainArtImg.src}
+      projectImage={mainArtImg}
+      popUpPreload={["/gamification-picture.webp"]}
       projectPopUpContent={
         <div>
           <h2>Gamification Rider Plugin</h2>
@@ -43,6 +43,7 @@ function GamificationRiderPlugin() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/gamification-picture.webp"
             alt={tr({
               fr: "Aperçu du plugin Gamification pour Rider",

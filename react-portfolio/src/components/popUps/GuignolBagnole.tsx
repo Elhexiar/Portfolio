@@ -2,8 +2,7 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
-const projectPreviewArt = new Image();
-projectPreviewArt.src = "/GB/logo.webp";
+const projectPreviewArt = "/GB/logo.webp";
 
 function GuignolBagnole() {
   const { tr } = useLanguage();
@@ -28,7 +27,8 @@ function GuignolBagnole() {
         en: "A small racing game made during the GMTK Game Jam 2025.",
       })}
       projectKeywords={["Unreal Engine", "Game Jam"]}
-      projectImage={projectPreviewArt.src}
+      projectImage={projectPreviewArt}
+      popUpPreload={["/GB/FPV.webp"]}
       projectPopUpContent={
         <div>
           <h2>Guignol Bagnole</h2>
@@ -58,6 +58,7 @@ function GuignolBagnole() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/GB/FPV.webp"
             alt={tr({
               fr: "Capture de gameplay de Guignol Bagnole",
@@ -77,6 +78,7 @@ function GuignolBagnole() {
             })}
           </p>
           <img
+            loading="lazy"
             src="/GB/Shop.webp"
             alt={tr({
               fr: "Boutique d'améliorations de Guignol Bagnole",

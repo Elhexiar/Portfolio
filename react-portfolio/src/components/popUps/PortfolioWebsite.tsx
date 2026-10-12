@@ -2,8 +2,7 @@ import ProjectCard from "../ProjectCard";
 import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
-const mainArtImg = new Image();
-mainArtImg.src = "/front-end-icon.webp";
+const mainArtImg = "/front-end-icon.webp";
 
 function PortfolioWebsite() {
   const { tr } = useLanguage();
@@ -16,7 +15,7 @@ function PortfolioWebsite() {
         en: "My personal portfolio website to showcase my projects and skills.",
       })}
       projectKeywords={["React", "TypeScript"]}
-      projectImage={mainArtImg.src}
+      projectImage={mainArtImg}
       projectPopUpContent={
         <div>
           <h2>{tr({ fr: "Site portfolio", en: "Portfolio Website" })}</h2>
