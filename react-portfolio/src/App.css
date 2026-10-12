@@ -129,7 +129,7 @@ background: radial-gradient(circle,rgba(13, 25, 37, 1) 15%, rgba(61, 20, 23, 1) 
     background-position: 0%;
     transition: background-position 0.3s;
 
-      background-image: url("/custom-button.png");
+      background-image: url("/custom-button.webp");
       background-color: transparent;
       background-size: contain;
       background-repeat: no-repeat;

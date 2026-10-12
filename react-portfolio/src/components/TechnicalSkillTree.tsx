@@ -393,7 +393,7 @@ const skillTree: SkillNode = {
       children: [
         { id: "python-data", icon: "/skills/data.svg", size: SMALL, x: 720, y: 60, via: [[580, 300], [640, 60]], tooltip: tips.pythonData },
         {
-          id: "front-end", icon: "/front-end-icon.png", size: MEDIUM, x: 860, y: 160,
+          id: "front-end", icon: "/front-end-icon.webp", size: MEDIUM, x: 860, y: 160,
           via: [[660, 300], [740, 160]],
           tooltip: tips.frontEnd,
           children: [
@@ -416,40 +416,40 @@ const skillTree: SkillNode = {
       ],
     },
     {
-      id: "design", icon: "/general-dev-skills.png", size: BIG, x: 480, y: 760,
+      id: "design", icon: "/general-dev-skills.webp", size: BIG, x: 480, y: 760,
       via: [[270, 760]],
       tooltip: tips.design,
       children: [
-        { id: "architecture", icon: "/architecture-icon.png", size: MEDIUM, x: 790, y: 650, via: [[620, 760], [680, 650]], tooltip: tips.architecture },
+        { id: "architecture", icon: "/architecture-icon.webp", size: MEDIUM, x: 790, y: 650, via: [[620, 760], [680, 650]], tooltip: tips.architecture },
         { id: "project-management", icon: "/skills/git.svg", size: MEDIUM, x: 850, y: 760, tooltip: tips.projectManagement },
-        { id: "soft-skills", icon: "/soft-skill.png", size: MEDIUM, x: 790, y: 880, via: [[620, 760], [690, 880]], tooltip: tips.softSkills },
+        { id: "soft-skills", icon: "/soft-skill.webp", size: MEDIUM, x: 790, y: 880, via: [[620, 760], [690, 880]], tooltip: tips.softSkills },
       ],
     },
     {
-      id: "game-dev", icon: "/controller-icon.png", size: BIG, x: 470, y: 1080,
+      id: "game-dev", icon: "/controller-icon.webp", size: BIG, x: 470, y: 1080,
       via: [[240, 1080]],
       tooltip: tips.gameDev,
       children: [
         {
-          id: "unity", icon: "/unity-icon.png", size: MEDIUM, x: 830, y: 1010,
+          id: "unity", icon: "/unity-icon.webp", size: MEDIUM, x: 830, y: 1010,
           via: [[620, 1080], [660, 1010]],
           tooltip: tips.unity,
           children: [
-            { id: "unity-tooling", icon: "/tooling.png", size: SMALL, x: 1560, y: 780, via: [[900, 1010], [1010, 780]], tooltip: tips.unityTooling },
+            { id: "unity-tooling", icon: "/tooling.webp", size: SMALL, x: 1560, y: 780, via: [[900, 1010], [1010, 780]], tooltip: tips.unityTooling },
             { id: "ar-foundation", icon: "/skills/ar.svg", size: SMALL, x: 1400, y: 860, via: [[980, 1010], [1080, 860]], tooltip: tips.ar },
-            { id: "csharp", icon: "/csharp-icon.png", size: SMALL, x: 1240, y: 940, via: [[1060, 1010], [1110, 940]], tooltip: tips.csharp },
-            { id: "ui-toolkit", icon: "/ui-icon.png", size: SMALL, x: 1340, y: 1010, tooltip: tips.uiToolkit },
+            { id: "csharp", icon: "/csharp-icon.webp", size: SMALL, x: 1240, y: 940, via: [[1060, 1010], [1110, 940]], tooltip: tips.csharp },
+            { id: "ui-toolkit", icon: "/ui-icon.webp", size: SMALL, x: 1340, y: 1010, tooltip: tips.uiToolkit },
           ],
         },
         {
-          id: "unreal", icon: "/unreal-icon.png", size: MEDIUM, x: 860, y: 1180,
+          id: "unreal", icon: "/unreal-icon.webp", size: MEDIUM, x: 860, y: 1180,
           via: [[640, 1080], [700, 1180]],
           tooltip: tips.unreal,
           children: [
-            { id: "cpp", icon: "/cpp-icon.png", size: SMALL, x: 1130, y: 1100, via: [[980, 1180], [1020, 1100]], tooltip: tips.cpp },
-            { id: "blueprints", icon: "/bp-icon.png", size: SMALL, x: 1110, y: 1260, via: [[990, 1180], [1030, 1260]], tooltip: tips.blueprints },
-            { id: "ai", icon: "/bht-icon.png", size: SMALL, x: 1300, y: 1180, tooltip: tips.ai },
-            { id: "optimisation", icon: "/performance-icon.png", size: SMALL, x: 1560, y: 1110, via: [[1180, 1180], [1220, 1110]], tooltip: tips.optimisation },
+            { id: "cpp", icon: "/cpp-icon.webp", size: SMALL, x: 1130, y: 1100, via: [[980, 1180], [1020, 1100]], tooltip: tips.cpp },
+            { id: "blueprints", icon: "/bp-icon.webp", size: SMALL, x: 1110, y: 1260, via: [[990, 1180], [1030, 1260]], tooltip: tips.blueprints },
+            { id: "ai", icon: "/bht-icon.webp", size: SMALL, x: 1300, y: 1180, tooltip: tips.ai },
+            { id: "optimisation", icon: "/performance-icon.webp", size: SMALL, x: 1560, y: 1110, via: [[1180, 1180], [1220, 1110]], tooltip: tips.optimisation },
           ],
         },
       ],

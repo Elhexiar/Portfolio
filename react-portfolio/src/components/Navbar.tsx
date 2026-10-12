@@ -70,7 +70,7 @@ function Navbar({
               onClick={() => actualSetSelectedIndex(-1)}
             >
               <img
-                src="/close-icon.png"
+                src="/close-icon.webp"
                 alt={tr({ fr: "Fermer", en: "Close" })}
                 className="nav-close-button"
                 style={{}}

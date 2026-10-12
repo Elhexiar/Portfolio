@@ -12,7 +12,7 @@ type TextSegment =
   | { type: "link"; text: string; index: number };
 
 const profileImage = new Image();
-profileImage.src = "profile-pic.png";
+profileImage.src = "profile-pic.webp";
 
 interface AboutMeProps {
   alreadyTyped?: number;
@@ -277,7 +277,7 @@ function AboutMe({ alreadyTyped = 0, handleTotalCharsTyped }: AboutMeProps) {
                   onClick={() => setFavoriteVideoGamesWindowOpen(false)}
                 >
                   <img
-                    src="/close-icon.png"
+                    src="/close-icon.webp"
                     alt={tr({ fr: "Fermer", en: "Close" })}
                     className="nav-close-button"
                     style={{}}

@@ -3,7 +3,7 @@ import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
 const mainArtImg = new Image();
-mainArtImg.src = "/front-end-icon.png";
+mainArtImg.src = "/front-end-icon.webp";
 
 function PortfolioWebsite() {
   const { tr } = useLanguage();

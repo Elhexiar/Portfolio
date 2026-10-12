@@ -3,7 +3,7 @@ import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
 const projectPreviewArt = new Image();
-projectPreviewArt.src = "/no-hands-on-deck-cover-art.png";
+projectPreviewArt.src = "/no-hands-on-deck-cover-art.webp";
 
 function AllHandsOnDeck() {
   const { tr } = useLanguage();
@@ -21,7 +21,7 @@ function AllHandsOnDeck() {
         <div>
           <h2>All Hands On Deck</h2>
           <img
-            src="/ahod0.png"
+            src="/ahod0.webp"
             alt={tr({
               fr: "Capture d'écran de All Hands On Deck",
               en: "All Hands On Deck Screenshot",
@@ -83,7 +83,7 @@ function AllHandsOnDeck() {
             })}
           </p>
           <img
-            src="/ahod2.png"
+            src="/ahod2.webp"
             alt={tr({
               fr: "Capture d'écran 2 de All Hands On Deck",
               en: "All Hands On Deck Screenshot 2",
@@ -116,7 +116,7 @@ function AllHandsOnDeck() {
             })}
           </p>
           <img
-            src="/ahod1.png"
+            src="/ahod1.webp"
             alt={tr({
               fr: "Capture d'écran 3 de All Hands On Deck",
               en: "All Hands On Deck Screenshot 3",

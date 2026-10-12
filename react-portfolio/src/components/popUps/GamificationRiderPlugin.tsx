@@ -3,7 +3,7 @@ import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
 const mainArtImg = new Image();
-mainArtImg.src = "/rider.png";
+mainArtImg.src = "/rider.webp";
 
 function GamificationRiderPlugin() {
   const { tr } = useLanguage();
@@ -43,7 +43,7 @@ function GamificationRiderPlugin() {
             })}
           </p>
           <img
-            src="/gamification-picture.png"
+            src="/gamification-picture.webp"
             alt={tr({
               fr: "Aperçu du plugin Gamification pour Rider",
               en: "Gamification Rider Plugin preview",

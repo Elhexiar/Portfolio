@@ -1,9 +1,9 @@
 import CPButton from "./CPButton";
-import char0 from "/character-standing-0.png";
-import char1 from "/character-standing-1.png";
-import char2 from "/character-standing-2.png";
-import char3 from "/character-standing-3.png";
-import char4 from "/character-standing-4.png";
+import char0 from "/character-standing-0.webp";
+import char1 from "/character-standing-1.webp";
+import char2 from "/character-standing-2.webp";
+import char3 from "/character-standing-3.webp";
+import char4 from "/character-standing-4.webp";
 import { useState } from "react";
 
 const ImageArray = [char0, char1, char2, char3, char4];

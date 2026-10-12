@@ -3,11 +3,9 @@ import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
 const mainArtImg = new Image();
-mainArtImg.src = "/citadel-title.png";
-const gameplayImg = new Image();
-gameplayImg.src = "/citadel-gameplay-preview.gif";
+mainArtImg.src = "/citadel-title.webp";
 const citadelTitleImg = new Image();
-citadelTitleImg.src = "/citadel-main-art.png";
+citadelTitleImg.src = "/citadel-main-art.webp";
 
 function Citadel() {
   const { tr } = useLanguage();
@@ -75,7 +73,7 @@ function Citadel() {
             })}
           </p>
           <img
-            src="/citadel-gameplay0.png"
+            src="/citadel-gameplay0.webp"
             alt={tr({
               fr: "Capture d'écran de gameplay de Citadel",
               en: "Citadel Game gameplay screenshot",
@@ -110,7 +108,7 @@ function Citadel() {
             })}
           </p>
           <img
-            src="/citadel-gameplay1.png"
+            src="/citadel-gameplay1.webp"
             alt={tr({
               fr: "Capture d'écran de gameplay de Citadel",
               en: "Citadel Game gameplay screenshot",

@@ -3,7 +3,7 @@ import Keyword from "../Keyword";
 import { useLanguage } from "../../i18n";
 
 const projectPreviewArt = new Image();
-projectPreviewArt.src = "/ui-icon.png";
+projectPreviewArt.src = "/ui-icon.webp";
 
 function UIToolkit() {
   const { tr } = useLanguage();
@@ -37,7 +37,7 @@ function UIToolkit() {
             }}
           >
             <img
-              src="/ui-icon.png"
+              src="/ui-icon.webp"
               alt={tr({
                 fr: "Illustration des systèmes UI Toolkit",
                 en: "UI Toolkit Systems main art",
@@ -116,7 +116,7 @@ function UIToolkit() {
             })}
           </p>
           <img
-            src="/enki-quizz.png"
+            src="/enki-quizz.webp"
             alt={tr({
               fr: "Serious Game pour l'Office de Tourisme de Rennes",
               en: "Serious Game for Rennes Tourism Office",

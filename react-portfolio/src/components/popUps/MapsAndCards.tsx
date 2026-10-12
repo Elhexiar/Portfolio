@@ -4,11 +4,9 @@ import { useLanguage } from "../../i18n";
 
 // Preload images
 const projectPreviewArt = new Image();
-projectPreviewArt.src = "/m&c.png";
+projectPreviewArt.src = "/m&c.webp";
 const mainArtImg = new Image();
-mainArtImg.src = "/m&c-main-art.png";
-const gameplayImg = new Image();
-gameplayImg.src = "/mnc-gameplay-preview.gif";
+mainArtImg.src = "/m&c-main-art.webp";
 
 function MapsAndCards() {
   const { tr } = useLanguage();
@@ -84,7 +82,7 @@ function MapsAndCards() {
             }}
           >
             <img
-              src="/m&c-main-art.png"
+              src="/m&c-main-art.webp"
               alt={tr({
                 fr: "Illustration principale de Maps & Cards",
                 en: "Maps & Cards Game main art",
@@ -134,21 +132,26 @@ function MapsAndCards() {
               en: "Developed as my final year project in a team of 10 over 8 months, Maps & Cards was created to showcase our skills in game development and software architecture using Unreal Engine. My primary role was the lead programmer, responsible for designing and implementing key gameplay systems.",
             })}
           </p>
-          <img
-            src="/mnc-gameplay-preview.gif"
-            alt={tr({
+          <video
+            src="/mnc-gameplay-preview.mp4"
+            poster="/mnc-gameplay-preview-poster.webp"
+            aria-label={tr({
               fr: "Capture de gameplay de Maps & Cards",
               en: "Maps & Cards Game gameplay screenshot",
             })}
+            autoPlay
+            muted
+            loop
+            playsInline
             style={{
-              maxWidth: "600px",
+              maxWidth: "100%",
+              width: "600px",
               height: "250px",
               objectFit: "contain",
               border: "1px solid",
               borderColor: "var(--default-border-color)",
             }}
-            draggable={false}
-          ></img>
+          ></video>
 
           <h3
             style={{
